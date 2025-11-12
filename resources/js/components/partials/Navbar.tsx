@@ -10,8 +10,8 @@ import NavLink from './NavLink';
 
 export default function Navbar() {
     return (
-        <div className="fixed right-0 bottom-0 left-0 bg-dark-300 py-4 shadow md:py-5 lg:top-0 lg:bottom-auto">
-            <div className="container mx-auto flex justify-between px-4 2xl:px-16">
+        <div className="fixed right-0 bottom-0 left-0 bg-white py-4 md:py-5 lg:relative lg:top-0 lg:bottom-auto">
+            <div className="flex justify-between px-4 md:px-8 lg:px-12 2xl:px-16">
                 <div className="flex w-full lg:w-fit">
                     <div className="mr-12 hidden border-r border-neutral-600 pr-12 lg:block">
                         <HeaderLogo />
@@ -27,7 +27,7 @@ export default function Navbar() {
                             icon={MdOutlineRestaurantMenu}
                             label="Menu"
                         />
-                        <button className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-dark-300 lg:hidden">
+                        <button className="rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-dark-300 lg:hidden">
                             <span className="text-xl">
                                 <FaCashRegister />
                             </span>
@@ -45,7 +45,7 @@ export default function Navbar() {
                     </div>
                 </div>
                 <div>
-                    <button className="hidden items-center gap-4 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-dark-300 lg:flex">
+                    <button className="hidden items-center gap-4 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-gray-800 lg:flex">
                         <span className="text-lg">
                             <FaCashRegister />
                         </span>

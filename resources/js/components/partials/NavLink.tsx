@@ -14,7 +14,7 @@ export default function NavLink({
         <Link
             href={href}
             className={`flex items-center gap-2 rounded-full p-3 transition-colors lg:px-4 lg:py-1 ${
-                isActive ? 'bg-dark-100 text-primary' : 'text-neutral-500'
+                isActive ? 'text-primary' : 'text-neutral-500'
             }`}
         >
             <span className="text-xl">

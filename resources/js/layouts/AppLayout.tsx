@@ -8,7 +8,9 @@ export default function ({ children }: { children: React.ReactNode }) {
             <div>
                 <OverlayProvider>
                     <Navbar />
-                    <main className="min-h-screen bg-dark-200">{children}</main>
+                    <main className="min-h-screen bg-gray-100 pt-8">
+                        {children}
+                    </main>
                 </OverlayProvider>
             </div>
         </>
