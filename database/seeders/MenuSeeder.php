@@ -14,13 +14,8 @@ class MenuSeeder extends Seeder
      */
     public function run(): void
     {
-        $additionals = Additional::all()->random(10)->pluck('id');
-
         Menu::factory()
             ->count(200)
-            ->create()
-            ->each(function ($menu) use ($additionals) {
-                $menu->additionals()->attach($additionals);
-            });
+            ->create();
     }
 }
