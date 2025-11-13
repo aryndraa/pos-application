@@ -9,9 +9,9 @@ export default function Home() {
             <section className="grid grid-cols-12 px-4 md:px-8 lg:px-12 2xl:px-16">
                 <div className="col-span-8">
                     <div className="col-span-full mb-4">
-                        <div className="mb-4 flex justify-between">
+                        <div className="mb-4 flex items-center justify-between rounded-lg bg-white p-4">
                             <div>
-                                <h2 className="text-lg font-semibold">
+                                <h2 className="text-xl font-semibold">
                                     Welcome Back, User!
                                 </h2>
                                 <p className="text-sm text-gray-600">
