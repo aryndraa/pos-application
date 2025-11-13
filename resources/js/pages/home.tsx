@@ -1,15 +1,15 @@
+import DashboardWidget from '@/components/DashboardWidget';
 import LowStockMenu from '@/components/LowStockMenu';
 import OrderList from '@/components/OrderList';
 import PopularMenu from '@/components/PopularMenu';
-import WidgetCard from '@/components/WidgetCard';
 import AppLayout from '@/layouts/AppLayout';
 
 export default function Home() {
     return (
         <AppLayout>
             <section className="grid grid-cols-12 gap-4">
-                <div className="col-span-8">
-                    <div className="col-span-full mb-4">
+                <div className="col-span-full lg:col-span-8">
+                    <div className="mb-4">
                         <div className="mb-4 flex items-center justify-between rounded-lg bg-white p-4">
                             <div>
                                 <h2 className="text-xl font-semibold">
@@ -28,11 +28,7 @@ export default function Home() {
                                 </span>
                             </div>
                         </div>
-                        <div className="grid grid-cols-3 gap-4">
-                            <WidgetCard />
-                            <WidgetCard />
-                            <WidgetCard />
-                        </div>
+                        <DashboardWidget />
                     </div>
                     <div className="col-span-full grid grid-cols-2 gap-4">
                         <PopularMenu />
