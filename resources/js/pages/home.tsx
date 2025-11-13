@@ -1,4 +1,5 @@
 import LowStockMenu from '@/components/LowStockMenu';
+import OrderList from '@/components/OrderList';
 import PopularMenu from '@/components/PopularMenu';
 import WidgetCard from '@/components/WidgetCard';
 import AppLayout from '@/layouts/AppLayout';
@@ -6,7 +7,7 @@ import AppLayout from '@/layouts/AppLayout';
 export default function Home() {
     return (
         <AppLayout>
-            <section className="grid grid-cols-12 px-4 md:px-8 lg:px-12 2xl:px-16">
+            <section className="grid grid-cols-12 gap-4">
                 <div className="col-span-8">
                     <div className="col-span-full mb-4">
                         <div className="mb-4 flex items-center justify-between rounded-lg bg-white p-4">
@@ -38,7 +39,9 @@ export default function Home() {
                         <LowStockMenu />
                     </div>
                 </div>
-                <div className="col-span-4"></div>
+                <div className="col-span-4">
+                    <OrderList />
+                </div>
             </section>
         </AppLayout>
     );
