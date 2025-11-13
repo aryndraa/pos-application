@@ -8,7 +8,7 @@ export default function ({ children }: { children: React.ReactNode }) {
             <div>
                 <OverlayProvider>
                     <Navbar />
-                    <main className="pt-8">{children}</main>
+                    <main className="p-8 pl-24">{children}</main>
                 </OverlayProvider>
             </div>
         </>

@@ -9,7 +9,7 @@ export default function Home() {
             <section className="grid grid-cols-12 px-4 md:px-8 lg:px-12 2xl:px-16">
                 <div className="col-span-8">
                     <div className="col-span-full mb-4">
-                        {/* <div className="mb-4 flex justify-between">
+                        <div className="mb-4 flex justify-between">
                             <div>
                                 <h2 className="text-lg font-semibold">
                                     Welcome Back, User!
@@ -26,7 +26,7 @@ export default function Home() {
                                     Nov 12 2025
                                 </span>
                             </div>
-                        </div> */}
+                        </div>
                         <div className="grid grid-cols-3 gap-4">
                             <WidgetCard />
                             <WidgetCard />

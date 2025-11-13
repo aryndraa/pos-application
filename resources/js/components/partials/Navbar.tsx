@@ -10,13 +10,13 @@ import NavLink from './NavLink';
 
 export default function Navbar() {
     return (
-        <div className="fixed right-0 bottom-0 left-0 bg-white py-4 md:py-5 lg:relative lg:top-0 lg:bottom-auto">
-            <div className="flex justify-between px-4 md:px-8 lg:px-12 2xl:px-16">
-                <div className="flex w-full lg:w-fit">
-                    <div className="mr-12 hidden border-r border-neutral-600 pr-12 lg:block">
+        <div className="fixed right-0 bottom-0 left-0 m-3 rounded-lg bg-white py-4 shadow md:py-5 lg:top-0 lg:right-auto">
+            <div className="flex h-full flex-col items-center justify-between">
+                <div className="flex w-full flex-col lg:w-fit">
+                    <div className="mb-4 hidden justify-center border-b border-gray-400 pb-4 lg:flex">
                         <HeaderLogo />
                     </div>
-                    <div className="flex w-full justify-between gap-2 lg:w-fit">
+                    <div className="m-4 flex w-full flex-col justify-between gap-2 lg:w-fit">
                         <NavLink
                             href="/"
                             icon={MdOutlineDashboard}
@@ -44,12 +44,12 @@ export default function Navbar() {
                         />
                     </div>
                 </div>
-                <div>
-                    <button className="hidden items-center gap-4 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-gray-800 lg:flex">
+                <div className="w-full px-4">
+                    <button className="hidden w-full flex-col items-center gap-2 rounded-lg bg-secondary px-4 py-3 text-sm font-semibold text-gray-800 lg:flex">
                         <span className="text-lg">
                             <FaCashRegister />
                         </span>
-                        Point Of Sale
+                        POS
                     </button>
                 </div>
             </div>
