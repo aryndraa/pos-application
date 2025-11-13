@@ -1,3 +1,4 @@
+import MobileHeader from '@/components/partials/MobileHeader';
 import Navbar from '@/components/partials/Navbar';
 import { OverlayProvider } from '@/contexts/OverlayContext';
 import React from 'react';
@@ -8,7 +9,10 @@ export default function ({ children }: { children: React.ReactNode }) {
             <div>
                 <OverlayProvider>
                     <Navbar />
-                    <main className="p-4 lg:pl-32">{children}</main>
+                    <MobileHeader />
+                    <main className="p-3 pb-24 md:p-4 md:pb-0 md:pl-26 lg:pl-32">
+                        {children}
+                    </main>
                 </OverlayProvider>
             </div>
         </>

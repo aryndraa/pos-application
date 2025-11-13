@@ -13,7 +13,7 @@ export default function NavLink({
     return (
         <Link
             href={href}
-            className={`flex flex-col items-center gap-1 rounded-lg p-2 transition-colors md:p-3 lg:p-2 ${
+            className={`flex flex-col items-center gap-1 rounded-lg p-2.5 transition-colors md:p-3 lg:p-2 ${
                 isActive ? 'bg-primary text-white' : 'text-neutral-500'
             }`}
         >

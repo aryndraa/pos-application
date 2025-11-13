@@ -5,13 +5,14 @@ import {
     MdOutlineRestaurantMenu,
     MdOutlineRoomService,
 } from 'react-icons/md';
+import LogoutButton from '../actions/LogoutButton';
 import HeaderLogo from '../HeaderLogo';
 import NavLink from './NavLink';
 
 export default function Navbar() {
     return (
-        <div className="fixed right-0 bottom-0 left-0 m-3 rounded-lg bg-white shadow md:top-0 md:right-auto md:py-4">
-            <div className="flex h-full flex-col items-center justify-between px-4">
+        <div className="fixed top-auto right-0 bottom-0 left-0 rounded-lg bg-white px-4 py-3 shadow md:top-0 md:right-auto md:m-3 md:px-0 md:py-4">
+            <div className="flex h-full flex-col items-center justify-between md:px-4">
                 <div className="flex w-full flex-col md:w-fit">
                     <div className="mb-4 hidden justify-center border-b border-gray-400 pb-4 md:flex">
                         <HeaderLogo />
@@ -27,7 +28,7 @@ export default function Navbar() {
                             icon={MdOutlineRestaurantMenu}
                             label="Menu"
                         />
-                        <button className="rounded-lg bg-secondary p-2 text-sm font-semibold text-dark-300 md:hidden md:px-4">
+                        <button className="rounded-lg bg-secondary p-2.5 text-sm font-semibold text-dark-300 md:hidden md:px-4">
                             <span className="text-xl">
                                 <FaCashRegister />
                             </span>
@@ -44,7 +45,8 @@ export default function Navbar() {
                         />
                     </div>
                 </div>
-                <div className="w-full">
+                <div className="flex w-full flex-col items-center gap-6">
+                    <LogoutButton />
                     <button className="hidden w-full flex-col items-center gap-2 rounded-lg bg-secondary py-3 text-sm font-semibold text-gray-800 md:flex">
                         <span className="text-lg">
                             <FaCashRegister />

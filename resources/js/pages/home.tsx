@@ -12,7 +12,7 @@ export default function Home() {
                     <div className="mb-4">
                         <div className="mb-4 flex items-center justify-between rounded-lg bg-white p-4">
                             <div>
-                                <h2 className="text-xl font-semibold">
+                                <h2 className="text-lg font-semibold lg:text-xl">
                                     Welcome Back, User!
                                 </h2>
                                 <p className="text-sm text-gray-600">
@@ -20,7 +20,7 @@ export default function Home() {
                                 </p>
                             </div>
                             <div className="flex flex-col items-end">
-                                <span className="text-2xl font-semibold">
+                                <span className="text-lg font-semibold lg:text-2xl">
                                     22:49:02
                                 </span>
                                 <span className="text-sm text-gray-600">
@@ -30,12 +30,12 @@ export default function Home() {
                         </div>
                         <DashboardWidget />
                     </div>
-                    <div className="col-span-full grid grid-cols-2 gap-4">
+                    <div className="col-span-full grid gap-4 md:grid-cols-2">
                         <PopularMenu />
                         <LowStockMenu />
                     </div>
                 </div>
-                <div className="col-span-4">
+                <div className="col-span-full lg:col-span-4">
                     <OrderList />
                 </div>
             </section>
