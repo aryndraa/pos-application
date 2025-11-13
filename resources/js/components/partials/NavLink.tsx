@@ -13,14 +13,14 @@ export default function NavLink({
     return (
         <Link
             href={href}
-            className={`flex flex-col items-center gap-1 rounded-lg px-2 py-3 transition-colors ${
+            className={`flex flex-col items-center gap-1 rounded-lg p-2 transition-colors md:p-3 lg:p-2 ${
                 isActive ? 'bg-primary text-white' : 'text-neutral-500'
             }`}
         >
-            <span className="text-2xl">
+            <span className="text-xl md:text-2xl">
                 <Icon />
             </span>
-            <span className="hidden text-[10px] font-medium md:block">
+            <span className="hidden text-[10px] font-medium lg:block">
                 {label}
             </span>
         </Link>
