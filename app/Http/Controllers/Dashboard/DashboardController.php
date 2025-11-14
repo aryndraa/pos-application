@@ -22,6 +22,10 @@ class DashboardController extends Controller
             ->take(5)
             ->get(['id', 'name']);
 
+        $lowStockMenu = Menu::query()
+            ->where('stock', '<=', 5)
+            ->get(['id', 'name', 'stock']);
+
         return Inertia::render('home', [
             'totalEarnings' => $totalEarnings,
             'orderInQueue' => $orderInQueue,

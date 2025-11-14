@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('additional_id')->constrained()->onDelete('cascade');
             $table->integer('additional_price');
+            $table->integer('stock')->default(0);
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }

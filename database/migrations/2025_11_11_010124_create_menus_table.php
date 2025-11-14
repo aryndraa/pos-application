@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('menu_category_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->integer('price');
+            $table->integer('stock')->default(0);
             $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
