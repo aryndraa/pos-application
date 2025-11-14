@@ -42,6 +42,13 @@ class DashboardController extends Controller
             ->take(5)
             ->get(['id', 'name', 'stock']);
 
+        $weeklyOrders = Order::query()
+            ->selectRaw('DATE(order_date) as date, COUNT(*) as total')
+            ->where('order_date', '>=', now()->subDays(6)) 
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+
         return Inertia::render('home', [
             'totalEarnings' => $totalEarnings,
             'orderInQueue' => $orderInQueue,
@@ -49,7 +56,8 @@ class DashboardController extends Controller
             'popularMenu' => $popularMenu,
             'lowStockMenu' => $lowStockMenu,
             'inProgressOrders' => $inProgressOrders,
-            'waitingPaymentOrders' => $waitingPaymentOrders
+            'waitingPaymentOrders' => $waitingPaymentOrders,
+            'weeklyOrders' => $weeklyOrders
         ]);
     }
 }

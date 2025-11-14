@@ -1,8 +1,9 @@
 import Header from '@/components/dashboard/Header';
 import LowStockMenu from '@/components/dashboard/LowStockMenu';
+import OrderList from '@/components/dashboard/OrderList';
 import PopularMenu from '@/components/dashboard/PopularMenu';
+import WeeklyOrdersChart from '@/components/dashboard/WeeklyOrdersChart';
 import WdigetOverview from '@/components/dashboard/WidgetOverview';
-import OrderList from '@/components/OrderList';
 import AppLayout from '@/layouts/AppLayout';
 import { PageProps } from '@inertiajs/core';
 import { usePage } from '@inertiajs/react';
@@ -24,6 +25,11 @@ interface OrderItemType {
     order_date: string;
 }
 
+interface WeeklyOrderType {
+    date: string;
+    total: number;
+}
+
 interface HomeProps extends PageProps {
     totalEarnings: number;
     orderInQueue: number;
@@ -32,6 +38,7 @@ interface HomeProps extends PageProps {
     lowStockMenu: LowStockMenuType[];
     inProgressOrders: OrderItemType[];
     waitingPaymentOrders: OrderItemType[];
+    weeklyOrders: WeeklyOrderType[];
 }
 
 export default function Home() {
@@ -43,6 +50,7 @@ export default function Home() {
         lowStockMenu,
         inProgressOrders,
         waitingPaymentOrders,
+        weeklyOrders,
     } = usePage<HomeProps>().props;
 
     console.log({ lowStockMenu });
@@ -59,12 +67,15 @@ export default function Home() {
                             waitingPayments={waitingPayments}
                         />
                     </div>
-                    <div className="col-span-full grid gap-4 md:grid-cols-2">
+                    <div className="col-span-full mb-4 grid gap-4 md:grid-cols-2">
                         <PopularMenu popularMenu={popularMenu} />
                         <LowStockMenu lowStockMenu={lowStockMenu} />
                     </div>
+                    <div className="col-span-full">
+                        <WeeklyOrdersChart data={weeklyOrders} />
+                    </div>
                 </div>
-                <div className="col-span-full lg:col-span-4">
+                <div className="col-span-full h-fit lg:sticky lg:top-4 lg:col-span-4">
                     <OrderList
                         inProgressOrders={inProgressOrders}
                         waitingPaymentOrders={waitingPaymentOrders}
