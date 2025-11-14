@@ -49,6 +49,7 @@ class DashboardController extends Controller
             'popularMenu' => $popularMenu,
             'lowStockMenu' => $lowStockMenu,
             'inProgressOrders' => $inProgressOrders,
+            'waitingPaymentOrders' => $waitingPaymentOrders
         ]);
     }
 }

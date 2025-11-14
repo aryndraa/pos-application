@@ -1,63 +1,35 @@
-import { useState } from 'react';
+import { JSX, useState } from 'react';
 import {
     MdAccessTimeFilled,
     MdOutlineSearch,
     MdRoomService,
 } from 'react-icons/md';
 
-interface InProgressOrderType {
+interface OrderItemType {
     id: number;
     customer_name: string;
     status: string;
     order_date: string;
+    items_count?: number;
 }
 
-interface OrderItem {
-    id: number;
-    customer: string;
-    items: number;
-    date: string;
-    status: string;
+interface OrderListProps {
+    inProgressOrders: OrderItemType[];
+    waitingPaymentOrders: OrderItemType[];
 }
 
 export default function OrderList({
     inProgressOrders,
-}: {
-    inProgressOrders: InProgressOrderType[];
-}) {
+    waitingPaymentOrders,
+}: OrderListProps) {
     const [activeTab, setActiveTab] = useState<
         'in-progress' | 'waiting-payment'
     >('in-progress');
 
-    const waitingPaymentOrders: OrderItem[] = [
-        {
-            id: 10,
-            customer: 'William Hart',
-            items: 2,
-            date: 'Today',
-            status: 'Awaiting Payment',
-        },
-        {
-            id: 11,
-            customer: 'Sarah Lee',
-            items: 5,
-            date: 'Tomorrow',
-            status: 'Awaiting Payment',
-        },
-    ];
-
-    const mappedInProgress: OrderItem[] = inProgressOrders.map((o) => ({
-        id: o.id,
-        customer: o.customer_name,
-        items: 0,
-        date: new Date(o.order_date).toLocaleDateString(),
-        status: o.status,
-    }));
-
     let numbering = 1;
 
     const ordersToShow =
-        activeTab === 'in-progress' ? mappedInProgress : waitingPaymentOrders;
+        activeTab === 'in-progress' ? inProgressOrders : waitingPaymentOrders;
 
     return (
         <div className="flex h-full max-h-[95vh] flex-col gap-4 rounded-lg bg-white p-4 pb-6">
@@ -111,69 +83,81 @@ export default function OrderList({
 
                             <div className="space-y-1">
                                 <h4 className="text-xs font-medium md:text-[15px]">
-                                    {order.customer}
+                                    {order.customer_name}
                                 </h4>
                                 <p className="text-xs text-gray-500 md:text-sm">
-                                    {order.items} Items – {order.date}
+                                    {order.items_count ?? 0} Items –{' '}
+                                    {new Date(
+                                        order.order_date,
+                                    ).toLocaleDateString('id-ID', {
+                                        day: '2-digit',
+                                        month: 'short',
+                                        year: 'numeric',
+                                    })}
                                 </p>
                             </div>
                         </div>
 
-                        {order.status === 'pending' ? (
-                            <div className="flex flex-col items-end">
-                                <div className="flex w-fit items-center gap-1.5 rounded-sm bg-secondary px-2.5 py-1.5 text-xs font-semibold text-dark-300 capitalize md:mb-2 md:p-3 md:py-2">
-                                    <MdRoomService className="text-sm" />
-                                    {order.status}
-                                </div>
-                                <div className="hidden items-center gap-2 md:flex">
-                                    <span className="size-2.5 rounded-full bg-secondary"></span>
-                                    <p className="text-end text-xs text-gray-500">
-                                        Ready to serve
-                                    </p>
-                                </div>
-                            </div>
-                        ) : order.status === 'processing' ? (
-                            <div className="flex flex-col items-end">
-                                <div className="flex w-fit items-center gap-1.5 rounded-sm bg-gray-200 px-2.5 py-1.5 text-xs font-semibold text-dark-300 capitalize md:mb-2 md:p-3 md:py-2">
-                                    <MdAccessTimeFilled className="text-sm" />
-                                    {order.status}
-                                </div>
-                                <div className="hidden items-center gap-2 md:flex">
-                                    <span className="size-2.5 rounded-full bg-gray-200"></span>
-                                    <p className="text-end text-xs text-gray-500">
-                                        Cooking Now
-                                    </p>
-                                </div>
-                            </div>
-                        ) : order.status === 'ready' ? (
-                            <div className="flex flex-col items-end">
-                                <div className="flex w-fit items-center gap-1.5 rounded-sm bg-green-400 px-2.5 py-1.5 text-xs font-semibold text-dark-300 capitalize md:mb-2 md:p-3 md:py-2">
-                                    <MdAccessTimeFilled className="text-sm" />
-                                    {order.status}
-                                </div>
-                                <div className="hidden items-center gap-2 md:flex">
-                                    <span className="size-2.5 rounded-full bg-green-400"></span>
-                                    <p className="text-end text-xs text-gray-500">
-                                        Ready to serve
-                                    </p>
-                                </div>
-                            </div>
-                        ) : null}
+                        <OrderStatus status={order.status} />
                     </li>
                 ))}
+
                 {ordersToShow.length > 15 && (
                     <li className="rounded-lg bg-gray-100 py-2 text-center">
                         <span className="w-full text-sm font-medium text-gray-600">
-                            {ordersToShow.length - 10} Other orders
+                            {ordersToShow.length - 15} Other orders
                         </span>
                     </li>
                 )}
             </ul>
+
             {ordersToShow.length > 15 && (
                 <button className="w-full cursor-pointer rounded-lg bg-secondary p-2 text-sm font-semibold">
                     View More
                 </button>
             )}
+        </div>
+    );
+}
+
+function OrderStatus({ status }: { status: string }) {
+    const configs: Record<
+        string,
+        { bg: string; icon: JSX.Element; sub: string }
+    > = {
+        pending: {
+            bg: 'bg-secondary',
+            icon: <MdRoomService className="text-sm" />,
+            sub: 'Ready to serve',
+        },
+        processing: {
+            bg: 'bg-gray-200',
+            icon: <MdAccessTimeFilled className="text-sm" />,
+            sub: 'Cooking Now',
+        },
+        ready: {
+            bg: 'bg-green-400',
+            icon: <MdAccessTimeFilled className="text-sm" />,
+            sub: 'Ready to serve',
+        },
+    };
+
+    const c = configs[status];
+    if (!c) return null;
+
+    return (
+        <div className="flex flex-col items-end">
+            <div
+                className={`flex w-fit items-center gap-1.5 rounded-sm ${c.bg} px-2.5 py-1.5 text-xs font-semibold text-dark-300 capitalize md:mb-2 md:p-3 md:py-2`}
+            >
+                {c.icon}
+                {status}
+            </div>
+
+            <div className="hidden items-center gap-2 md:flex">
+                <span className={`size-2.5 rounded-full ${c.bg}`}></span>
+                <p className="text-end text-xs text-gray-500">{c.sub}</p>
+            </div>
         </div>
     );
 }

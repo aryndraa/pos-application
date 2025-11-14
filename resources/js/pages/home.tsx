@@ -17,7 +17,7 @@ interface LowStockMenuType {
     stock: number;
 }
 
-interface inProgressOrderType {
+interface OrderItemType {
     id: number;
     customer_name: string;
     status: string;
@@ -30,7 +30,8 @@ interface HomeProps extends PageProps {
     waitingPayments: number;
     popularMenu: PopularMenuType[];
     lowStockMenu: LowStockMenuType[];
-    inProgressOrders: inProgressOrderType[];
+    inProgressOrders: OrderItemType[];
+    waitingPaymentOrders: OrderItemType[];
 }
 
 export default function Home() {
@@ -41,6 +42,7 @@ export default function Home() {
         popularMenu,
         lowStockMenu,
         inProgressOrders,
+        waitingPaymentOrders,
     } = usePage<HomeProps>().props;
 
     console.log({ lowStockMenu });
@@ -63,7 +65,10 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="col-span-full lg:col-span-4">
-                    <OrderList inProgressOrders={inProgressOrders} />
+                    <OrderList
+                        inProgressOrders={inProgressOrders}
+                        waitingPaymentOrders={waitingPaymentOrders}
+                    />
                 </div>
             </section>
         </AppLayout>
