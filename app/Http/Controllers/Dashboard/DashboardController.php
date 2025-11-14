@@ -19,11 +19,13 @@ class DashboardController extends Controller
         $popularMenu = Menu::query()
             ->withSum('orders as total_sold', 'quantity')
             ->orderByDesc('total_sold')
-            ->take(5)
+            ->take(6)
             ->get(['id', 'name']);
 
         $lowStockMenu = Menu::query()
             ->where('stock', '<=', 5)
+            ->orderBy('stock', 'asc')
+            ->take(6)
             ->get(['id', 'name', 'stock']);
 
         return Inertia::render('home', [
@@ -31,6 +33,7 @@ class DashboardController extends Controller
             'orderInQueue' => $orderInQueue,
             'waitingPayments' => $waitingPayments,
             'popularMenu' => $popularMenu,
+            'lowStockMenu' => $lowStockMenu,
         ]);
     }
 }

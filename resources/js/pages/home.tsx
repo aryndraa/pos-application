@@ -12,18 +12,29 @@ interface PopularMenuType {
     total_sold: number;
 }
 
+interface LowStockMenuType {
+    name: string;
+    stock: number;
+}
+
 interface HomeProps extends PageProps {
     totalEarnings: number;
     orderInQueue: number;
     waitingPayments: number;
     popularMenu: PopularMenuType[];
+    lowStockMenu: LowStockMenuType[];
 }
 
 export default function Home() {
-    const { totalEarnings, orderInQueue, waitingPayments, popularMenu } =
-        usePage<HomeProps>().props;
+    const {
+        totalEarnings,
+        orderInQueue,
+        waitingPayments,
+        popularMenu,
+        lowStockMenu,
+    } = usePage<HomeProps>().props;
 
-    console.log({ popularMenu });
+    console.log({ lowStockMenu });
 
     return (
         <AppLayout>
@@ -39,7 +50,7 @@ export default function Home() {
                     </div>
                     <div className="col-span-full grid gap-4 md:grid-cols-2">
                         <PopularMenu popularMenu={popularMenu} />
-                        <LowStockMenu />
+                        <LowStockMenu lowStockMenu={lowStockMenu} />
                     </div>
                 </div>
                 <div className="col-span-full lg:col-span-4">

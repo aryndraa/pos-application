@@ -13,7 +13,7 @@ export default function PopularMenu({ popularMenu }: PopularMenuProps) {
     let numbering = 1;
 
     return (
-        <div className="rounded-lg bg-white p-4 md:p-5">
+        <div className="h-full rounded-lg bg-white p-4 md:p-5">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
                 <h3 className="text-lg font-semibold">Popular Menu</h3>
                 <Link className="rounded-lg bg-secondary px-4 py-1 text-sm font-medium">
@@ -25,7 +25,7 @@ export default function PopularMenu({ popularMenu }: PopularMenuProps) {
                     ? popularMenu.map((menu, index: number) => (
                           <li
                               key={index}
-                              className="flex items-center gap-4 rounded-lg px-4 py-2 hover:bg-gray-100 md:gap-5"
+                              className="flex cursor-pointer items-center gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
                           >
                               <span className="text-xl font-semibold">
                                   {numbering++}
