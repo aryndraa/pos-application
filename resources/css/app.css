@@ -143,3 +143,26 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* Lebar scrollbar */
+.scroll-y::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track (background scrollbar) */
+.scroll-y::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+}
+
+/* Thumb (bagian yang bisa digeser) */
+.scroll-y::-webkit-scrollbar-thumb {
+    background: #f60000;
+    transition: ease-in-out 300ms;
+    border-radius: 10px;
+}
+
+/* Hover efek (opsional) */
+.scroll-y::-webkit-scrollbar-thumb:hover {
+    background: #bd0000;
+}

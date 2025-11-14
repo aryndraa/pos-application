@@ -17,12 +17,20 @@ interface LowStockMenuType {
     stock: number;
 }
 
+interface inProgressOrderType {
+    id: number;
+    customer_name: string;
+    status: string;
+    order_date: string;
+}
+
 interface HomeProps extends PageProps {
     totalEarnings: number;
     orderInQueue: number;
     waitingPayments: number;
     popularMenu: PopularMenuType[];
     lowStockMenu: LowStockMenuType[];
+    inProgressOrders: inProgressOrderType[];
 }
 
 export default function Home() {
@@ -32,13 +40,14 @@ export default function Home() {
         waitingPayments,
         popularMenu,
         lowStockMenu,
+        inProgressOrders,
     } = usePage<HomeProps>().props;
 
     console.log({ lowStockMenu });
 
     return (
         <AppLayout>
-            <section className="grid grid-cols-12 gap-4">
+            <section className="grid grid-cols-12 gap-4 pb-6 lg:pb-0">
                 <div className="col-span-full lg:col-span-8">
                     <div className="mb-4 space-y-4">
                         <Header />
@@ -54,7 +63,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="col-span-full lg:col-span-4">
-                    <OrderList />
+                    <OrderList inProgressOrders={inProgressOrders} />
                 </div>
             </section>
         </AppLayout>
