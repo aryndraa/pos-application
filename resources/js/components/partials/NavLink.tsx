@@ -2,7 +2,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { MdSpaceDashboard } from 'react-icons/md';
 
 export default function NavLink({
-    href,
+    href = '#',
     icon: Icon = MdSpaceDashboard,
     label = 'Dashboard',
 }) {

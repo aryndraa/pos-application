@@ -21,4 +21,9 @@ class AdditionalItem extends Model
     {
         return $this->belongsTo(Additional::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(OrderItemAdditional::class);
+    }
 }

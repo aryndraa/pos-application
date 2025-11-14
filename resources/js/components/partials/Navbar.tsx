@@ -45,9 +45,9 @@ export default function Navbar() {
                         />
                     </div>
                 </div>
-                <div className="flex w-full flex-col items-center gap-6">
+                <div className="hidden w-full flex-col items-center gap-6 md:flex">
                     <LogoutButton />
-                    <button className="hidden w-full flex-col items-center gap-2 rounded-lg bg-secondary py-3 text-sm font-semibold text-gray-800 md:flex">
+                    <button className="w-full flex-col items-center gap-2 rounded-lg bg-secondary py-3 text-sm font-semibold text-gray-800 md:flex">
                         <span className="text-lg">
                             <FaCashRegister />
                         </span>
