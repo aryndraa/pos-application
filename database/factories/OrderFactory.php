@@ -17,13 +17,15 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_name' => $this->faker->name(),
-            'code'          => strtoupper($this->faker->bothify('ORD-####??')),
-            'total_price'   => $this->faker->numberBetween(50000, 200000),
-            'pay'           => $this->faker->numberBetween(50000, 200000),
-            'change'        => 0,
-            'payment_method'=> $this->faker->randomElement(['cash', 'transfer', 'qris']),
-            'status'        => $this->faker->randomElement(['pending', 'processing', 'ready', 'awaiting payment', 'paid', 'canceled', 'completed']),
+            'customer_name'     => $this->faker->name(),
+            'code'              => strtoupper($this->faker->bothify('ORD-####??')),
+            'total_price'       => $this->faker->numberBetween(50000, 200000),
+            'pay'               => $this->faker->numberBetween(50000, 200000),
+            'change'            => 0,
+            'order_date'        => $this->faker->dateTimeBetween('-1 month', 'now'),
+            'payment_time'      => $this->faker->dateTimeBetween('-1 month', 'now'),
+            'payment_method'    => $this->faker->randomElement(['cash', 'transfer', 'qris']),
+            'status'            => $this->faker->randomElement(['pending', 'processing', 'ready', 'awaiting payment', 'paid', 'canceled', 'completed']),
         ];
     }
 }

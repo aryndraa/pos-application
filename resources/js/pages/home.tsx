@@ -1,8 +1,8 @@
 import Header from '@/components/dashboard/Header';
+import LowStockMenu from '@/components/dashboard/LowStockMenu';
+import PopularMenu from '@/components/dashboard/PopularMenu';
 import WdigetOverview from '@/components/dashboard/WidgetOverview';
-import LowStockMenu from '@/components/LowStockMenu';
 import OrderList from '@/components/OrderList';
-import PopularMenu from '@/components/PopularMenu';
 import AppLayout from '@/layouts/AppLayout';
 import { PageProps } from '@inertiajs/core';
 import { usePage } from '@inertiajs/react';

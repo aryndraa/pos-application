@@ -17,6 +17,7 @@ class Menu extends Model
         'menu_category_id',
         'name',
         'price',
+        'stock',
         'is_available',
     ];
 
