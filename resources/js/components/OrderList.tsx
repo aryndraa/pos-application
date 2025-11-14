@@ -26,10 +26,31 @@ export default function OrderList({
         'in-progress' | 'waiting-payment'
     >('in-progress');
 
-    let numbering = 1;
+    const [searchQuery, setSearchQuery] = useState('');
 
     const ordersToShow =
         activeTab === 'in-progress' ? inProgressOrders : waitingPaymentOrders;
+
+    const filteredOrders = ordersToShow.filter((order) => {
+        const q = searchQuery.toLowerCase();
+
+        const nameMatch = order.customer_name.toLowerCase().includes(q);
+
+        const dateString = new Date(order.order_date).toLocaleDateString(
+            'id-ID',
+            {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+            },
+        );
+
+        const dateMatch = dateString.toLowerCase().includes(q);
+
+        return nameMatch || dateMatch;
+    });
+
+    let numbering = 1;
 
     return (
         <div className="flex h-full max-h-[95vh] flex-col gap-4 rounded-lg bg-white p-4 pb-6">
@@ -62,16 +83,18 @@ export default function OrderList({
                 <input
                     type="text"
                     placeholder="Search orders..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className="text-sm outline-none placeholder:text-gray-400 md:text-base"
                 />
             </div>
 
             <ul
                 className={`scroll-y w-full space-y-2 rounded-lg ${
-                    ordersToShow.length > 6 && 'overflow-y-scroll pr-2'
+                    filteredOrders.length > 6 && 'overflow-y-scroll pr-2'
                 }`}
             >
-                {ordersToShow.slice(0, 15).map((order) => (
+                {filteredOrders.slice(0, 15).map((order) => (
                     <li
                         key={order.id}
                         className="flex w-full cursor-pointer items-center justify-between rounded-lg p-3 py-2 transition hover:bg-gray-100"
@@ -102,18 +125,24 @@ export default function OrderList({
                     </li>
                 ))}
 
-                {ordersToShow.length > 15 && (
+                {filteredOrders.length > 15 && (
                     <li className="rounded-lg bg-gray-100 py-2 text-center">
                         <span className="w-full text-sm font-medium text-gray-600">
-                            {ordersToShow.length - 15} Other orders
+                            {filteredOrders.length - 15} Other orders
                         </span>
                     </li>
                 )}
-            </ul>
 
-            {ordersToShow.length > 15 && (
+                {filteredOrders.length === 0 && (
+                    <li className="rounded-lg bg-gray-100 py-3 text-center text-sm text-gray-500">
+                        No orders found.
+                    </li>
+                )}
+            </ul>
+            {ordersToShow.length > 15 && filteredOrders && (
                 <button className="w-full cursor-pointer rounded-lg bg-secondary p-2 text-sm font-semibold">
-                    View More
+                    {' '}
+                    View More Orders{' '}
                 </button>
             )}
         </div>
