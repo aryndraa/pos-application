@@ -4,15 +4,27 @@ import LowStockMenu from '@/components/LowStockMenu';
 import OrderList from '@/components/OrderList';
 import PopularMenu from '@/components/PopularMenu';
 import AppLayout from '@/layouts/AppLayout';
+import { usePage } from '@inertiajs/react';
 
 export default function Home() {
+    const { totalEarnings, orderInQueue, waitingPayments } = usePage()
+        .props as {
+        totalEarnings: number;
+        orderInQueue: number;
+        waitingPayments: number;
+    };
+
     return (
         <AppLayout>
             <section className="grid grid-cols-12 gap-4">
                 <div className="col-span-full lg:col-span-8">
                     <div className="mb-4 space-y-4">
                         <Header />
-                        <WdigetOverview />
+                        <WdigetOverview
+                            totalEarnings={totalEarnings}
+                            orderInQueue={orderInQueue}
+                            waitingPayments={waitingPayments}
+                        />
                     </div>
                     <div className="col-span-full grid gap-4 md:grid-cols-2">
                         <PopularMenu />
