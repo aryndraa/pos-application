@@ -4,15 +4,26 @@ import LowStockMenu from '@/components/LowStockMenu';
 import OrderList from '@/components/OrderList';
 import PopularMenu from '@/components/PopularMenu';
 import AppLayout from '@/layouts/AppLayout';
+import { PageProps } from '@inertiajs/core';
 import { usePage } from '@inertiajs/react';
 
+interface PopularMenuType {
+    name: string;
+    total_sold: number;
+}
+
+interface HomeProps extends PageProps {
+    totalEarnings: number;
+    orderInQueue: number;
+    waitingPayments: number;
+    popularMenu: PopularMenuType[];
+}
+
 export default function Home() {
-    const { totalEarnings, orderInQueue, waitingPayments } = usePage()
-        .props as {
-        totalEarnings: number;
-        orderInQueue: number;
-        waitingPayments: number;
-    };
+    const { totalEarnings, orderInQueue, waitingPayments, popularMenu } =
+        usePage<HomeProps>().props;
+
+    console.log({ popularMenu });
 
     return (
         <AppLayout>
@@ -27,7 +38,7 @@ export default function Home() {
                         />
                     </div>
                     <div className="col-span-full grid gap-4 md:grid-cols-2">
-                        <PopularMenu />
+                        <PopularMenu popularMenu={popularMenu} />
                         <LowStockMenu />
                     </div>
                 </div>

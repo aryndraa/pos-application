@@ -16,15 +16,17 @@ class DashboardController extends Controller
         $orderInQueue = Order::query()->whereIn('status', ['pending', 'processing', 'ready'])->count();
         $waitingPayments = Order::query()->where('status', 'awaiting payment')->count();
 
-        $popularMenu = Menu::query()->withSum('orders as total_sold', 'quantity')
+        $popularMenu = Menu::query()
+            ->withSum('orders as total_sold', 'quantity')
             ->orderByDesc('total_sold')
             ->take(5)
-            ->pluck('total_sold', 'name');
+            ->get(['id', 'name']);
 
         return Inertia::render('home', [
             'totalEarnings' => $totalEarnings,
             'orderInQueue' => $orderInQueue,
             'waitingPayments' => $waitingPayments,
+            'popularMenu' => $popularMenu,
         ]);
     }
 }
