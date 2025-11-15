@@ -11,7 +11,7 @@ import NavLink from './NavLink';
 
 export default function Navbar() {
     return (
-        <div className="fixed top-auto right-0 bottom-0 left-0 rounded-lg bg-white px-4 py-3 shadow md:top-0 md:right-auto md:m-3 md:px-0 md:py-4">
+        <div className="fixed top-auto right-0 bottom-0 left-0 z-50 rounded-lg bg-white px-4 py-2 shadow md:top-0 md:right-auto md:m-3 md:px-0 md:py-4">
             <div className="flex h-full flex-col items-center justify-between md:px-4">
                 <div className="flex w-full flex-col md:w-fit">
                     <div className="mb-4 hidden justify-center border-b border-gray-400 pb-4 md:flex">

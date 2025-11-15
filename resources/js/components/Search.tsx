@@ -2,7 +2,7 @@ import { MdOutlineSearch } from 'react-icons/md';
 
 export default function Search() {
     return (
-        <div className="flex w-full gap-4 rounded-lg bg-white p-4">
+        <div className="flex w-full gap-4 rounded-lg bg-white p-4 py-3 lg:py-4">
             <MdOutlineSearch className="text-2xl" />
             <input
                 type="text"

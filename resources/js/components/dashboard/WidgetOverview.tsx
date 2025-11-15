@@ -44,13 +44,25 @@ export default function WdigetOverview({
                     className="rounded-lg"
                 >
                     <SwiperSlide>
-                        <WidgetCard />
+                        <WidgetCard
+                            icon={<FaMoneyBillWave />}
+                            label="Total Earnings"
+                            value={formatRupiah(totalEarnings!)}
+                        />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <WidgetCard />
+                        <WidgetCard
+                            icon={<MdRoomService />}
+                            label="Orders in Queue"
+                            value={orderInQueue! + ' Orders'}
+                        />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <WidgetCard />
+                        <WidgetCard
+                            icon={<FaRegListAlt />}
+                            label="Waiting Payments"
+                            value={waitingPayments}
+                        />
                     </SwiperSlide>
                 </Swiper>
             </div>
