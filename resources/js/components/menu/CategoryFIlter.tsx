@@ -23,7 +23,7 @@ export default function CategoryFIlter() {
                     </button>
                 </li>
                 <li>
-                    <button className="flex w-full cursor-pointer flex-col items-center justify-start gap-2 rounded-lg border-2 border-gray-200 bg-gray-100 px-4 py-4 font-medium text-dark-300">
+                    <button className="flex w-full cursor-pointer flex-col items-center justify-start gap-2 rounded-lg border-2 border-transparent bg-gray-100 px-4 py-4 font-medium text-dark-300">
                         <span>
                             <img
                                 src="https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -35,7 +35,7 @@ export default function CategoryFIlter() {
                     </button>
                 </li>
                 <li>
-                    <button className="flex w-full cursor-pointer flex-col items-center justify-start gap-2 rounded-lg border-2 border-gray-200 bg-gray-100 px-4 py-4 font-medium text-dark-300">
+                    <button className="border- border-transparent2 flex w-full cursor-pointer flex-col items-center justify-start gap-2 rounded-lg bg-gray-100 px-4 py-4 font-medium text-dark-300">
                         <span>
                             <img
                                 src="https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -47,7 +47,7 @@ export default function CategoryFIlter() {
                     </button>
                 </li>
                 <li>
-                    <button className="flex w-full cursor-pointer flex-col items-center justify-start gap-2 rounded-lg border-2 border-gray-200 bg-gray-100 px-4 py-4 font-medium text-dark-300">
+                    <button className="border- border-transparent2 flex w-full cursor-pointer flex-col items-center justify-start gap-2 rounded-lg bg-gray-100 px-4 py-4 font-medium text-dark-300">
                         <span>
                             <img
                                 src="https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

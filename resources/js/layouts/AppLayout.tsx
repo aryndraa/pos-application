@@ -10,7 +10,7 @@ export default function ({ children }: { children: React.ReactNode }) {
                 <OverlayProvider>
                     <Navbar />
                     <MobileHeader />
-                    <main className="p-3 pb-24 md:p-4 md:pb-0 md:pl-26 lg:pl-32">
+                    <main className="p-3 pb-24 md:p-4 md:pb-4 md:pl-26 lg:pl-32">
                         {children}
                     </main>
                 </OverlayProvider>

@@ -1,6 +1,7 @@
 import DropdownFilter from '@/components/DropdownFilter';
 import CategoryFIlter from '@/components/menu/CategoryFIlter';
 import PopularMenu from '@/components/menu/PopularMenu';
+import MenuCard from '@/components/MenuCard';
 import Search from '@/components/Search';
 import AppLayout from '@/layouts/AppLayout';
 import { FaPlus } from 'react-icons/fa';
@@ -21,7 +22,7 @@ export default function menu() {
                             <CategoryFIlter />
                         </div>
                         <div className="col-span-10">
-                            <div className="flex items-center justify-between">
+                            <div className="mb-4 flex items-center justify-between">
                                 <div className="flex items-stretch gap-4">
                                     <div className="w-96">
                                         <Search />
@@ -37,6 +38,32 @@ export default function menu() {
                                     </button>
                                 </div>
                             </div>
+                            <ul className="grid grid-cols-4 gap-2">
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                                <li>
+                                    <MenuCard />
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
