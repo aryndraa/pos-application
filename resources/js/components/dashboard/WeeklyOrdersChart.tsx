@@ -32,7 +32,7 @@ export default function WeeklyOrdersChart({ data }: WeeklyOrdersChartProps) {
                 Weekly Orders
             </h3>
 
-            <div className="h-40 w-full md:h-64 lg:h-72">
+            <div className="h-40 w-full md:h-64 lg:h-72 2xl:h-96">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data}>
                         <CartesianGrid strokeDasharray="3 3" />

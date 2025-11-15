@@ -146,7 +146,7 @@
 
 /* Lebar scrollbar */
 .scroll-y::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 
 /* Track (background scrollbar) */
