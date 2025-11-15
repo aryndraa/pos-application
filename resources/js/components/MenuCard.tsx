@@ -1,6 +1,14 @@
+import { MenuType } from '@/types/Menu';
+import { formatRupiah } from '@/utils/formatRupiah';
 import { MdFastfood } from 'react-icons/md';
 
-export default function MenuCard() {
+export default function MenuCard({
+    name,
+    category,
+    orders_count,
+    price,
+    stock,
+}: MenuType) {
     return (
         <div className="flex flex-col gap-2 rounded-lg bg-white p-3 md:p-4">
             <img
@@ -11,12 +19,12 @@ export default function MenuCard() {
             <div>
                 <div className="mb-4">
                     <h3 className="mb-1 text-sm font-medium md:mb-0 md:text-lg">
-                        Katsu Embaltukam
+                        {name}
                     </h3>
                     <div className="flex items-center gap-2 text-gray-500">
                         <MdFastfood />
                         <p className="text-xs font-medium md:text-base">
-                            Katsu
+                            {category.name}
                         </p>
                     </div>
                 </div>
@@ -26,7 +34,7 @@ export default function MenuCard() {
                             Orders
                         </h4>
                         <span className="text-sm font-medium md:text-base">
-                            12 Sold
+                            {orders_count} Sold
                         </span>
                     </div>
                     <div>
@@ -34,14 +42,16 @@ export default function MenuCard() {
                             Stock
                         </h4>
                         <span className="text-sm font-medium md:text-base">
-                            18 Left
+                            {stock} Left
                         </span>
                     </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                    <div className="hidden justify-between text-sm md:flex md:text-base">
+                    <div className="flex justify-between text-xs md:text-base">
                         <p className="font-medium">Price :</p>
-                        <span className="font-semibold">Rp. 12.000</span>
+                        <span className="font-semibold">
+                            {formatRupiah(price)}
+                        </span>
                     </div>
                     <button className="flex-1 cursor-pointer rounded bg-secondary py-1 text-sm font-semibold md:rounded-lg md:py-2 md:text-base">
                         Detail

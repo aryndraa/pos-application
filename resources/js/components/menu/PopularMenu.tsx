@@ -6,7 +6,7 @@ export default function PopularMenu() {
     return (
         <div>
             <div className="mb-4">
-                <h1 className="rounded-lg bg-white p-4 text-lg font-medium md:text-xl">
+                <h1 className="rounded-lg text-lg font-medium md:text-xl">
                     Popular Menu
                 </h1>
             </div>

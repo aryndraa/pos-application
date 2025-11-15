@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Menu\MenuController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
-Route::get('/menu', function () {
-    return Inertia::render('menu');
-})->name('menu');
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 Route::get('/orders', function () {
     return Inertia::render('orders');

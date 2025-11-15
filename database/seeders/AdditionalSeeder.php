@@ -14,7 +14,7 @@ class AdditionalSeeder extends Seeder
      */
     public function run(): void
     {
-        Additional::factory()->count(100)->create();
+        Additional::factory()->count(20)->create();
 
         Additional::all()->each(function ($additional) {
             $additional->menus()->attach(

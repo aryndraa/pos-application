@@ -8,7 +8,11 @@ export default function NavLink({
 }) {
     const { url } = usePage();
 
-    const isActive = url === href;
+    const cleanUrl = url.split('?')[0];
+    const cleanHref = href.split('?')[0];
+
+    const isActive =
+        cleanUrl === cleanHref || cleanUrl.startsWith(cleanHref + '/');
 
     return (
         <Link
