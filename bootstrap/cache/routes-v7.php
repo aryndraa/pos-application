@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::YkKF3BuD3iNy9GeJ',
+            '_route' => 'generated::pJg8YfGRNEKOaxub',
           ),
           1 => NULL,
           2 => 
@@ -107,6 +107,25 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/category/store' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::FnuLxctJ4gGDXQ4V',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
@@ -152,7 +171,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::YkKF3BuD3iNy9GeJ' => 
+    'generated::pJg8YfGRNEKOaxub' => 
     array (
       'methods' => 
       array (
@@ -181,7 +200,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000032c0000000000000000";}}',
-        'as' => 'generated::YkKF3BuD3iNy9GeJ',
+        'as' => 'generated::pJg8YfGRNEKOaxub',
       ),
       'fallback' => false,
       'defaults' => 
@@ -332,6 +351,42 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'history',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::FnuLxctJ4gGDXQ4V' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'category/store',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\MenuCategory\\MenuCategoryController@store',
+        'controller' => 'App\\Http\\Controllers\\MenuCategory\\MenuCategoryController@store',
+        'namespace' => NULL,
+        'prefix' => '/category',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::FnuLxctJ4gGDXQ4V',
       ),
       'fallback' => false,
       'defaults' => 

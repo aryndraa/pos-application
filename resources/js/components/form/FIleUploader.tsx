@@ -65,6 +65,7 @@ export default function FileUploader({
 
                         <input
                             type="file"
+                            required={required}
                             className="sr-only"
                             accept={accept}
                             multiple={multiple}
