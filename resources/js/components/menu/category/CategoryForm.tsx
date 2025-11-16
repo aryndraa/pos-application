@@ -1,6 +1,7 @@
 import FileUploader from '@/components/form/FIleUploader';
 import InputLabel from '@/components/form/InputLabel';
 import Modal from '@/components/Modal';
+import { useNotification } from '@/contexts/NotificationContext';
 import { useForm } from '@inertiajs/react';
 
 export default function CategoryForm({ setIsOpen }: { setIsOpen: () => void }) {
@@ -9,14 +10,21 @@ export default function CategoryForm({ setIsOpen }: { setIsOpen: () => void }) {
         image: null as File | null,
     });
 
+    const { notify } = useNotification();
+
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
         post('/category/store', {
             forceFormData: true,
             onSuccess: () => {
+                notify('success', 'Category created successfully!');
                 reset();
                 setIsOpen();
+            },
+            onError: () => {
+                const message = Object.values(errors).join('\n');
+                notify('error', message);
             },
         });
     }
