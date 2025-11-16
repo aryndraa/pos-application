@@ -1,8 +1,8 @@
 import { Category } from '@/types/Menu';
 import { router, usePage } from '@inertiajs/react';
-import { FaPlus } from 'react-icons/fa';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import CategoryHeader from './CategoryHeader';
 
 interface CategoryFilterProps {
     categories: Category[];
@@ -14,10 +14,10 @@ export default function CategoryFilter({ categories }: CategoryFilterProps) {
     const currentCategory = query.get('category');
     const currentFilter = query.get('filter');
 
-    const handleFilter = (id: number | 'all') => {
+    const handleFilter = (name: string | 'all') => {
         const params: any = {};
 
-        if (id !== 'all') params.category = id;
+        if (name !== 'all') params.category = name;
         if (currentFilter) params.filter = currentFilter;
 
         router.get('/menu', params, {
@@ -33,14 +33,8 @@ export default function CategoryFilter({ categories }: CategoryFilterProps) {
 
     return (
         <div className="sticky top-4 w-full rounded-lg bg-white p-4">
-            <div className="mb-4 flex items-center justify-between">
-                <h2 className="font-medium">All Categories</h2>
-                <button className="rounded-full bg-secondary p-2 text-sm">
-                    <FaPlus />
-                </button>
-            </div>
+            <CategoryHeader />
 
-            {/* MOBILE */}
             <div className="lg:hidden">
                 <Swiper spaceBetween={12} slidesPerView={2.8}>
                     <SwiperSlide>

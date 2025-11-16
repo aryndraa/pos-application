@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import DropdownFilter from '../DropdownFilter';
 import Search from '../Search';
-import CategoryFIlter from './CategoryFIlter';
+import CategoryFIlter from './category/CategoryFIlter';
 import ListMenu from './ListMenu';
 
 interface MenuOverviewProps {
@@ -21,10 +21,7 @@ export default function MenuOverview({ menu, categories }: MenuOverviewProps) {
         { label: 'Popular Menu', key: 'popular' },
         { label: 'Out of Stock', key: 'lowstock' },
         { label: 'Available Items', key: 'available' },
-        {
-            label: 'Unavailable Items',
-            key: 'unavailable',
-        },
+        { label: 'Unavailable Items', key: 'unavailable' },
     ];
 
     const { url } = usePage();
