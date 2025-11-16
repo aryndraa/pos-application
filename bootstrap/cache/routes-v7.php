@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::pJg8YfGRNEKOaxub',
+            '_route' => 'generated::2cOnkVmpIpemzHpm',
           ),
           1 => NULL,
           2 => 
@@ -113,7 +113,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::FnuLxctJ4gGDXQ4V',
+            '_route' => 'generated::wJYrRQ8xOmGRjxBB',
           ),
           1 => NULL,
           2 => 
@@ -129,11 +129,33 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/storage/(.*)(*:20))/?$}sDu',
+      0 => '{^(?|/category/update/([^/]++)(*:32)|/storage/(.*)(*:52))/?$}sDu',
     ),
     3 => 
     array (
-      20 => 
+      32 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::ppA4mBBasxi5wBZL',
+          ),
+          1 => 
+          array (
+            0 => 'category',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      52 => 
       array (
         0 => 
         array (
@@ -171,7 +193,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::pJg8YfGRNEKOaxub' => 
+    'generated::2cOnkVmpIpemzHpm' => 
     array (
       'methods' => 
       array (
@@ -200,7 +222,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000032c0000000000000000";}}',
-        'as' => 'generated::pJg8YfGRNEKOaxub',
+        'as' => 'generated::2cOnkVmpIpemzHpm',
       ),
       'fallback' => false,
       'defaults' => 
@@ -366,7 +388,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::FnuLxctJ4gGDXQ4V' => 
+    'generated::wJYrRQ8xOmGRjxBB' => 
     array (
       'methods' => 
       array (
@@ -386,7 +408,43 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::FnuLxctJ4gGDXQ4V',
+        'as' => 'generated::wJYrRQ8xOmGRjxBB',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::ppA4mBBasxi5wBZL' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'category/update/{category}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\MenuCategory\\MenuCategoryController@update',
+        'controller' => 'App\\Http\\Controllers\\MenuCategory\\MenuCategoryController@update',
+        'namespace' => NULL,
+        'prefix' => '/category',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::ppA4mBBasxi5wBZL',
       ),
       'fallback' => false,
       'defaults' => 

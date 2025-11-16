@@ -1,7 +1,10 @@
 import { Category } from '@/types/Menu';
 import { router, usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import { IoMdMenu } from 'react-icons/io';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import CategoryForm from './CategoryForm';
 import CategoryHeader from './CategoryHeader';
 
 interface CategoryFilterProps {
@@ -31,6 +34,9 @@ export default function CategoryFilter({ categories }: CategoryFilterProps) {
         return currentCategory === name;
     };
 
+    const [isOpen, setIsOpen] = useState<boolean>();
+    const [selectedCategory, setSelectedCategory] = useState<Category>();
+
     return (
         <div className="sticky top-4 w-full rounded-lg bg-white p-4">
             <CategoryHeader />
@@ -52,16 +58,23 @@ export default function CategoryFilter({ categories }: CategoryFilterProps) {
 
                     {categories.map((cat, index: number) => (
                         <SwiperSlide key={index}>
-                            <button
-                                onClick={() => handleFilter(cat.name)}
+                            <div
                                 className={`flex w-full cursor-pointer flex-col items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium ${isActive(cat.name) ? 'border-2 border-secondary bg-secondary/10' : 'border-2 border-transparent bg-gray-100'} `}
                             >
-                                <img
-                                    src="https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740"
-                                    className="size-8 rounded-full object-cover"
-                                />
-                                {cat.name}
-                            </button>
+                                <button
+                                    onClick={() => handleFilter(cat.name)}
+                                    className="flex cursor-pointer flex-col items-center gap-2"
+                                >
+                                    <img
+                                        src="https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740"
+                                        className="size-8 rounded-full object-cover"
+                                    />
+                                    {cat.name}
+                                </button>
+                                <button className="mb-2 cursor-pointer rounded-full bg-primary p-2 text-white">
+                                    <IoMdMenu />
+                                </button>
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -81,21 +94,44 @@ export default function CategoryFilter({ categories }: CategoryFilterProps) {
                     </button>
                 </li>
 
-                {categories.map((cat) => (
+                {categories.map((cat: Category) => (
                     <li key={cat.id}>
-                        <button
-                            onClick={() => handleFilter(cat.name)}
-                            className={`flex w-full cursor-pointer flex-col items-center gap-2 rounded-lg px-4 py-4 font-medium ${isActive(cat.name) ? 'border-2 border-secondary bg-secondary/10' : 'border-2 border-transparent bg-gray-100'} `}
+                        <div
+                            className={`flex w-full flex-col items-center rounded-lg px-4 py-4 font-medium ${isActive(cat.name) ? 'border-2 border-secondary bg-secondary/10' : 'border-2 border-transparent bg-gray-100'} `}
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740"
-                                className="size-12 rounded-full object-cover"
-                            />
-                            {cat.name}
-                        </button>
+                            <button
+                                onClick={() => handleFilter(cat.name)}
+                                className="flex cursor-pointer flex-col items-center gap-2"
+                            >
+                                <img
+                                    src={
+                                        cat.file_url ??
+                                        'https://images.unsplash.com/photo-1679279726946-a158b8bcaa23?q=80&w=1740'
+                                    }
+                                    className="size-12 rounded-full object-cover"
+                                />
+                                {cat.name}
+                            </button>
+                            <button
+                                className="mt-4 cursor-pointer rounded-full bg-primary p-2 text-white"
+                                onClick={() => {
+                                    setSelectedCategory(cat);
+                                    setIsOpen(true);
+                                }}
+                            >
+                                <IoMdMenu />
+                            </button>
+                        </div>
                     </li>
                 ))}
             </ul>
+            {isOpen && (
+                <CategoryForm
+                    mode="edit"
+                    initialData={selectedCategory}
+                    setIsOpen={() => setIsOpen(false)}
+                />
+            )}
         </div>
     );
 }

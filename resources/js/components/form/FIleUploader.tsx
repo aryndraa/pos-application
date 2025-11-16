@@ -6,6 +6,7 @@ interface FileUploaderProps {
     required?: boolean;
     accept?: string;
     multiple?: boolean;
+    previewUrl?: string;
     onChange?: (files: FileList | null) => void;
 }
 
@@ -15,8 +16,11 @@ export default function FileUploader({
     accept = 'image/*',
     multiple = false,
     onChange,
+    previewUrl,
 }: FileUploaderProps) {
-    const [preview, setPreview] = useState<string[]>([]);
+    const [preview, setPreview] = useState<string[]>(
+        previewUrl ? [previewUrl] : [],
+    );
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const files = e.target.files;

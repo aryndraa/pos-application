@@ -16,7 +16,12 @@ export default function CategoryHeader() {
                     <FaPlus />
                 </button>
             </div>
-            {isOpen && <CategoryForm setIsOpen={() => setIsOpen(false)} />}
+            {isOpen && (
+                <CategoryForm
+                    mode="create"
+                    setIsOpen={() => setIsOpen(false)}
+                />
+            )}
         </div>
     );
 }

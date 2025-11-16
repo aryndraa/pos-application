@@ -45,8 +45,16 @@ class MenuController extends Controller
             )
             ->get();
 
-        $categories = MenuCategory::all();
-        
+        $categories = MenuCategory::with('image')
+            ->get()
+            ->map(function ($cat) {
+                return [
+                    'id'       => $cat->id,
+                    'name'     => $cat->name,
+                    'file_url' => $cat->image ? $cat->image->file_url : null,
+                ];
+            });
+    
         return Inertia::render('menu', [
             'menu' => $menu,
             'categories' => $categories,

@@ -23,6 +23,7 @@ Route::controller(MenuCategoryController::class)
     ->prefix('category')
     ->group(function() {
         Route::post('/store', 'store');
+        Route::post('/update/{category}', 'update');
     });
 
 // Route::middleware(['auth', 'verified'])->group(function () {
