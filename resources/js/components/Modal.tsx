@@ -11,7 +11,7 @@ interface ModalProps {
 export default function Modal({ children, title, toggle }: ModalProps) {
     return (
         <Overlay>
-            <div className="w-[35%] rounded-lg bg-white p-5">
+            <div className="m-4 w-full rounded-lg bg-white p-5 md:w-[60%] lg:m-0 lg:w-[35%]">
                 <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4 text-gray-500">
                     <h2 className="text-lg font-medium">{title}</h2>
                     <button

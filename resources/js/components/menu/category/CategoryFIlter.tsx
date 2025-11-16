@@ -71,7 +71,13 @@ export default function CategoryFilter({ categories }: CategoryFilterProps) {
                                     />
                                     {cat.name}
                                 </button>
-                                <button className="mb-2 cursor-pointer rounded-full bg-primary p-2 text-white">
+                                <button
+                                    onClick={() => {
+                                        setSelectedCategory(cat);
+                                        setIsOpen(true);
+                                    }}
+                                    className="mb-2 cursor-pointer rounded-full bg-primary p-2 text-white"
+                                >
                                     <IoMdMenu />
                                 </button>
                             </div>
