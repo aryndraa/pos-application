@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
-Route::get('/menu', [MenuController::class, 'index'])->name('menu');
+Route::resource('menu', MenuController::class);
 
 Route::get('/orders', function () {
     return Inertia::render('orders');

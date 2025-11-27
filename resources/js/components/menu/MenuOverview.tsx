@@ -1,5 +1,5 @@
 import { Category, MenuType } from '@/types/Menu';
-import { router, usePage } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import DropdownFilter from '../DropdownFilter';
@@ -72,10 +72,13 @@ export default function MenuOverview({ menu, categories }: MenuOverviewProps) {
                         </div>
 
                         <div className="w-full lg:w-fit">
-                            <button className="flex w-full cursor-pointer items-center justify-center gap-4 rounded-lg bg-secondary px-4 py-3 font-semibold lg:w-fit">
+                            <Link
+                                href="menu/create"
+                                className="flex w-full cursor-pointer items-center justify-center gap-4 rounded-lg bg-secondary px-4 py-3 font-semibold lg:w-fit"
+                            >
                                 New Menu
                                 <FaPlus />
-                            </button>
+                            </Link>
                         </div>
                     </div>
 

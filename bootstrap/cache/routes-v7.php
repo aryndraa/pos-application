@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::2cOnkVmpIpemzHpm',
+            '_route' => 'generated::3hF85TCuHm4Hdt23',
           ),
           1 => NULL,
           2 => 
@@ -53,7 +53,43 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'menu',
+            '_route' => 'menu.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'menu.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/menu/create' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'menu.create',
           ),
           1 => NULL,
           2 => 
@@ -113,7 +149,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::wJYrRQ8xOmGRjxBB',
+            '_route' => 'generated::ndxMydqaPiNM9e0Y',
           ),
           1 => NULL,
           2 => 
@@ -129,17 +165,105 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/category/update/([^/]++)(*:32)|/storage/(.*)(*:52))/?$}sDu',
+      0 => '{^(?|/menu/([^/]++)(?|(*:24)|/edit(*:36)|(*:43))|/category/update/([^/]++)(*:76)|/storage/(.*)(*:96))/?$}sDu',
     ),
     3 => 
     array (
-      32 => 
+      24 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::ppA4mBBasxi5wBZL',
+            '_route' => 'menu.show',
+          ),
+          1 => 
+          array (
+            0 => 'menu',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      36 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'menu.edit',
+          ),
+          1 => 
+          array (
+            0 => 'menu',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      43 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'menu.update',
+          ),
+          1 => 
+          array (
+            0 => 'menu',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'menu.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'menu',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      76 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::xyusUZZfdqncGtqV',
           ),
           1 => 
           array (
@@ -155,7 +279,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      52 => 
+      96 => 
       array (
         0 => 
         array (
@@ -193,7 +317,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::2cOnkVmpIpemzHpm' => 
+    'generated::3hF85TCuHm4Hdt23' => 
     array (
       'methods' => 
       array (
@@ -222,7 +346,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000032c0000000000000000";}}',
-        'as' => 'generated::2cOnkVmpIpemzHpm',
+        'as' => 'generated::3hF85TCuHm4Hdt23',
       ),
       'fallback' => false,
       'defaults' => 
@@ -275,7 +399,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'menu' => 
+    'menu.index' => 
     array (
       'methods' => 
       array (
@@ -289,6 +413,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'web',
         ),
+        'as' => 'menu.index',
         'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@index',
         'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@index',
         'namespace' => NULL,
@@ -296,7 +421,226 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'menu',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'menu.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'menu/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'as' => 'menu.create',
+        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@create',
+        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@create',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'menu.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'menu',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'as' => 'menu.store',
+        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@store',
+        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@store',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'menu.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'menu/{menu}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'as' => 'menu.show',
+        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@show',
+        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@show',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'menu.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'menu/{menu}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'as' => 'menu.edit',
+        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@edit',
+        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@edit',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'menu.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'menu/{menu}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'as' => 'menu.update',
+        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@update',
+        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@update',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'menu.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'menu/{menu}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'as' => 'menu.destroy',
+        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@destroy',
+        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@destroy',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
       ),
       'fallback' => false,
       'defaults' => 
@@ -366,7 +710,7 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:63:"function () {
     return \\Inertia\\Inertia::render(\'history\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003290000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000032a0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -388,7 +732,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::wJYrRQ8xOmGRjxBB' => 
+    'generated::ndxMydqaPiNM9e0Y' => 
     array (
       'methods' => 
       array (
@@ -408,7 +752,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::wJYrRQ8xOmGRjxBB',
+        'as' => 'generated::ndxMydqaPiNM9e0Y',
       ),
       'fallback' => false,
       'defaults' => 
@@ -424,7 +768,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::ppA4mBBasxi5wBZL' => 
+    'generated::xyusUZZfdqncGtqV' => 
     array (
       'methods' => 
       array (
@@ -444,7 +788,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ppA4mBBasxi5wBZL',
+        'as' => 'generated::xyusUZZfdqncGtqV',
       ),
       'fallback' => false,
       'defaults' => 
@@ -476,7 +820,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"000000000000032e0000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000005dc0000000000000000";}}',
         'as' => 'storage.local',
       ),
       'fallback' => false,

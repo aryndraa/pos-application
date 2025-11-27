@@ -55,7 +55,7 @@ class MenuController extends Controller
                 ];
             });
     
-        return Inertia::render('menu', [
+        return Inertia::render('menu/index', [
             'menu' => $menu,
             'categories' => $categories,
         ]);
@@ -66,7 +66,19 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $categories = MenuCategory::with('image')
+            ->get()
+            ->map(function ($cat) {
+                return [
+                    'id'       => $cat->id,
+                    'name'     => $cat->name,
+                    'file_url' => $cat->image ? $cat->image->file_url : null,
+                ];
+            });
+
+        return Inertia::render('menu/create', [
+            'categories' => $categories
+        ]);
     }
 
     /**
