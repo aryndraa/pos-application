@@ -15,7 +15,7 @@ export default function Search({
 }: SearchProps) {
     return (
         <div
-            className={`flex w-full items-center gap-4 rounded-lg border border-zinc-300 bg-white p-4 py-2 ${className}`}
+            className={`flex w-full items-center gap-3 rounded-lg border border-zinc-300 bg-white p-4 py-2 ${className}`}
         >
             <MdOutlineSearch className="text-2xl text-gray-500" />
 

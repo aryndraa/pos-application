@@ -8,16 +8,22 @@ interface LowStockMenuType {
 
 interface LowStockMenuProps {
     lowStockMenu?: LowStockMenuType[];
+    page?: string;
 }
 
-export default function LowStockMenu({ lowStockMenu }: LowStockMenuProps) {
+export default function LowStockMenu({
+    lowStockMenu,
+    page = 'dashboard',
+}: LowStockMenuProps) {
     return (
         <div className="h-full rounded-lg border border-zinc-300 bg-white p-4 md:p-5">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
                 <h3 className="text-lg font-semibold">Low Stock Items</h3>
-                <Link className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white">
-                    View More
-                </Link>
+                {page === 'dashboard' && (
+                    <Link className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white">
+                        View More
+                    </Link>
+                )}
             </div>
             <ul className="space-y-2">
                 {lowStockMenu && lowStockMenu.length > 0
