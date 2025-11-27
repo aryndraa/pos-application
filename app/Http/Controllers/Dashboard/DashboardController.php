@@ -31,7 +31,12 @@ class DashboardController extends Controller
         $orderInQueue =  $inProgressOrders->count();
         $waitingPayments =  $waitingPaymentOrders->count();
 
-        $popularMenu = Menu::query()
+        $productSales = Menu::query()
+            ->whereHas('orders', function ($query) {
+                $query->whereHas('order', function ($q) {
+                    $q->whereDate('created_at', '>=', now());
+                });
+            })
             ->withSum('orders as total_sold', 'quantity')
             ->orderByDesc('total_sold')
             ->take(5)
@@ -54,7 +59,7 @@ class DashboardController extends Controller
             'totalEarnings' => $totalEarnings,
             'orderInQueue' => $orderInQueue,
             'waitingPayments' => $waitingPayments,
-            'popularMenu' => $popularMenu,
+            'productSales' => $productSales,
             'lowStockMenu' => $lowStockMenu,
             'inProgressOrders' => $inProgressOrders,
             'waitingPaymentOrders' => $waitingPaymentOrders,

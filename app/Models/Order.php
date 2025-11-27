@@ -18,7 +18,6 @@ class Order extends Model
         'pay',
         'change',
         'payment_method',
-        'order_date',
         'payment_time',
         'status',
     ];

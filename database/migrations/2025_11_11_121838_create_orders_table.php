@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('total_price');
             $table->integer('pay');
             $table->integer('change')->nullable();
-            $table->dateTime('order_date')->nullable();
             $table->string('payment_method');
             $table->dateTime('payment_time')->nullable();
             $table->string('status')->default('pending');

@@ -1,7 +1,7 @@
 import Header from '@/components/dashboard/Header';
 import LowStockMenu from '@/components/dashboard/LowStockMenu';
 import OrderList from '@/components/dashboard/OrderList';
-import PopularMenu from '@/components/dashboard/PopularMenu';
+import ProductSales from '@/components/dashboard/ProductSales';
 import WeeklyOrdersChart from '@/components/dashboard/WeeklyOrdersChart';
 import WdigetOverview from '@/components/dashboard/WidgetOverview';
 import AppLayout from '@/layouts/AppLayout';
@@ -34,7 +34,7 @@ interface HomeProps extends PageProps {
     totalEarnings: number;
     orderInQueue: number;
     waitingPayments: number;
-    popularMenu: PopularMenuType[];
+    productSales: PopularMenuType[];
     lowStockMenu: LowStockMenuType[];
     inProgressOrders: OrderItemType[];
     waitingPaymentOrders: OrderItemType[];
@@ -46,7 +46,7 @@ export default function Home() {
         totalEarnings,
         orderInQueue,
         waitingPayments,
-        popularMenu,
+        productSales,
         lowStockMenu,
         inProgressOrders,
         waitingPaymentOrders,
@@ -68,7 +68,7 @@ export default function Home() {
                         />
                     </div>
                     <div className="col-span-full mb-4 grid gap-4 md:grid-cols-2">
-                        <PopularMenu popularMenu={popularMenu} />
+                        <ProductSales productSales={productSales} />
                         <LowStockMenu lowStockMenu={lowStockMenu} />
                     </div>
                     <div className="col-span-full">
