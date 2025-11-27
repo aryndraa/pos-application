@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react';
+import { SiIfood } from 'react-icons/si';
 
 export default function HeaderLogo() {
     return (
@@ -6,15 +7,8 @@ export default function HeaderLogo() {
             href="/"
             className="flex items-center gap-3 rounded-lg transition"
         >
-            <div>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 -960 960 960"
-                    fill="#f60000"
-                    className="size-12 md:size-9"
-                >
-                    <path d="M480-28 346-160H160v-186L28-480l132-134v-186h186l134-132 134 132h186v186l132 134-132 134v186H614L480-28ZM340-240h60v-160q26-6 43-27.5t17-49.5v-163h-40v151h-30v-151h-40v151h-30v-151h-40v163q0 28 17 49.5t43 27.5v160Zm220 0h60v-128q26-14 43-49.5t17-82.5q0-58-26.5-99T590-640q-38 0-64 41t-26 99q0 46 17 81.5t43 50.5v128Z" />
-                </svg>
+            <div className="text-3xl text-white">
+                <SiIfood />
             </div>
             <div className="md:hidden">
                 <h1 className="text-lg font-semibold">D'Katsu</h1>

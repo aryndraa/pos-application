@@ -1,8 +1,7 @@
 import { formatRupiah } from '@/utils/formatRupiah';
-import { FaMoneyBillWave, FaRegListAlt } from 'react-icons/fa';
+import { FaListAlt, FaMoneyBillWave } from 'react-icons/fa';
 import { MdRoomService } from 'react-icons/md';
 import 'swiper/css';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import WidgetCard from '../WidgetCard';
 
 interface WidgetOverviewProps {
@@ -18,53 +17,24 @@ export default function WdigetOverview({
 }: WidgetOverviewProps) {
     return (
         <div>
-            <div className="hidden grid-cols-3 gap-4 md:grid">
-                <WidgetCard
-                    icon={<FaMoneyBillWave />}
-                    label="Total Earnings"
-                    value={formatRupiah(totalEarnings!)}
-                />
+            <div className="grid grid-cols-2 gap-4 last:col-span-full md:grid-cols-3">
+                <div className="col-span-2 md:col-span-1">
+                    <WidgetCard
+                        icon={<FaMoneyBillWave />}
+                        label="Total Earnings"
+                        value={formatRupiah(totalEarnings!)}
+                    />
+                </div>
                 <WidgetCard
                     icon={<MdRoomService />}
                     label="Orders in Queue"
-                    value={orderInQueue! + ' Orders'}
+                    value={orderInQueue + ' Orders'}
                 />
                 <WidgetCard
-                    icon={<FaRegListAlt />}
+                    icon={<FaListAlt />}
                     label="Waiting Payments"
-                    value={waitingPayments}
+                    value={waitingPayments + ' Orders'}
                 />
-            </div>
-
-            <div className="block md:hidden">
-                <Swiper
-                    spaceBetween={12}
-                    slidesPerView={1.8}
-                    centeredSlides={false}
-                    className="rounded-lg"
-                >
-                    <SwiperSlide>
-                        <WidgetCard
-                            icon={<FaMoneyBillWave />}
-                            label="Total Earnings"
-                            value={formatRupiah(totalEarnings!)}
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <WidgetCard
-                            icon={<MdRoomService />}
-                            label="Orders in Queue"
-                            value={orderInQueue! + ' Orders'}
-                        />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <WidgetCard
-                            icon={<FaRegListAlt />}
-                            label="Waiting Payments"
-                            value={waitingPayments}
-                        />
-                    </SwiperSlide>
-                </Swiper>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { RiErrorWarningFill } from 'react-icons/ri';
+import { MdErrorOutline } from 'react-icons/md';
 
 interface LowStockMenuType {
     name: string;
@@ -12,10 +12,10 @@ interface LowStockMenuProps {
 
 export default function LowStockMenu({ lowStockMenu }: LowStockMenuProps) {
     return (
-        <div className="h-full rounded-lg bg-white p-4 md:p-5">
+        <div className="h-full rounded-lg border border-zinc-300 bg-white p-4 md:p-5">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
                 <h3 className="text-lg font-semibold">Low Stock Items</h3>
-                <Link className="rounded-lg bg-secondary px-4 py-1 text-sm font-medium">
+                <Link className="rounded-lg bg-primary px-4 py-1 text-sm font-medium text-white">
                     View More
                 </Link>
             </div>
@@ -42,8 +42,8 @@ export default function LowStockMenu({ lowStockMenu }: LowStockMenuProps) {
                                   </div>
                               </div>
                               {menu.stock <= 2 && (
-                                  <span className="rounded-full bg-red-100 p-2 text-lg text-primary">
-                                      <RiErrorWarningFill />
+                                  <span className="rounded-full text-2xl text-primary">
+                                      <MdErrorOutline />
                                   </span>
                               )}
                           </li>

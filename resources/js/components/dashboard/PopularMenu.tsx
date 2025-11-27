@@ -13,10 +13,10 @@ export default function PopularMenu({ popularMenu }: PopularMenuProps) {
     let numbering = 1;
 
     return (
-        <div className="rounded-lg bg-white p-4 md:p-5">
+        <div className="rounded-lg border border-zinc-300 bg-white p-4 md:p-5">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
                 <h3 className="text-lg font-semibold">Popular Menu</h3>
-                <Link className="rounded-lg bg-secondary px-4 py-1 text-sm font-medium">
+                <Link className="rounded-lg bg-primary px-4 py-1 text-sm font-medium text-white">
                     View More
                 </Link>
             </div>

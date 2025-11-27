@@ -27,7 +27,7 @@ export default function WeeklyOrdersChart({ data }: WeeklyOrdersChartProps) {
     };
 
     return (
-        <div className="w-full rounded-lg bg-white p-4">
+        <div className="w-full rounded-lg border border-zinc-300 bg-white p-4">
             <h3 className="mb-8 border-b border-gray-300 pb-4 text-lg font-semibold text-dark-300">
                 Weekly Orders
             </h3>
@@ -49,7 +49,7 @@ export default function WeeklyOrdersChart({ data }: WeeklyOrdersChartProps) {
                         <Line
                             type="monotone"
                             dataKey="total"
-                            stroke="#f60000"
+                            stroke="#09090b"
                             strokeWidth={3}
                             dot={{ r: 4 }}
                             activeDot={{ r: 6 }}

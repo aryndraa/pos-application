@@ -53,13 +53,13 @@ export default function OrderList({
     let numbering = 1;
 
     return (
-        <div className="flex h-full max-h-[95vh] flex-col gap-4 rounded-lg bg-white p-4 pb-6">
-            <div className="grid grid-cols-2 rounded-lg bg-gray-100 p-2">
+        <div className="flex h-full max-h-[95vh] min-h-[95vh] flex-col gap-4 rounded-lg border border-zinc-300 p-4 pb-6">
+            <div className="grid grid-cols-2 rounded-lg border border-zinc-300 p-2">
                 <button
                     className={`rounded-lg p-2 text-sm font-medium transition ${
                         activeTab === 'in-progress'
-                            ? 'bg-white text-dark-300'
-                            : 'text-gray-400'
+                            ? 'bg-primary text-white'
+                            : 'text-zinc-400'
                     }`}
                     onClick={() => setActiveTab('in-progress')}
                 >
@@ -69,8 +69,8 @@ export default function OrderList({
                 <button
                     className={`rounded-lg p-2 text-sm font-medium transition ${
                         activeTab === 'waiting-payment'
-                            ? 'bg-white text-dark-300'
-                            : 'text-gray-400'
+                            ? 'bg-primary text-white'
+                            : 'text-zinc-400'
                     }`}
                     onClick={() => setActiveTab('waiting-payment')}
                 >
@@ -78,14 +78,14 @@ export default function OrderList({
                 </button>
             </div>
 
-            <div className="flex items-center gap-2 rounded-lg bg-gray-100 p-4 py-3 md:gap-4 md:py-4">
+            <div className="flex items-center gap-2 rounded-lg border border-zinc-300 p-4 py-3 md:gap-4 md:py-4">
                 <MdOutlineSearch className="text-2xl" />
                 <input
                     type="text"
                     placeholder="Search orders..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="text-sm outline-none placeholder:text-gray-400 md:text-base"
+                    className="text-sm outline-none placeholder:text-zinc-400 md:text-base"
                 />
             </div>
 
@@ -100,7 +100,7 @@ export default function OrderList({
                         className="flex w-full cursor-pointer items-center justify-between rounded-lg p-3 py-2 transition hover:bg-gray-100"
                     >
                         <div className="flex items-center gap-3">
-                            <span className="rounded-lg bg-primary p-2 text-sm font-semibold text-white md:p-3">
+                            <span className="rounded-lg border border-zinc-300 p-2 text-sm font-semibold text-primary md:p-3">
                                 #{numbering++}
                             </span>
 
@@ -139,8 +139,9 @@ export default function OrderList({
                     </li>
                 )}
             </ul>
+
             {ordersToShow.length > 15 && filteredOrders && (
-                <button className="w-full cursor-pointer rounded-lg bg-secondary p-2 text-sm font-semibold">
+                <button className="w-full cursor-pointer rounded-lg bg-primary p-2 text-sm font-semibold text-white lg:p-3">
                     {' '}
                     View More Orders{' '}
                 </button>
@@ -155,17 +156,17 @@ function OrderStatus({ status }: { status: string }) {
         { bg: string; icon: JSX.Element; sub: string }
     > = {
         pending: {
-            bg: 'bg-secondary',
+            bg: 'bg-amber-400',
             icon: <MdRoomService className="text-sm" />,
             sub: 'Ready to serve',
         },
         processing: {
-            bg: 'bg-gray-200',
+            bg: 'bg-zinc-200',
             icon: <MdAccessTimeFilled className="text-sm" />,
             sub: 'Cooking Now',
         },
         ready: {
-            bg: 'bg-green-400',
+            bg: 'bg-green-500',
             icon: <MdAccessTimeFilled className="text-sm" />,
             sub: 'Ready to serve',
         },

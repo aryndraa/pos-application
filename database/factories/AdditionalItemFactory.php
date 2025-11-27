@@ -18,7 +18,7 @@ class AdditionalItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'             => $this->faker->word(),
+            'name'             => $this->faker->words(2, true),
             'additional_id'    => Additional::query()->inRandomOrder()->first()->id,
             'additional_price' => $this->faker->numberBetween(5000, 20000),
             'stock'            => $this->faker->numberBetween(0, 20),

@@ -23,7 +23,7 @@
     --color-popover: var(--popover);
     --color-popover-foreground: var(--popover-foreground);
 
-    --color-primary: #f60000;
+    --color-primary: #09090b;
     --color-primary-foreground: #bd0000;
 
     --color-secondary: #ffbc0d;
@@ -140,7 +140,7 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-zinc-900 text-foreground;
     }
 }
 
@@ -157,12 +157,12 @@
 
 /* Thumb (bagian yang bisa digeser) */
 .scroll-y::-webkit-scrollbar-thumb {
-    background: #f60000;
+    background: #0c6664;
     transition: ease-in-out 300ms;
     border-radius: 10px;
 }
 
 /* Hover efek (opsional) */
 .scroll-y::-webkit-scrollbar-thumb:hover {
-    background: #bd0000;
+    background: #0c6664;
 }
