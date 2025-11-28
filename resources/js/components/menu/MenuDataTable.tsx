@@ -60,7 +60,7 @@ export default function MenuDataTable({
 
     return (
         <div className="rounded-lg border border-zinc-300 bg-white p-4">
-            <div className="flex items-center justify-between border-b pb-4">
+            <div className="flex flex-col justify-between gap-4 border-b pb-4 md:flex-row md:items-center">
                 <h1 className="text-xl font-semibold">List Products</h1>
                 <div className="flex items-stretch gap-4">
                     <Search
@@ -112,7 +112,7 @@ export default function MenuDataTable({
                                         className="transition duration-300 hover:bg-zinc-100"
                                         key={index}
                                     >
-                                        <td className="px-3 py-2">
+                                        <td className="w-min px-3 py-2 text-nowrap">
                                             #{startNumber + index + 1}
                                         </td>
                                         <td className="px-3 py-2">
@@ -122,22 +122,22 @@ export default function MenuDataTable({
                                                     'https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg'
                                                 }
                                                 alt={item.name}
-                                                className="aspect-square size-12 rounded-lg border border-zinc-300 object-cover"
+                                                className="aspect-square size-10 rounded-lg border border-zinc-300 object-cover md:size-12"
                                             />
                                         </td>
-                                        <td className="px-3 py-2">
+                                        <td className="w-min px-3 py-2 text-nowrap">
                                             {item.name}
                                         </td>
-                                        <td className="px-3 py-2">
+                                        <td className="w-min px-3 py-2 text-nowrap">
                                             {item.category}
                                         </td>
-                                        <td className="px-3 py-2">
+                                        <td className="w-min px-3 py-2 text-nowrap">
                                             {item.sku}
                                         </td>
-                                        <td className="px-3 py-2">
+                                        <td className="w-min px-3 py-2 text-nowrap">
                                             {formatRupiah(item.price)}
                                         </td>
-                                        <td className="px-3 py-2">
+                                        <td className="w-min px-3 py-2 text-nowrap">
                                             {item.stock}
                                         </td>
                                     </tr>
