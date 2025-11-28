@@ -53,7 +53,7 @@ export default function OrderList({
     let numbering = 1;
 
     return (
-        <div className="flex h-full max-h-[95vh] min-h-[95vh] flex-col gap-4 rounded-lg border border-zinc-300 p-4 pb-6">
+        <div className="flex h-full max-h-[95vh] min-h-[95vh] flex-col gap-4 rounded-lg border border-zinc-300 p-4 pb-6 lg:p-5">
             <div className="grid grid-cols-2 rounded-lg border border-zinc-300 p-2">
                 <button
                     className={`rounded-lg p-2 text-sm font-medium transition ${

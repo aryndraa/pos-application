@@ -17,7 +17,7 @@ interface MenuProps extends PageProps {
     lowStockMenu: LowStockMenuType[];
 }
 
-export default function Menu() {
+export default function Index() {
     const { menu, categories, lowStockMenu } = usePage<MenuProps>().props;
 
     return (

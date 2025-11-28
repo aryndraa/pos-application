@@ -19,7 +19,7 @@ export default function LowStockMenu({
     const [more, setMore] = useState<boolean>(false);
 
     return (
-        <div className="h-full rounded-lg border border-zinc-300 bg-white p-4 md:p-5">
+        <div className="h-full rounded-lg border border-zinc-300 bg-white p-4">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
                 <h3 className="text-lg font-semibold">Low Stock Items</h3>
                 {page === 'dashboard' && (

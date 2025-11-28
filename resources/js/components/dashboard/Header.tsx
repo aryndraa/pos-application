@@ -19,7 +19,7 @@ export default function Header() {
     });
 
     return (
-        <div className="flex items-center justify-between rounded-lg border border-zinc-300 bg-white p-4">
+        <div className="flex items-center justify-between rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
             <div>
                 <h2 className="text-lg font-semibold lg:text-xl">
                     Welcome Back, User!

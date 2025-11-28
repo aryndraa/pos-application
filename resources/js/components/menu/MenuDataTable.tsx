@@ -1,8 +1,9 @@
 import { Category, MenuItem } from '@/types/Menu';
 import { PaginatedData } from '@/types/Pagination';
 import { formatRupiah } from '@/utils/formatRupiah';
-import { router } from '@inertiajs/react';
+import { Link, router } from '@inertiajs/react';
 import { useState } from 'react';
+import { FaRegEye } from 'react-icons/fa';
 import CheckboxFilter from '../CheckboxFilter';
 import Pagination from '../Pagination';
 import Search from '../Search';
@@ -59,7 +60,7 @@ export default function MenuDataTable({
     };
 
     return (
-        <div className="rounded-lg border border-zinc-300 bg-white p-4">
+        <div className="rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
             <div className="flex flex-col justify-between gap-4 border-b pb-4 md:flex-row md:items-center">
                 <h1 className="text-xl font-semibold">List Products</h1>
                 <div className="flex items-stretch gap-4">
@@ -102,6 +103,7 @@ export default function MenuDataTable({
                             <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500">
                                 Stock
                             </th>
+                            <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -126,7 +128,9 @@ export default function MenuDataTable({
                                             />
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
-                                            {item.name}
+                                            <Link href={`menu/${item.id}`}>
+                                                {item.name}
+                                            </Link>
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
                                             {item.category}
@@ -139,6 +143,14 @@ export default function MenuDataTable({
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
                                             {item.stock}
+                                        </td>
+                                        <td className="w-min px-3 py-2 text-nowrap">
+                                            <Link
+                                                href={`menu/${item.id}`}
+                                                className="flex size-10 items-center justify-center rounded-lg bg-primary text-lg text-white"
+                                            >
+                                                <FaRegEye />
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}

@@ -21,6 +21,7 @@ class Menu extends Model
         'price',
         'stock',
         'is_available',
+        'recipe'
     ];
 
     public function category(): BelongsTo

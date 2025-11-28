@@ -8,16 +8,20 @@ import {
     YAxis,
 } from 'recharts';
 
-interface WeeklyOrderType {
+interface MenuOrderType {
     date: string;
     total: number;
 }
 
-interface WeeklyOrdersChartProps {
-    data: WeeklyOrderType[];
+interface MenuInsightChartProps {
+    data: MenuOrderType[];
+    totalOrders: number;
 }
 
-export default function WeeklyOrdersChart({ data }: WeeklyOrdersChartProps) {
+export default function MenuInsightChart({
+    data,
+    totalOrders,
+}: MenuInsightChartProps) {
     const formatDate = (dateStr: string) => {
         const date = new Date(dateStr);
         return date.toLocaleDateString('id-ID', {
@@ -27,10 +31,15 @@ export default function WeeklyOrdersChart({ data }: WeeklyOrdersChartProps) {
     };
 
     return (
-        <div className="w-full rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
-            <h3 className="mb-8 border-b border-gray-300 pb-4 text-lg font-semibold text-dark-300">
-                Weekly Orders
-            </h3>
+        <div className="w-full rounded-lg border border-zinc-300 bg-white p-4 md:p-5">
+            <div className="mb-8 flex items-center justify-between border-b border-gray-300 pb-4">
+                <h3 className="text-lg font-semibold text-dark-300">
+                    Insight Overview
+                </h3>
+                <h4 className="text-lg font-semibold">
+                    Total Order: {totalOrders}x
+                </h4>
+            </div>
 
             <div className="h-40 w-full md:h-64 lg:h-72 2xl:h-96">
                 <ResponsiveContainer width="100%" height="100%">

@@ -8,7 +8,7 @@ export default function WidgetCard({
     value?: string | number;
 }) {
     return (
-        <div className="flex flex-col justify-between rounded-lg border border-zinc-300 bg-white p-4">
+        <div className="flex flex-col justify-between rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
             <div className="flex items-start justify-between">
                 <h3 className="text-xs font-medium text-neutral-400 md:text-base">
                     {label || 'Total Earnings'}

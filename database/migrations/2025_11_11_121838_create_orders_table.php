@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('customer_name');
             $table->string('code')->unique();
+            $table->dateTime('order_date');
             $table->integer('total_price');
             $table->integer('pay');
             $table->integer('change')->nullable();
             $table->string('payment_method');
-            $table->dateTime('payment_time')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
         });

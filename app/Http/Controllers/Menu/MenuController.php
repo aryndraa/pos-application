@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Menu;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\MenuCategory;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -122,17 +124,53 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Menu $menu)
     {
-        //
+        $menu->load(['category', 'additionals', 'additionals.items', 'image']);
+
+        $orderHistory = Order::query()
+            ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+            ->selectRaw('DATE(orders.order_date) as date, SUM(order_items.quantity) as total')
+            ->where('order_items.menu_id', $menu->id)
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+
+        $totalOrders = $orderHistory->sum('total');
+
+        return Inertia::render('menu/show', [
+            'id' => $menu->id,
+            'name' => $menu->name,
+            'sku' => $menu->sku,
+            'price' => $menu->price,
+            'stock' => $menu->stock,
+            'is_available' => $menu->is_available,
+            'recipe' => Str::limit($menu->recipe, 210),
+            'category' => $menu->category?->name,
+            'image' => $menu->image?->url,
+            'additionals' => $menu->additionals->map(function ($additional) {
+                return [
+                    'name' => $additional->name,
+                    'items' => $additional->items->map(fn($item) => [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                        'additional_price' => $item->additional_price,
+                        'stock' => $item->stock
+                    ]),
+                ];
+            }),
+            'order_history' => $orderHistory,
+            'totalOrders'  => $totalOrders
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function recipe (Menu $menu) 
     {
-        //
+        return Inertia::render('menu/recipe', [
+            'id' => $menu->id,
+            'name' => $menu->name,
+            'recipe' => $menu->recipe
+        ]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Menu;
 use App\Models\MenuCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,6 +25,7 @@ class MenuFactory extends Factory
             'stock'            => $this->faker->numberBetween(0, 20),
             'sku'              => $this->faker->unique()->bothify('SKU-#####'),
             'is_available'     => $this->faker->boolean(80),
+            'recipe'           => $this->faker->text(1000)
         ];
     }
 }
