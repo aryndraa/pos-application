@@ -18,10 +18,11 @@ class MenuController extends Controller
     {
         $filter = $request->get('filter');
         $category = $request->get('category');
+        $search = $request->get('search');
 
         $baseQuery = Menu::query()
             ->withCount('orders')
-            ->with('category');
+            ->with(['category', 'image']);
 
         $menu = (clone $baseQuery)
             ->when($filter === "lowstock", fn($q) =>
@@ -38,12 +39,30 @@ class MenuController extends Controller
             ->when($filter === "unavailable", fn($q) =>
                 $q->where('is_available', false)
             )
-            ->when($category, fn($q) => 
+           ->when($category, function ($q) use ($category) {
+                $categories = explode(',', $category);
+
                 $q->whereHas('category', fn($r) =>
-                    $r->where('name', $category)
-                )
+                    $r->whereIn('name', $categories)
+                );
+            })
+            ->when($search, fn($q) =>
+                $q->where('name', 'like', '%' . $search . '%')
             )
-            ->get();
+            ->paginate('10')
+            ->withQueryString()
+            ->through(function ($item) {
+                return [
+                    'id'            => $item->id,
+                    'name'          => $item->name,
+                    'sku'           => $item->sku,
+                    'price'         => $item->price,
+                    'stock'         => $item->stock,
+                    'is_available'  => $item->is_available,
+                    'category'      => $item->category->name,
+                    'file_url'      => $item->image ? $item->image->file_url : null,
+                ];
+            });
 
         $categories = MenuCategory::with('image')
             ->get()
@@ -54,10 +73,21 @@ class MenuController extends Controller
                     'file_url' => $cat->image ? $cat->image->file_url : null,
                 ];
             });
+
+         $lowStockMenu = Menu::query()
+            ->where('stock', '<=', 5)
+            ->orderBy('stock', 'asc')
+            ->get(['id', 'name', 'stock']);
     
         return Inertia::render('menu/index', [
-            'menu' => $menu,
-            'categories' => $categories,
+            'menu'         => $menu,
+            'categories'   => $categories,
+            'lowStockMenu' => $lowStockMenu,
+             'filters'      => [
+                'search' => $search,
+                'category' => $category,
+                'filter' => $filter,
+            ],
         ]);
     }
 

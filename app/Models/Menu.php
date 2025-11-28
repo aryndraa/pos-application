@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Menu extends Model
 {
@@ -16,6 +17,7 @@ class Menu extends Model
     protected $fillable = [
         'menu_category_id',
         'name',
+        'sku',
         'price',
         'stock',
         'is_available',
@@ -34,5 +36,10 @@ class Menu extends Model
     public function orders(): HasMany
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+     public function image(): MorphOne
+    {
+        return $this->morphOne(File::class, 'related');
     }
 }

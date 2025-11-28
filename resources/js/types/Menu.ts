@@ -4,13 +4,15 @@ export interface Category {
     file_url: string;
 }
 
-export interface MenuType {
+export interface MenuItem {
     id: number;
     name: string;
-    stock: number;
+    sku: string;
     price: number;
-    orders_count: number;
-    category: Category;
+    stock: number;
+    is_available: boolean;
+    category: string;
+    file_url: string | null;
 }
 
-export type MenuList = MenuType[];
+export type MenuList = MenuItem[];

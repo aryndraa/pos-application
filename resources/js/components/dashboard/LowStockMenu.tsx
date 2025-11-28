@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react';
+import { useState } from 'react';
 import { MdErrorOutline } from 'react-icons/md';
 
 interface LowStockMenuType {
@@ -15,6 +16,8 @@ export default function LowStockMenu({
     lowStockMenu,
     page = 'dashboard',
 }: LowStockMenuProps) {
+    const [more, setMore] = useState<boolean>(false);
+
     return (
         <div className="h-full rounded-lg border border-zinc-300 bg-white p-4 md:p-5">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
@@ -25,37 +28,87 @@ export default function LowStockMenu({
                     </Link>
                 )}
             </div>
-            <ul className="space-y-2">
-                {lowStockMenu && lowStockMenu.length > 0
-                    ? lowStockMenu.map((menu, index: number) => (
-                          <li
-                              key={index}
-                              className="flex cursor-pointer items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
-                          >
-                              <div className="flex items-center gap-4 md:gap-5">
-                                  <img
-                                      src="https://i.pinimg.com/736x/9a/1b/d9/9a1bd93380e781b0f889461689a9330a.jpg"
-                                      alt=""
-                                      className="size-10 rounded-full object-cover"
-                                  />
-                                  <div>
-                                      <h4 className="font-medium">
-                                          {menu.name}
-                                      </h4>
-                                      <p className="text-xs md:text-sm">
-                                          Stock : <span>{menu.stock} Left</span>
-                                      </p>
-                                  </div>
-                              </div>
-                              {menu.stock <= 2 && (
-                                  <span className="rounded-full text-2xl text-primary">
-                                      <MdErrorOutline />
-                                  </span>
-                              )}
-                          </li>
-                      ))
-                    : 'no data'}
+            <ul className="mb-4 space-y-2">
+                {lowStockMenu && lowStockMenu.length > 0 ? (
+                    lowStockMenu.length > 8 && more ? (
+                        <>
+                            {lowStockMenu.map((menu, index: number) => (
+                                <li
+                                    key={index}
+                                    className="flex cursor-pointer items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
+                                >
+                                    <div className="flex items-center gap-4 md:gap-5">
+                                        <img
+                                            src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                                            alt=""
+                                            className="size-10 rounded-full object-cover"
+                                        />
+                                        <div>
+                                            <h4 className="font-medium">
+                                                {menu.name}
+                                            </h4>
+                                            <p className="text-xs md:text-sm">
+                                                Stock :{' '}
+                                                <span>{menu.stock} Left</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {menu.stock <= 2 && (
+                                        <span className="rounded-full text-2xl text-primary">
+                                            <MdErrorOutline />
+                                        </span>
+                                    )}
+                                </li>
+                            ))}
+                        </>
+                    ) : (
+                        <>
+                            {lowStockMenu
+                                .slice(0, 8)
+                                .map((menu, index: number) => (
+                                    <li
+                                        key={index}
+                                        className="flex cursor-pointer items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
+                                    >
+                                        <div className="flex items-center gap-4 md:gap-5">
+                                            <img
+                                                src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                                                alt=""
+                                                className="size-10 rounded-full object-cover"
+                                            />
+                                            <div>
+                                                <h4 className="font-medium">
+                                                    {menu.name}
+                                                </h4>
+                                                <p className="text-xs md:text-sm">
+                                                    Stock :{' '}
+                                                    <span>
+                                                        {menu.stock} Left
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {menu.stock <= 2 && (
+                                            <span className="rounded-full text-2xl text-primary">
+                                                <MdErrorOutline />
+                                            </span>
+                                        )}
+                                    </li>
+                                ))}
+                        </>
+                    )
+                ) : (
+                    'no data'
+                )}
             </ul>
+            {page === 'menu' && lowStockMenu!.length > 8 && (
+                <button
+                    onClick={() => setMore(!more)}
+                    className="w-full cursor-pointer rounded-lg bg-primary p-2 text-sm font-semibold text-white lg:p-3"
+                >
+                    {more ? 'Show Less' : 'Show More'}
+                </button>
+            )}
         </div>
     );
 }

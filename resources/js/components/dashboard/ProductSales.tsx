@@ -32,7 +32,7 @@ export default function ProductSales({ productSales }: PopularMenuProps) {
                             </span>
                             <div className="flex items-center gap-4 md:gap-5">
                                 <img
-                                    src="https://i.pinimg.com/736x/9a/1b/d9/9a1bd93380e781b0f889461689a9330a.jpg"
+                                    src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
                                     alt=""
                                     className="size-10 rounded-full object-cover"
                                 />
