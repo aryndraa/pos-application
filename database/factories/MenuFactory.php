@@ -22,7 +22,6 @@ class MenuFactory extends Factory
             'menu_category_id' => MenuCategory::query()->inRandomOrder()->first()->id,
             'name'             => $this->faker->words(2, true),
             'price'            => $this->faker->numberBetween(10000, 50000),
-            'stock'            => $this->faker->numberBetween(0, 20),
             'sku'              => $this->faker->unique()->bothify('SKU-#####'),
             'is_available'     => $this->faker->boolean(80),
             'recipe'           => $this->faker->text(1000)

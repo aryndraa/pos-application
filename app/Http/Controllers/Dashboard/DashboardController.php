@@ -43,11 +43,10 @@ class DashboardController extends Controller
             ->get(['id', 'name']);
 
 
-        $lowStockMenu = Menu::query()
-            ->where('stock', '<=', 5)
-            ->orderBy('stock', 'asc')
+        $unavailableMenu = Menu::query()
+            ->where('is_available', false)
             ->take(5)
-            ->get(['id', 'name', 'stock']);
+            ->get(['id', 'name']);
 
         $weeklyOrders = Order::query()
             ->selectRaw('DATE(order_date) as date, COUNT(*) as total')
@@ -61,7 +60,7 @@ class DashboardController extends Controller
             'orderInQueue' => $orderInQueue,
             'waitingPayments' => $waitingPayments,
             'productSales' => $productSales,
-            'lowStockMenu' => $lowStockMenu,
+            'unavailableMenu' => $unavailableMenu,
             'inProgressOrders' => $inProgressOrders,
             'waitingPaymentOrders' => $waitingPaymentOrders,
             'weeklyOrders' => $weeklyOrders

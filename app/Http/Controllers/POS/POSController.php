@@ -24,7 +24,7 @@ class POSController extends Controller
 
         $menu = Menu::query()
             ->with(['category', 'image',  'additionals', 'additionals.items'])
-            ->where('stock', ">", 0)
+            ->where('is_available', true)
             ->orderBy('menu_category_id')
             ->get()
             ->groupBy(fn ($item) => $item->category->name)

@@ -24,7 +24,7 @@ export default function SelectFilter({ items, onChange }: SelectFilterProps) {
             document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleSelect = (value: string | null) => {
+    const handleSelect = (value: any | null) => {
         setSelected(value);
         onChange(value);
         setOpen(false);

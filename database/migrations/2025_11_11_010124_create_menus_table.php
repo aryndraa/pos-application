@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('sku')->unique();
-            $table->integer('stock')->default(0);
             $table->boolean('is_available')->default(true);
             $table->text('recipe');
             $table->timestamps();

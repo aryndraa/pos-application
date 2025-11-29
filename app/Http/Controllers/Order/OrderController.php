@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers\Order;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Order\OrderRequest;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\OrderItemAdditional;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+class OrderController extends Controller
+{
+    public function store(OrderRequest $request) 
+    {
+    
+        DB::beginTransaction();
+
+        try {
+            $totalPrice = collect($request->items)->sum('subtotal');
+
+            $payAmount = $request->payment_method === 'cash' ? $request->pay : $totalPrice;
+
+            $order = Order::create([
+                'customer_name' => $request->customer_name,
+                'code' => 'ORD' . Str::upper(Str::random(8)),
+                'order_date' => now(),
+                'total_price' => $totalPrice,
+                'pay' => $payAmount,
+                'change' => $payAmount - $totalPrice,  
+                'payment_method' => $request->payment_method,
+                'status' => 'pending',
+            ]);
+
+            foreach ($request->items as $item) {
+                $orderItem = OrderItem::create([
+                    'order_id' => $order->id,
+                    'menu_id' => $item['menu_id'],
+                    'quantity' => $item['quantity'],
+                    'unit_price' => $item['unit_price'],
+                    'subtotal' => $item['subtotal'],
+                    'notes' => $item['notes'] ?? '',
+                ]);
+
+                if (!empty($item['additionals'])) {
+                    foreach ($item['additionals'] as $additional) {
+                        OrderItemAdditional::create([
+                            'order_item_id' => $orderItem->id,
+                            'additional_item_id' => $additional['additional_item_id'],
+                            'quantity' => $additional['quantity'],
+                            'unit_price' => $additional['unit_price'],
+                        ]);
+                    }
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Order created successfully');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            
+            return redirect()->back()->with('error', 'Failed to create order: ' . $e->getMessage());
+        }
+    }
+}

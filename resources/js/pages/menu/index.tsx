@@ -14,11 +14,11 @@ interface LowStockMenuType {
 interface MenuProps extends PageProps {
     menu: PaginatedData<MenuItem>;
     categories: Category[];
-    lowStockMenu: LowStockMenuType[];
+    unavailableMenu: LowStockMenuType[];
 }
 
 export default function Index() {
-    const { menu, categories, lowStockMenu } = usePage<MenuProps>().props;
+    const { menu, categories, unavailableMenu } = usePage<MenuProps>().props;
 
     return (
         <AppLayout>
@@ -28,7 +28,10 @@ export default function Index() {
                         <MenuDataTable menu={menu} categories={categories} />
                     </div>
                     <div className="col-span-full h-fit lg:col-span-4">
-                        <LowStockMenu page="menu" lowStockMenu={lowStockMenu} />
+                        <LowStockMenu
+                            page="menu"
+                            lowStockMenu={unavailableMenu}
+                        />
                     </div>
                 </div>
             </section>

@@ -4,7 +4,6 @@ import { MdErrorOutline } from 'react-icons/md';
 
 interface LowStockMenuType {
     name: string;
-    stock: number;
 }
 
 interface LowStockMenuProps {
@@ -21,7 +20,7 @@ export default function LowStockMenu({
     return (
         <div className="h-full rounded-lg border border-zinc-300 bg-white p-4">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
-                <h3 className="text-lg font-semibold">Low Stock Items</h3>
+                <h3 className="text-lg font-semibold">Not Available Menu</h3>
                 {page === 'dashboard' && (
                     <Link className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white">
                         View More
@@ -47,17 +46,11 @@ export default function LowStockMenu({
                                             <h4 className="font-medium">
                                                 {menu.name}
                                             </h4>
-                                            <p className="text-xs md:text-sm">
-                                                Stock :{' '}
-                                                <span>{menu.stock} Left</span>
-                                            </p>
                                         </div>
                                     </div>
-                                    {menu.stock <= 2 && (
-                                        <span className="rounded-full text-2xl text-primary">
-                                            <MdErrorOutline />
-                                        </span>
-                                    )}
+                                    <span className="rounded-full text-2xl text-primary">
+                                        <MdErrorOutline />
+                                    </span>
                                 </li>
                             ))}
                         </>
@@ -80,19 +73,11 @@ export default function LowStockMenu({
                                                 <h4 className="font-medium">
                                                     {menu.name}
                                                 </h4>
-                                                <p className="text-xs md:text-sm">
-                                                    Stock :{' '}
-                                                    <span>
-                                                        {menu.stock} Left
-                                                    </span>
-                                                </p>
                                             </div>
                                         </div>
-                                        {menu.stock <= 2 && (
-                                            <span className="rounded-full text-2xl text-primary">
-                                                <MdErrorOutline />
-                                            </span>
-                                        )}
+                                        <span className="rounded-full text-2xl text-primary">
+                                            <MdErrorOutline />
+                                        </span>
                                     </li>
                                 ))}
                         </>

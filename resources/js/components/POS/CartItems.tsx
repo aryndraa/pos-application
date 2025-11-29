@@ -6,12 +6,63 @@ import { MdClose, MdOutlineShoppingCart } from 'react-icons/md';
 import PaymentModal from './PaymentModal';
 
 export default function CartItems() {
-    const { incrementOrder, decrementOrder, orders, total } = useOrder();
+    const { incrementOrder, decrementOrder, orders, total, clearOrders } =
+        useOrder();
     console.log(orders);
 
     const [openModal, setOpenModal] = useState<boolean>(false);
-
     const [openCart, setOpenCart] = useState<boolean>(false);
+
+    const [customerName, setCustomerName] = useState<string>('');
+
+    const transformOrdersToItems = (orders: any[]) => {
+        return orders.map((order) => {
+            const additionals: Array<{
+                additional_item_id: number;
+                quantity: number;
+                unit_price: number;
+            }> = [];
+
+            Object.values(order.additionals).forEach((group: any) => {
+                if (!group) return;
+
+                if (Array.isArray(group)) {
+                    group.forEach((item: any) => {
+                        additionals.push({
+                            additional_item_id: item.id,
+                            quantity: item.quantity || 1,
+                            unit_price: item.additional_price,
+                        });
+                    });
+                } else if (group.items && Array.isArray(group.items)) {
+                    group.items.forEach((item: any) => {
+                        additionals.push({
+                            additional_item_id: item.id,
+                            quantity: item.quantity || 1,
+                            unit_price: item.additional_price,
+                        });
+                    });
+                } else {
+                    additionals.push({
+                        additional_item_id: group.id,
+                        quantity: group.quantity || 1,
+                        unit_price: group.additional_price,
+                    });
+                }
+            });
+
+            return {
+                menu_id: order.menu_id,
+                quantity: order.quantity,
+                unit_price: order.unit_price,
+                subtotal: order.subtotal,
+                notes: order.notes,
+                additionals,
+            };
+        });
+    };
+
+    const items = transformOrdersToItems(orders);
 
     return (
         <>
@@ -45,6 +96,10 @@ export default function CartItems() {
 
                             <input
                                 type="text"
+                                value={customerName}
+                                onChange={(e) =>
+                                    setCustomerName(e.target.value)
+                                }
                                 placeholder="Customer Name"
                                 className="w-full text-sm capitalize outline-none placeholder:text-gray-400 md:text-base"
                             />
@@ -217,7 +272,11 @@ export default function CartItems() {
             {openModal && (
                 <PaymentModal
                     totalAmount={total}
+                    customer_name={customerName}
+                    items={items}
                     closeModal={() => setOpenModal(false)}
+                    clearOrders={() => clearOrders()}
+                    clearName={() => setCustomerName('')}
                 />
             )}
         </>

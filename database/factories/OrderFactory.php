@@ -25,6 +25,7 @@ class OrderFactory extends Factory
             'pay'               => $this->faker->numberBetween(50000, 200000),
             'change'            => 0,
             'payment_method'    => $this->faker->randomElement(['cash', 'transfer', 'qris']),
+            'service_type'      => $this->faker->randomElement(['take away', 'dine in']),
             'status'            => $this->faker->randomElement(['pending', 'processing', 'ready', 'awaiting payment', 'paid', 'canceled', 'completed']),
         ];
     }

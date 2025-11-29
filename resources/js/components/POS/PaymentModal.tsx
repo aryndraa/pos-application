@@ -1,4 +1,6 @@
+import { useNotification } from '@/contexts/NotificationContext';
 import { formatRupiah } from '@/utils/formatRupiah';
+import { router } from '@inertiajs/react';
 import { useEffect, useRef, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { MdClose } from 'react-icons/md';
@@ -6,11 +8,30 @@ import { MdClose } from 'react-icons/md';
 interface PaymentModalProps {
     closeModal: () => void;
     totalAmount: number;
+    customer_name: string;
+    items: Array<{
+        menu_id: number;
+        quantity: number;
+        unit_price: number;
+        subtotal: number;
+        notes: string;
+        additionals: Array<{
+            additional_item_id: number;
+            quantity: number;
+            unit_price: number;
+        }>;
+    }>;
+    clearOrders?: () => void;
+    clearName?: () => void;
 }
 
 export default function PaymentModal({
     closeModal,
     totalAmount,
+    customer_name,
+    items,
+    clearOrders,
+    clearName,
 }: PaymentModalProps) {
     const paymentMethods = ['cash', 'transfer', 'qris'];
     const [paymentMethod, setPaymentMethod] = useState<string>('cash');
@@ -18,8 +39,29 @@ export default function PaymentModal({
     const [cashReceived, setCashReceived] = useState<number>(0);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
+    const [loading, setLoading] = useState(false);
+
+    const { notify } = useNotification();
+
+    const [orderData, setOrderData] = useState({
+        customer_name: customer_name,
+        payment_method: paymentMethod,
+        pay: cashReceived,
+        items: items,
+    });
+
+    console.log(orderData);
+
+    useEffect(() => {
+        setOrderData({
+            customer_name: customer_name,
+            payment_method: paymentMethod,
+            pay: cashReceived,
+            items: items,
+        });
+    }, [customer_name, paymentMethod, cashReceived, items]);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // Hapus semua karakter kecuali angka
         const value = e.target.value.replace(/\D/g, '');
         setCashReceived(Number(value));
     };
@@ -42,6 +84,47 @@ export default function PaymentModal({
     const change =
         cashReceived - totalAmount > 0 ? cashReceived - totalAmount : 0;
 
+    const resetState = () => {
+        setPaymentMethod('cash');
+        setCashReceived(0);
+        setOrderData({
+            customer_name: '',
+            payment_method: 'cash',
+            pay: 0,
+            items: [],
+        });
+    };
+
+    const handleSubmit = () => {
+        setLoading(true);
+
+        router.post('/orders', orderData, {
+            onSuccess: (page) => {
+                const data = page.props.flash?.success || page.props.response;
+                notify('success', data?.message || 'Order succesfully');
+
+                resetState();
+
+                if (clearOrders) {
+                    clearOrders();
+                    clearName();
+                }
+
+                closeModal();
+            },
+            onError: (errors) => {
+                notify(
+                    'error',
+                    Object.values(errors).flat().join(', ') ||
+                        'Failed to proccess payment.',
+                );
+            },
+            onFinish: () => {
+                setLoading(false);
+            },
+        });
+    };
+
     return (
         <div className="fixed inset-0 z-50 flex min-h-screen items-center justify-center bg-black/10">
             <div className="w-[90%] rounded-lg border bg-white p-4 shadow-lg md:w-[70%] md:p-5 lg:w-[40%]">
@@ -60,7 +143,6 @@ export default function PaymentModal({
                     <p>{formatRupiah(totalAmount)}</p>
                 </div>
 
-                {/* Payment Method Dropdown */}
                 <div className="relative mb-6 w-full" ref={dropdownRef}>
                     <h3 className="mb-2 text-sm font-medium text-zinc-500">
                         Payment Method
@@ -128,17 +210,14 @@ export default function PaymentModal({
                 )}
 
                 <button
-                    className="w-full rounded-lg bg-primary p-3 font-semibold text-white"
-                    onClick={() => {
-                        console.log({
-                            paymentMethod,
-                            cashReceived,
-                            change,
-                        });
-                        closeModal();
-                    }}
+                    className="w-full rounded-lg bg-primary p-3 font-semibold text-white disabled:opacity-50"
+                    onClick={handleSubmit}
+                    disabled={
+                        loading ||
+                        (paymentMethod === 'cash' && cashReceived < totalAmount)
+                    }
                 >
-                    Pay
+                    {loading ? 'Memproses...' : 'Pay'}
                 </button>
             </div>
         </div>

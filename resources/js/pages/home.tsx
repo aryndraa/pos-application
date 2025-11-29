@@ -35,7 +35,7 @@ interface HomeProps extends PageProps {
     orderInQueue: number;
     waitingPayments: number;
     productSales: PopularMenuType[];
-    lowStockMenu: LowStockMenuType[];
+    unavailableMenu: LowStockMenuType[];
     inProgressOrders: OrderItemType[];
     waitingPaymentOrders: OrderItemType[];
     weeklyOrders: WeeklyOrderType[];
@@ -47,13 +47,13 @@ export default function Home() {
         orderInQueue,
         waitingPayments,
         productSales,
-        lowStockMenu,
+        unavailableMenu,
         inProgressOrders,
         waitingPaymentOrders,
         weeklyOrders,
     } = usePage<HomeProps>().props;
 
-    console.log({ lowStockMenu });
+    console.log({ unavailableMenu });
 
     return (
         <AppLayout>
@@ -69,7 +69,7 @@ export default function Home() {
                     </div>
                     <div className="col-span-full mb-4 grid gap-4 md:grid-cols-2">
                         <ProductSales productSales={productSales} />
-                        <LowStockMenu lowStockMenu={lowStockMenu} />
+                        <LowStockMenu lowStockMenu={unavailableMenu} />
                     </div>
                     <div className="col-span-full">
                         <WeeklyOrdersChart data={weeklyOrders} />

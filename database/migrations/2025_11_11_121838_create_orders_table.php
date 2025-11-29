@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('pay');
             $table->integer('change')->nullable();
             $table->string('payment_method');
+            $table->enum("service_type", ['take away', 'dine in']);
             $table->string('status')->default('pending');
             $table->timestamps();
         });

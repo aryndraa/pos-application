@@ -77,15 +77,14 @@ class MenuController extends Controller
                 ];
             });
 
-         $lowStockMenu = Menu::query()
-            ->where('stock', '<=', 5)
-            ->orderBy('stock', 'asc')
-            ->get(['id', 'name', 'stock']);
+         $unavailableMenu = Menu::query()
+            ->where('is_available', false)
+            ->get(['id', 'name']);
     
         return Inertia::render('menu/index', [
             'menu'         => $menu,
             'categories'   => $categories,
-            'lowStockMenu' => $lowStockMenu,
+            'unavailableMenu' => $unavailableMenu,
              'filters'      => [
                 'search' => $search,
                 'category' => $category,
