@@ -14,6 +14,8 @@ class Additional extends Model
 
     protected $fillable = [
         'name',
+        'is_required',
+        'type'
     ];
 
     public function items(): HasMany

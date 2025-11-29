@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { FaCashRegister } from 'react-icons/fa';
 import {
     MdHistory,
@@ -28,11 +29,14 @@ export default function Navbar() {
                             icon={MdOutlineRestaurantMenu}
                             label="Menu"
                         />
-                        <button className="text-pri rounded-lg bg-white p-2.5 text-sm font-semibold md:hidden md:px-4">
+                        <Link
+                            href={'/POS'}
+                            className="text-pri rounded-lg bg-white p-2.5 text-sm font-semibold md:hidden md:px-4"
+                        >
                             <span className="text-xl">
                                 <FaCashRegister />
                             </span>
-                        </button>
+                        </Link>
                         <NavLink
                             href="/orders"
                             icon={MdOutlineRoomService}
@@ -47,12 +51,15 @@ export default function Navbar() {
                 </div>
                 <div className="hidden w-full flex-col items-center gap-6 md:flex">
                     <LogoutButton />
-                    <button className="w-full flex-col items-center gap-2 rounded-lg bg-white py-3 text-sm font-semibold text-primary md:flex">
+                    <Link
+                        href={'/POS'}
+                        className="w-full flex-col items-center gap-2 rounded-lg bg-white py-3 text-sm font-semibold text-primary md:flex"
+                    >
                         <span className="text-lg">
                             <FaCashRegister />
                         </span>
                         SALE
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

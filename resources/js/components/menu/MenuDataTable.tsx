@@ -100,9 +100,7 @@ export default function MenuDataTable({
                             <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500">
                                 Price
                             </th>
-                            <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500">
-                                Stock
-                            </th>
+
                             <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500"></th>
                         </tr>
                     </thead>
@@ -140,9 +138,6 @@ export default function MenuDataTable({
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
                                             {formatRupiah(item.price)}
-                                        </td>
-                                        <td className="w-min px-3 py-2 text-nowrap">
-                                            {item.stock}
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
                                             <Link

@@ -17,12 +17,15 @@ class OrderItemFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {  
+        $menu = Menu::inRandomOrder()->first();
+
         return [
             'order_id'   => Order::query()->inRandomOrder()->first()->id,
-            'menu_id'    => Menu::query()->inRandomOrder()->first()->id,
+            'menu_id'    => $menu->id,
             'quantity'   => $this->faker->numberBetween(1, 5),
-            'unit_price' => $this->faker->numberBetween(10000, 50000),
+            'notes'      => $this->faker->text(),
+            'unit_price' => $menu->price,
             'subtotal'   => function (array $attributes) {
                 return $attributes['quantity'] * $attributes['unit_price'];
             }

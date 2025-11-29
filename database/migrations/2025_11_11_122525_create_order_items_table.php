@@ -20,6 +20,7 @@ return new class extends Migration
                 ->on('menus')
                 ->onDelete('set null');
             $table->integer('quantity')->default(1);
+            $table->text('notes');
             $table->integer('unit_price');
             $table->integer('subtotal');
             $table->timestamps();

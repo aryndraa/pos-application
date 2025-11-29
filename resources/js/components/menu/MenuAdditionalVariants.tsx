@@ -23,15 +23,15 @@ export default function MenuAdditionalVariants({
 
     return (
         <div className="w-full rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
-            <h3 className="mb-4 border-b border-gray-300 pb-4 text-lg font-semibold text-dark-300">
+            <h3 className="border-b border-gray-300 pb-4 text-lg font-semibold text-dark-300">
                 Additional Variants
             </h3>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col divide-y">
                 {additionals.map((additional, index) => (
                     <li key={index}>
                         <details className="group [&amp;_summary::-webkit-details-marker]:hidden">
-                            <summary className="flex cursor-pointer items-center justify-between gap-4 rounded-lg border border-zinc-300 bg-white px-4 py-3 font-medium">
-                                <span className="font-semibold md:text-lg">
+                            <summary className="flex cursor-pointer items-center justify-between gap-4 bg-white py-4 font-medium last:border-transparent md:px-4">
+                                <span className="font-semibold text-primary">
                                     {additional.name}
                                 </span>
 
@@ -51,7 +51,7 @@ export default function MenuAdditionalVariants({
                                 </svg>
                             </summary>
 
-                            <ul className="mt-4">
+                            <ul className="pb-4 last:pb-0">
                                 {additional.items.map((item, index) => (
                                     <li
                                         key={index}

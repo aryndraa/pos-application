@@ -27,7 +27,7 @@ export default function Recipe() {
                             <FaChevronLeft />
                         </Link>
                     </div>
-                    <p className="text-lg">{recipe}</p>
+                    <p className="md:text-lg">{recipe}</p>
                 </div>
             </section>
         </AppLayout>

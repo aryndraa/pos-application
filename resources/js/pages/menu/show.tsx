@@ -72,16 +72,6 @@ export default function Show() {
                             <h2 className="text-lg font-semibold capitalize md:text-2xl">
                                 {name}
                             </h2>
-                            {is_available ? (
-                                <p className="w-fit rounded-lg bg-green-500 px-3 py-1.5 text-sm font-medium text-white capitalize">
-                                    Stock Available
-                                </p>
-                            ) : (
-                                <p className="w-fit rounded-lg bg-red-500 px-3 py-1.5 text-sm font-medium text-white capitalize">
-                                    {' '}
-                                    Stock Unavailable
-                                </p>
-                            )}
                         </div>
                         <ul>
                             <li className="flex items-center justify-between border-b border-zinc-300 pb-3">
@@ -100,20 +90,12 @@ export default function Show() {
                                     {category}
                                 </span>
                             </li>
-                            <li className="flex items-center justify-between border-b border-zinc-300 py-3">
+                            <li className="flex items-center justify-between py-3">
                                 <h3 className="text-sm font-medium text-zinc-600 md:text-base">
                                     Unit Price
                                 </h3>
                                 <span className="font-medium capitalize md:text-lg">
                                     {formatRupiah(price)}
-                                </span>
-                            </li>
-                            <li className="flex items-center justify-between pt-3">
-                                <h3 className="text-sm font-medium text-zinc-600 md:text-base">
-                                    Stock
-                                </h3>
-                                <span className="font-medium capitalize md:text-lg">
-                                    {stock}
                                 </span>
                             </li>
                         </ul>

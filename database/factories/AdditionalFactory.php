@@ -18,6 +18,8 @@ class AdditionalFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->word(),
+            'is_required' => $this->faker->boolean(),
+            'type' => $this->faker->randomElement(['single', 'multiple'])
         ];
     }
 }

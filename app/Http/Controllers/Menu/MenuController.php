@@ -50,6 +50,7 @@ class MenuController extends Controller
             })
             ->when($search, fn($q) =>
                 $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('sku', 'like', '%'. $search.'%')
             )
             ->paginate('10')
             ->withQueryString()

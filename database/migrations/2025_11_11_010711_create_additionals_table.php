@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('additionals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('is_required')->default(false);
+            $table->enum('type', ['multiple', 'single']);
             $table->timestamps();
         });
     }
