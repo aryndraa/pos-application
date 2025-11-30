@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Order;
 
+use App\Events\OrderCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\OrderRequest;
 use App\Models\Order;
@@ -57,6 +58,8 @@ class OrderController extends Controller
             }
 
             DB::commit();
+
+            broadcast(new OrderCreated($order))->toOthers();
 
             return redirect()->back()->with('success', 'Order created successfully');
 

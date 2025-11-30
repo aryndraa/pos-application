@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::vDm0gzpVqiZg324L',
+            '_route' => 'generated::8MPc9xe3hSTtcokh',
           ),
           1 => NULL,
           2 => 
@@ -109,7 +109,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::FMpLqq9jsdO4lJyf',
+            '_route' => 'generated::NVIpWD9f7HVsYjCC',
           ),
           1 => NULL,
           2 => 
@@ -159,6 +159,46 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/kitchen/display' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'kitchen.display',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/kitchen/orders' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'kitchen.orders',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/history' => 
       array (
         0 => 
@@ -179,10 +219,31 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/broadcasting/auth' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::EM6UvE9PAp7lgSnO',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'POST' => 1,
+            'HEAD' => 2,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
-      0 => '{^(?|/menu/([^/]++)(?|(*:24)|/(?|edit(*:39)|recipe(*:52))|(*:60))|/storage/(.*)(*:81))/?$}sDu',
+      0 => '{^(?|/menu/([^/]++)(?|(*:24)|/(?|edit(*:39)|recipe(*:52))|(*:60))|/kitchen/orders/([^/]++)/status(*:99)|/storage/(.*)(*:119))/?$}sDu',
     ),
     3 => 
     array (
@@ -238,7 +299,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::DO3kE7mUhKWvhCbr',
+            '_route' => 'generated::AoiG4fdrD3h1Iwty',
           ),
           1 => 
           array (
@@ -297,7 +358,29 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      81 => 
+      99 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'kitchen.update-status',
+          ),
+          1 => 
+          array (
+            0 => 'order',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      119 => 
       array (
         0 => 
         array (
@@ -335,7 +418,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::vDm0gzpVqiZg324L' => 
+    'generated::8MPc9xe3hSTtcokh' => 
     array (
       'methods' => 
       array (
@@ -363,8 +446,8 @@ app('router')->setCompiledRoutes(
                     return response(\\Illuminate\\Support\\Facades\\View::file(\'C:\\\\laragon\\\\www\\\\pos-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Configuration\'.\'/../resources/health-up.blade.php\', [
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000032c0000000000000000";}}',
-        'as' => 'generated::vDm0gzpVqiZg324L',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004ef0000000000000000";}}',
+        'as' => 'generated::8MPc9xe3hSTtcokh',
       ),
       'fallback' => false,
       'defaults' => 
@@ -674,7 +757,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::DO3kE7mUhKWvhCbr' => 
+    'generated::AoiG4fdrD3h1Iwty' => 
     array (
       'methods' => 
       array (
@@ -695,7 +778,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::DO3kE7mUhKWvhCbr',
+        'as' => 'generated::AoiG4fdrD3h1Iwty',
       ),
       'fallback' => false,
       'defaults' => 
@@ -711,7 +794,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::FMpLqq9jsdO4lJyf' => 
+    'generated::NVIpWD9f7HVsYjCC' => 
     array (
       'methods' => 
       array (
@@ -732,7 +815,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::FMpLqq9jsdO4lJyf',
+        'as' => 'generated::NVIpWD9f7HVsYjCC',
       ),
       'fallback' => false,
       'defaults' => 
@@ -764,7 +847,7 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:62:"function () {
     return \\Inertia\\Inertia::render(\'orders\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000032a0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004f10000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -822,6 +905,116 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'kitchen.display' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'kitchen/display',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@index',
+        'controller' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@index',
+        'as' => 'kitchen.display',
+        'namespace' => NULL,
+        'prefix' => '/kitchen',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'kitchen.orders' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'kitchen/orders',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@getOrders',
+        'controller' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@getOrders',
+        'as' => 'kitchen.orders',
+        'namespace' => NULL,
+        'prefix' => '/kitchen',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'kitchen.update-status' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'kitchen/orders/{order}/status',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@updateStatus',
+        'controller' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@updateStatus',
+        'as' => 'kitchen.update-status',
+        'namespace' => NULL,
+        'prefix' => '/kitchen',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'history' => 
     array (
       'methods' => 
@@ -838,13 +1031,55 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:63:"function () {
     return \\Inertia\\Inertia::render(\'history\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000005dd0000000000000000";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000006050000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
         'as' => 'history',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::EM6UvE9PAp7lgSnO' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'POST',
+        2 => 'HEAD',
+      ),
+      'uri' => 'broadcasting/auth',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => '\\Illuminate\\Broadcasting\\BroadcastController@authenticate',
+        'controller' => '\\Illuminate\\Broadcasting\\BroadcastController@authenticate',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'excluded_middleware' => 
+        array (
+          0 => 'Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken',
+        ),
+        'as' => 'generated::EM6UvE9PAp7lgSnO',
       ),
       'fallback' => false,
       'defaults' => 
@@ -876,7 +1111,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000005df0000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"000000000000061f0000000000000000";}}',
         'as' => 'storage.local',
       ),
       'fallback' => false,

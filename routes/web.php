@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Kitchen\KitchenController;
 use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\MenuCategory\MenuCategoryController;
 use App\Http\Controllers\Order\OrderController;
@@ -21,6 +22,12 @@ Route::get('/orders', function () {
 })->name('orders');
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+
+Route::prefix('kitchen')->name('kitchen.')->group(function () {
+    Route::get('/display', [KitchenController::class, 'index'])->name('display');
+    Route::get('/orders', [KitchenController::class, 'getOrders'])->name('orders');
+    Route::post('/orders/{order}/status', [KitchenController::class, 'updateStatus'])->name('update-status');
+});
 
 Route::get('/history', function () {
     return Inertia::render('history');
