@@ -100,9 +100,7 @@ export default function KitchenDisplay({
                         data.order.status === 'completed' ||
                         data.order.status === 'cancelled'
                     ) {
-                        console.log(
-                            `Removing order ${data.order.id} because status is ${data.order.status}`,
-                        );
+                        s;
                         const filtered = prevOrders.filter(
                             (o) => o.id !== data.order.id,
                         );
@@ -165,8 +163,6 @@ export default function KitchenDisplay({
         );
 
         setOrders((prevOrders) => {
-            console.log('Performing optimistic update...');
-
             if (status === 'completed' || status === 'cancelled') {
                 console.log(`Removing order ${orderId} optimistically`);
                 const filtered = prevOrders.filter((o) => o.id !== orderId);

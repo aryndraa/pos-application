@@ -33,7 +33,6 @@ export default function OrderList({
     >('in-progress');
     const [searchQuery, setSearchQuery] = useState('');
 
-    // Setup Laravel Echo for real-time updates
     useEffect(() => {
         if (!window.Echo) {
             console.error('❌ Laravel Echo is not initialized in OrderList!');
@@ -44,7 +43,6 @@ export default function OrderList({
 
         const channel = window.Echo.channel('kitchen');
 
-        // Listen for new orders
         channel.listen('.order.created', (data: { order: any }) => {
             console.log('✅ OrderList: New order received:', data.order);
 
@@ -56,7 +54,6 @@ export default function OrderList({
                 items_count: data.order.items?.length || 0,
             };
 
-            // Add to in-progress if status is pending or processing
             if (
                 newOrder.status === 'pending' ||
                 newOrder.status === 'processing'
@@ -69,7 +66,6 @@ export default function OrderList({
             }
         });
 
-        // Listen for status updates
         channel.listen(
             '.order.status.updated',
             (data: { order: any; old_status: string }) => {

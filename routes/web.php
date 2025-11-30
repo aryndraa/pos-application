@@ -17,11 +17,8 @@ Route::get('/menu/{menu}/recipe', [MenuController::class, 'recipe']);
 
 Route::get('/POS', [POSController::class, 'index']);
 
-Route::get('/orders', function () {
-    return Inertia::render('orders');
-})->name('orders');
-
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
 Route::prefix('kitchen')->name('kitchen.')->group(function () {
     Route::get('/display', [KitchenController::class, 'index'])->name('display');
