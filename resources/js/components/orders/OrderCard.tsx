@@ -15,7 +15,7 @@ export default function OrderCard({ order, timeAgo }: OrderCardProps) {
 
     return (
         <div
-            className={`h-fit overflow-hidden rounded-lg border border-zinc-300 bg-white`}
+            className={`overflow-hidden rounded-lg border border-zinc-300 bg-white`}
             style={{ animation: 'slideIn 0.5s ease-out' }}
         >
             <div className="p-4">
@@ -54,7 +54,7 @@ export default function OrderCard({ order, timeAgo }: OrderCardProps) {
                     <span>{timeAgo(order.order_date)}</span>
                 </div>
 
-                <div className="mb-4 space-y-3">
+                <div className="scroll-y mb-4 max-h-96 space-y-3 overflow-y-auto">
                     {order.items.map((item, idx) => (
                         <div
                             key={idx}

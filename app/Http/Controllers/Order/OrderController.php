@@ -58,7 +58,7 @@ class OrderController extends Controller
 
             
 
-        return Inertia::render('orders', [
+        return Inertia::render('orders/index', [
             'orders' => $orders
         ]);
     }
@@ -119,37 +119,44 @@ class OrderController extends Controller
         }
     }
 
-    public function histories (Request $request)
+    public function show(Order $order) 
     {
-        $search = $request->get('search');
-        $orderBy = $request->get('orderBy');
-        $direction = $request->get('direction');
+        $order->load(['items.menu', 'items.orderAdditionals.additionalItem']);
 
-        $orders = Order::with(['items.menu', 'items.orderAdditionals.additionalItem'])
-        ->when($search, fn($q) =>
-            $q->where('customer_name', 'like', '%' . $search . '%')
-                ->orWhere('code', 'like', '%'. $search.'%')
-        )
-        ->when($orderBy, fn($q) =>  $q->orderBy($orderBy, $direction))
-        ->paginate(10)
-        ->withQueryString()
-        ->through(function($order) {
-            return [
-                'id' => $order->id,
-                'code' => $order->code,
-                'customer_name' => $order->customer_name,
-                'order_date' => $order->order_date,
-                'total_price' => $order->total_price,
-                'status' => $order->status,
-                'payment_method' => $order->payment_method,
-            ];
-        })->toArray();
-
-        return Inertia::render('history', [
-            'orders'  => $orders,
-            'filters' => [
-                'search' => $search,
-            ],
+        return Inertia::render('orders/show', [
+            'id' => $order->id,
+            'code' => $order->code,
+            'customer_name' => $order->customer_name,
+            'order_date' => $order->order_date,
+            'pay' => $order->pay,
+            'change' => $order->change,
+            'payment_method' => $order->payment_method,
+            'total_price' => $order->total_price,
+            'status' => $order->status,
+            'items' => $order->items->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'menu' => [
+                        'id' => $item->menu->id,
+                        'name' => $item->menu->name,
+                    ],
+                    'quantity' => $item->quantity,
+                    'unit_price' => $item->unit_price,
+                    'subtotal' => $item->subtotal,
+                    'notes' => $item->notes ?? '',
+                    'additionals' => $item->orderAdditionals->map(function($add) {
+                        return [
+                            'id' => $add->id,
+                            'quantity' => $add->quantity,
+                            'unit_price' => $add->unit_price,
+                            'additional_item' => [
+                                'id' => $add->additionalItem->id,
+                                'name' => $add->additionalItem->name,
+                            ],
+                        ];
+                    })->toArray(),
+                ];
+            })->toArray(),
         ]);
     }
 }

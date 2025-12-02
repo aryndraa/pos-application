@@ -34,7 +34,6 @@ export default function Orders() {
                             <h1 className="text-xl font-bold text-primary md:text-3xl">
                                 List Orders
                             </h1>
-                            z
                         </div>
                     </div>
                 </div>

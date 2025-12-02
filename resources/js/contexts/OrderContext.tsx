@@ -27,6 +27,18 @@ interface OrderItem {
     additionals: Record<string, AdditionalGroup>;
 }
 
+interface CompletedOrder {
+    code: string;
+    customer_name: string;
+    order_date: string;
+    items: Array<any>;
+    total: number;
+    total_price: number;
+    pay: number;
+    change: number;
+    payment_method: string;
+}
+
 interface OrderContextType {
     orders: OrderItem[];
     addOrder: (
@@ -39,6 +51,8 @@ interface OrderContextType {
     clearOrders: () => void;
     incrementOrder: (id: string) => void; // Ubah ke id
     decrementOrder: (id: string) => void; // Ubah ke id
+    completedOrder: CompletedOrder | null;
+    setCompletedOrder: (orderData: CompletedOrder) => void;
     total: number;
 }
 
@@ -50,6 +64,8 @@ const OrderContext = createContext<OrderContextType>({
     incrementOrder: () => {},
     decrementOrder: () => {},
     total: 0,
+    completedOrder: null,
+    setCompletedOrder: () => {},
 });
 
 // Fungsi untuk generate ID unik
@@ -60,6 +76,9 @@ const generateUniqueId = () => {
 export function OrderProvider({ children }: { children: React.ReactNode }) {
     const [orders, setOrders] = useState<OrderItem[]>([]);
     const [total, setTotal] = useState<number>(0);
+    const [completedOrder, setCompletedOrder] = useState<CompletedOrder | null>(
+        null,
+    );
 
     const calculateAdditionalPrice = (additionals: Record<string, any>) => {
         if (!additionals) return 0;
@@ -200,6 +219,8 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
                 incrementOrder,
                 decrementOrder,
                 total,
+                completedOrder,
+                setCompletedOrder,
             }}
         >
             {children}

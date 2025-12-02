@@ -14,7 +14,7 @@ interface OrderProps extends PageProps {
     orders: PaginatedData<Order>;
 }
 
-export default function History() {
+export default function Index() {
     const { orders } = usePage<OrderProps>().props;
     const startNumber = (orders.current_page - 1) * orders.per_page;
     const [search, setSearch] = useState('');
@@ -28,7 +28,7 @@ export default function History() {
         else query.delete('search');
 
         router.get(
-            '/history?' + query.toString(),
+            '//histories?' + query.toString(),
             {},
             {
                 preserveState: true,
@@ -48,7 +48,7 @@ export default function History() {
         else query.delete('direction');
 
         router.get(
-            '/history?' + query.toString(),
+            '//histories?' + query.toString(),
             {},
             {
                 preserveState: true,
@@ -146,7 +146,7 @@ export default function History() {
 
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
-                                                    href={`history/${order.id}`}
+                                                    href={`/orders/${order.id}`}
                                                     className="underline"
                                                 >
                                                     {order.code}
@@ -154,7 +154,7 @@ export default function History() {
                                             </td>
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
-                                                    href={`history/${order.id}`}
+                                                    href={`/orders/${order.id}`}
                                                     className="underline"
                                                 >
                                                     {order.customer_name}
@@ -176,7 +176,7 @@ export default function History() {
                                             </td>
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
-                                                    href={`menu/${order.id}`}
+                                                    href={`/orders/${order.id}`}
                                                     className="flex size-10 items-center justify-center rounded-lg bg-primary text-lg text-white"
                                                 >
                                                     <FaRegEye />

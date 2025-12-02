@@ -43,7 +43,7 @@ export default function Navbar() {
                             label="Orders"
                         />
                         <NavLink
-                            href="/history"
+                            href="/histories"
                             icon={MdHistory}
                             label="History"
                         />

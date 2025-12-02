@@ -2,8 +2,8 @@ import MenuAdditionalVariants from '@/components/menu/MenuAdditionalVariants';
 import MenuInsightChart from '@/components/menu/MenuInsightChart';
 import AppLayout from '@/layouts/AppLayout';
 import { formatRupiah } from '@/utils/formatRupiah';
+import { PageProps } from '@inertiajs/core';
 import { Link, usePage } from '@inertiajs/react';
-import { PageProps } from 'node_modules/@inertiajs/core/types/types';
 
 interface itemType {
     id: number;
@@ -55,7 +55,7 @@ export default function Show() {
 
     return (
         <AppLayout>
-            <section className="grid grid-cols-12 gap-4">
+            <section className="grid grid-cols-12 gap-4 overflow-x-hidden">
                 <div className="col-span-full flex flex-col gap-4 lg:col-span-6">
                     <div className="h-full rounded-lg border border-zinc-300 p-4">
                         <img

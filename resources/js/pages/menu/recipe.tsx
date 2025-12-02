@@ -1,5 +1,5 @@
 import AppLayout from '@/layouts/AppLayout';
-import { Link, usePage } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react';
 import { PageProps } from 'node_modules/@inertiajs/core/types/types';
 import { FaChevronLeft } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ interface RecipeProps extends PageProps {
 }
 
 export default function Recipe() {
-    const { id, name, recipe } = usePage<RecipeProps>().props;
+    const { name, recipe } = usePage<RecipeProps>().props;
 
     return (
         <AppLayout>
@@ -20,12 +20,12 @@ export default function Recipe() {
                         <h1 className="text-xl font-semibold text-dark-300 capitalize md:text-3xl">
                             {name} Recipe
                         </h1>
-                        <Link
-                            href={`/menu/${id}`}
+                        <button
+                            onClick={() => window.history.back()}
                             className="flex w-fit rounded-lg bg-primary p-3 text-white md:p-4"
                         >
                             <FaChevronLeft />
-                        </Link>
+                        </button>
                     </div>
                     <p className="md:text-lg">{recipe}</p>
                 </div>
