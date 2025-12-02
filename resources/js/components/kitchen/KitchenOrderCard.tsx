@@ -1,11 +1,34 @@
 import { Order } from '@/types/Order';
+import { useState } from 'react';
 
 interface OrderCardProps {
     order: Order;
+    onUpdateStatus: (
+        orderId: number,
+        status: 'processing' | 'completed' | 'cancelled',
+    ) => void;
     timeAgo: (date: string) => string;
 }
 
-export default function OrderCard({ order, timeAgo }: OrderCardProps) {
+export default function KitchenOrderCard({
+    order,
+    onUpdateStatus,
+    timeAgo,
+}: OrderCardProps) {
+    const [isUpdating, setIsUpdating] = useState(false);
+
+    const handleStatusUpdate = async (
+        status: 'processing' | 'completed' | 'cancelled',
+    ) => {
+        console.log(`Button clicked: Update order ${order.id} to ${status}`);
+        setIsUpdating(true);
+        onUpdateStatus(order.id, status);
+
+        setTimeout(() => {
+            setIsUpdating(false);
+        }, 1000);
+    };
+
     const statusColors = {
         pending: 'border-l-red-500 bg-red-500',
         processing: 'border-l-amber-500 bg-amber-600',
@@ -15,7 +38,7 @@ export default function OrderCard({ order, timeAgo }: OrderCardProps) {
 
     return (
         <div
-            className={`h-fit overflow-hidden rounded-lg border border-zinc-300 bg-white`}
+            className={`h-fit overflow-hidden rounded-lg border border-l-6 border-zinc-300 bg-white ${statusColors[order.status]?.replace('bg-', 'border-l-')} `}
             style={{ animation: 'slideIn 0.5s ease-out' }}
         >
             <div className="p-4">
@@ -89,6 +112,25 @@ export default function OrderCard({ order, timeAgo }: OrderCardProps) {
                             )}
                         </div>
                     ))}
+                </div>
+
+                <div className="flex gap-2">
+                    {order.status === 'pending' && (
+                        <button
+                            onClick={() => handleStatusUpdate('processing')}
+                            disabled={isUpdating}
+                            className="disabled:bg-zinc-3000 flex-1 rounded-lg bg-zinc-200 px-4 py-2 font-semibold transition duration-200 disabled:cursor-not-allowed"
+                        >
+                            {isUpdating ? 'Updating...' : 'Start Cooking'}
+                        </button>
+                    )}
+                    <button
+                        onClick={() => handleStatusUpdate('completed')}
+                        disabled={isUpdating}
+                        className="flex-1 rounded-lg bg-primary px-4 py-2 font-semibold text-white transition duration-200 hover:bg-primary disabled:cursor-not-allowed disabled:bg-green-800"
+                    >
+                        {isUpdating ? 'Updating...' : 'Complete'}
+                    </button>
                 </div>
             </div>
         </div>

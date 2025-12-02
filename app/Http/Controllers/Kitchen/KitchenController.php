@@ -49,7 +49,7 @@ class KitchenController extends Controller
                     })->toArray(),
                 ];
             })->toArray();
-
+            
 
         return Inertia::render('kitchenDisplay', [
             'initialOrders' => $orders
@@ -66,10 +66,6 @@ class KitchenController extends Controller
             'status' => $request->status
         ]);
 
-          \Log::info('Order status updated', [
-            'order_id' => $order->id,
-            'new_status' => $order->status
-        ]);
-           return redirect()->back();
+        return redirect()->back();
     }
 }

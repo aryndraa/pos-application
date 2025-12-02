@@ -1,10 +1,11 @@
 import OrderCard from '@/components/orders/OrderCard';
 import AppLayout from '@/layouts/AppLayout';
+import { OrderList } from '@/types/Order';
 import { usePage } from '@inertiajs/react';
 import { PageProps } from 'node_modules/@inertiajs/core/types/types';
 
 interface OrderProps extends PageProps {
-    orders: any;
+    orders: OrderList;
 }
 
 export default function Orders() {
@@ -31,11 +32,9 @@ export default function Orders() {
                     <div className="flex items-center justify-between">
                         <div>
                             <h1 className="text-xl font-bold text-primary md:text-3xl">
-                                Kitchen Display
+                                List Orders
                             </h1>
-                            <p className="mt-1 text-xs text-gray-400 md:text-sm">
-                                Real-time Orders Monitor
-                            </p>
+                            z
                         </div>
                     </div>
                 </div>

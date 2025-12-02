@@ -3,12 +3,9 @@
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Kitchen\KitchenController;
 use App\Http\Controllers\Menu\MenuController;
-use App\Http\Controllers\MenuCategory\MenuCategoryController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\POS\POSController;
-use App\Models\MenuCategory;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
@@ -19,6 +16,7 @@ Route::get('/POS', [POSController::class, 'index']);
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/history', [OrderController::class, 'histories'])->name('orders.histories');
 
 Route::prefix('kitchen')->name('kitchen.')->group(function () {
     Route::get('/display', [KitchenController::class, 'index'])->name('display');
@@ -26,9 +24,7 @@ Route::prefix('kitchen')->name('kitchen.')->group(function () {
     Route::post('/orders/{order}/status', [KitchenController::class, 'updateStatus'])->name('update-status');
 });
 
-Route::get('/history', function () {
-    return Inertia::render('history');
-})->name('history');
+
 
 
 

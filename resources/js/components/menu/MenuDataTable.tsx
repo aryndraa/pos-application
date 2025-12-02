@@ -62,7 +62,7 @@ export default function MenuDataTable({
     return (
         <div className="rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
             <div className="flex flex-col justify-between gap-4 border-b pb-4 md:flex-row md:items-center">
-                <h1 className="text-xl font-semibold">List Products</h1>
+                <h1 className="text-xl font-semibold">List Menu</h1>
                 <div className="flex items-stretch gap-4">
                     <Search
                         value={search}

@@ -75,7 +75,7 @@ class OrderController extends Controller
 
             $order = Order::create([
                 'customer_name' => $request->customer_name,
-                'code' => 'ORD' . Str::upper(Str::random(8)),
+                'code' => 'ORD-' . Str::upper(Str::random(8)),
                 'order_date' => now(),
                 'total_price' => $totalPrice,
                 'pay' => $payAmount,
@@ -117,5 +117,37 @@ class OrderController extends Controller
             
             return redirect()->back()->with('error', 'Failed to create order: ' . $e->getMessage());
         }
+    }
+
+    public function histories (Request $request)
+    {
+        $search = $request->get('search');
+
+        $orders = Order::with(['items.menu', 'items.orderAdditionals.additionalItem'])
+        ->orderBy('order_date', 'asc')
+        ->when($search, fn($q) =>
+            $q->where('customer_name', 'like', '%' . $search . '%')
+                ->orWhere('code', 'like', '%'. $search.'%')
+        )
+        ->paginate('10')
+        ->withQueryString()
+        ->through(function($order) {
+            return [
+                'id' => $order->id,
+                'code' => $order->code,
+                'customer_name' => $order->customer_name,
+                'order_date' => $order->order_date,
+                'total_price' => $order->total_price,
+                'status' => $order->status,
+                'payment_method' => $order->payment_method,
+            ];
+        })->toArray();
+
+        return Inertia::render('history', [
+            'orders'  => $orders,
+            'filters' => [
+                'search' => $search,
+            ],
+        ]);
     }
 }

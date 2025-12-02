@@ -85,7 +85,7 @@ class MenuController extends Controller
             'menu'         => $menu,
             'categories'   => $categories,
             'unavailableMenu' => $unavailableMenu,
-             'filters'      => [
+            'filters'      => [
                 'search' => $search,
                 'category' => $category,
                 'filter' => $filter,
