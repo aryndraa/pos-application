@@ -55,7 +55,7 @@ class MenuController extends Controller
             ->paginate('10')
             ->withQueryString()
             ->through(function ($item) {
-                return [
+            return [
                     'id'            => $item->id,
                     'name'          => $item->name,
                     'sku'           => $item->sku,

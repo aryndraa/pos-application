@@ -122,14 +122,16 @@ class OrderController extends Controller
     public function histories (Request $request)
     {
         $search = $request->get('search');
+        $orderBy = $request->get('orderBy');
+        $direction = $request->get('direction');
 
         $orders = Order::with(['items.menu', 'items.orderAdditionals.additionalItem'])
-        ->orderBy('order_date', 'asc')
         ->when($search, fn($q) =>
             $q->where('customer_name', 'like', '%' . $search . '%')
                 ->orWhere('code', 'like', '%'. $search.'%')
         )
-        ->paginate('10')
+        ->when($orderBy, fn($q) =>  $q->orderBy($orderBy, $direction))
+        ->paginate(10)
         ->withQueryString()
         ->through(function($order) {
             return [

@@ -1,14 +1,17 @@
 import Pagination from '@/components/Pagination';
 import Search from '@/components/Search';
 import AppLayout from '@/layouts/AppLayout';
+import { Order } from '@/types/Order';
+import { PaginatedData } from '@/types/Pagination';
 import { formatRupiah } from '@/utils/formatRupiah';
 import { Link, router, usePage } from '@inertiajs/react';
 import { PageProps } from 'node_modules/@inertiajs/core/types/types';
 import { useState } from 'react';
 import { FaRegEye } from 'react-icons/fa';
+import { TiArrowUnsorted } from 'react-icons/ti';
 
 interface OrderProps extends PageProps {
-    orders: any;
+    orders: PaginatedData<Order>;
 }
 
 export default function History() {
@@ -33,6 +36,42 @@ export default function History() {
                 preserveScroll: true,
             },
         );
+    };
+
+    const handleSort = (order: string, direction: string) => {
+        const query = new URLSearchParams(window.location.search);
+
+        if (order) query.set('orderBy', order);
+        else query.delete('orderBy');
+
+        if (direction) query.set('direction', direction);
+        else query.delete('direction');
+
+        router.get(
+            '/history?' + query.toString(),
+            {},
+            {
+                preserveState: true,
+                replace: true,
+                preserveScroll: true,
+            },
+        );
+    };
+
+    const toggleSort = (field: string) => {
+        const currentOrder = new URLSearchParams(window.location.search).get(
+            'orderBy',
+        );
+        const currentDirection = new URLSearchParams(
+            window.location.search,
+        ).get('direction');
+
+        const newDirection =
+            currentOrder === field && currentDirection === 'asc'
+                ? 'desc'
+                : 'asc';
+
+        handleSort(field, newDirection);
     };
 
     return (
@@ -64,10 +103,24 @@ export default function History() {
                                     Customer Name
                                 </th>
                                 <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500">
-                                    Order Date
+                                    <button
+                                        onClick={() => toggleSort('order_date')}
+                                        className="flex items-center gap-2"
+                                    >
+                                        Order Date
+                                        <TiArrowUnsorted />
+                                    </button>
                                 </th>
                                 <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500">
-                                    Total
+                                    <button
+                                        onClick={() =>
+                                            toggleSort('total_price')
+                                        }
+                                        className="flex items-center gap-2"
+                                    >
+                                        Total Price
+                                        <TiArrowUnsorted />
+                                    </button>
                                 </th>
                                 <th className="px-4 py-4 text-left text-sm font-medium text-zinc-500">
                                     Payment
@@ -94,12 +147,18 @@ export default function History() {
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
                                                     href={`history/${order.id}`}
+                                                    className="underline"
                                                 >
                                                     {order.code}
                                                 </Link>
                                             </td>
                                             <td className="w-min px-3 py-2 text-nowrap">
-                                                {order.customer_name}
+                                                <Link
+                                                    href={`history/${order.id}`}
+                                                    className="underline"
+                                                >
+                                                    {order.customer_name}
+                                                </Link>
                                             </td>
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 {order.order_date}

@@ -6,7 +6,7 @@ export interface Order {
     customer_name: string;
     order_date: string;
     total_price: number;
-    payment: string;
+    payment_method: string;
     status: 'pending' | 'processing' | 'completed' | 'cancelled';
     items: OrderItem[];
 }
