@@ -30,7 +30,7 @@ export default function Navbar() {
                             label="Menu"
                         />
                         <Link
-                            href={'/POS'}
+                            href={'/pos'}
                             className="text-pri rounded-lg bg-white p-2.5 text-sm font-semibold md:hidden md:px-4"
                         >
                             <span className="text-xl">
@@ -52,7 +52,7 @@ export default function Navbar() {
                 <div className="hidden w-full flex-col items-center gap-6 md:flex">
                     <LogoutButton />
                     <Link
-                        href={'/POS'}
+                        href={'/pos'}
                         className="w-full flex-col items-center gap-2 rounded-lg bg-white py-3 text-sm font-semibold text-primary md:flex"
                     >
                         <span className="text-lg">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\POS;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\MenuCategory;
+use App\Models\Order;
 use Inertia\Inertia;
 use PhpParser\Builder\Interface_;
 
@@ -58,9 +59,50 @@ class POSController extends Controller
             ])
             ->values(); 
 
-        return Inertia::render('POS', [
+        return Inertia::render('pos/index', [
             'categories' => $categories,
             'menu' => $menu
+        ]);
+    }
+
+    public function bill(Order $order) 
+    {
+        $order->load(['items.menu', 'items.orderAdditionals.additionalItem']);
+
+        return Inertia::render('pos/bill', [
+            'id' => $order->id,
+            'code' => $order->code,
+            'customer_name' => $order->customer_name,
+            'order_date' => $order->order_date,
+            'pay' => $order->pay,
+            'change' => $order->change,
+            'payment_method' => $order->payment_method,
+            'total_price' => $order->total_price,
+            'status' => $order->status,
+            'items' => $order->items->map(function($item) {
+                return [
+                    'id' => $item->id,
+                    'menu' => [
+                        'id' => $item->menu->id,
+                        'name' => $item->menu->name,
+                    ],
+                    'quantity' => $item->quantity,
+                    'unit_price' => $item->unit_price,
+                    'subtotal' => $item->subtotal,
+                    'notes' => $item->notes ?? '',
+                    'additionals' => $item->orderAdditionals->map(function($add) {
+                        return [
+                            'id' => $add->id,
+                            'quantity' => $add->quantity,
+                            'unit_price' => $add->unit_price,
+                            'additional_item' => [
+                                'id' => $add->additionalItem->id,
+                                'name' => $add->additionalItem->name,
+                            ],
+                        ];
+                    })->toArray(),
+                ];
+            })->toArray(),
         ]);
     }
 }

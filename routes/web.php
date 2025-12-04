@@ -13,7 +13,15 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::resource('menu', MenuController::class);
 Route::get('/menu/{menu}/recipe', [MenuController::class, 'recipe']);
 
-Route::get('/POS', [POSController::class, 'index']);
+Route::controller(POSController::class)
+    ->prefix('pos')
+    ->name('pos.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/bill/{order}', 'bill')->name('bill');
+    });
+
+
 
 
 Route::controller(OrderController::class)

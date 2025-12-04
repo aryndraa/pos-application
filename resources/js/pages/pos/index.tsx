@@ -1,5 +1,5 @@
-import CartItems from '@/components/POS/CartItems';
-import ListMenu from '@/components/POS/ListMenu';
+import CartItems from '@/components/pos/CartItems';
+import ListMenu from '@/components/pos/ListMenu';
 import Search from '@/components/Search';
 import SelectFilter from '@/components/SelectFilter';
 import AppLayout from '@/layouts/AppLayout';

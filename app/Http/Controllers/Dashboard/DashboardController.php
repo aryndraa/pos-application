@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function index(): Response
     {
         $inProgressOrders = Order::query()
-            ->whereIn('status', ['pending', 'processing', 'ready'])
+            ->whereIn('status', ['pending', 'processing'])
             ->select(['id', 'customer_name', 'status', 'order_date'])
             ->withCount('items')
             ->orderBy('order_date', 'desc')

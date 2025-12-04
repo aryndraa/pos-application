@@ -110,7 +110,9 @@ class OrderController extends Controller
 
             broadcast(new OrderCreated($order))->toOthers();
 
-            return redirect()->back()->with('success', 'Order created successfully');
+            return redirect()
+                ->route('pos.bill', $order->id)
+                ->with('success', 'Order created successfully');
 
         } catch (\Exception $e) {
             DB::rollBack();

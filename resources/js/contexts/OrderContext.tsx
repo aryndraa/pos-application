@@ -1,4 +1,4 @@
-import { MenuItem } from '@/pages/POS';
+import { MenuItem } from '@/pages/pos';
 import { createContext, useContext, useEffect, useState } from 'react';
 
 interface AdditionalItem {
