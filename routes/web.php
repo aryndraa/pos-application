@@ -8,43 +8,55 @@ use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\POS\POSController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
 
-Route::resource('menu', MenuController::class);
-Route::get('/menu/{menu}/recipe', [MenuController::class, 'recipe']);
-
-Route::controller(POSController::class)
-    ->prefix('pos')
-    ->name('pos.')
+Route::middleware(['auth', 'role:cashier,admin'])
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/bill/{order}', 'bill')->name('bill');
-    });
+        Route::get('/', [DashboardController::class, 'index'])->name('cashier');
 
-
-
-
-Route::controller(OrderController::class)
-    ->group(function () {
-        Route::prefix('orders')
-            ->name('orders.')
-            ->group(function() {
+        Route::controller(MenuController::class)
+            ->prefix('menu')
+            ->name('menu')
+            ->group(function () {
                 Route::get('/', 'index')->name('index');
-                Route::post('', 'store')->name('store');
-                Route::get('/{order}', 'show')->name('show');
+                Route::get('/{menu}', 'show')->name('show');
+                Route::get('/{menu}/recipe', 'recipe')->name('recipe');
             });
+
+
+        Route::controller(POSController::class)
+            ->prefix('pos')
+            ->name('pos.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/bill/{order}', 'bill')->name('bill');
+            });
+
+        Route::controller(OrderController::class)
+            ->group(function () {
+                Route::prefix('orders')
+                    ->name('orders.')
+                    ->group(function() {
+                        Route::get('/', 'index')->name('index');
+                        Route::post('', 'store')->name('store');
+                        Route::get('/{order}', 'show')->name('show');
+                    });
+            });
+
+        Route::get('/histories', [HistoryController::class, 'index'])->name('histories');
     });
 
-Route::get('/histories', [HistoryController::class, 'index'])->name('histories');
+
+Route::middleware(['auth', 'role:kitchen,admin'])
+    ->prefix('kitchen')
+    ->name('kitchen.')
+    ->group(function () {
+        Route::get('/display', [KitchenController::class, 'index'])->name('display');
+        Route::get('/orders', [KitchenController::class, 'getOrders'])->name('orders');
+        Route::post('/orders/{order}/status', [KitchenController::class, 'updateStatus'])->name('update-status');
+    });
 
 
-Route::prefix('kitchen')->name('kitchen.')->group(function () {
-    Route::get('/display', [KitchenController::class, 'index'])->name('display');
-    Route::get('/orders', [KitchenController::class, 'getOrders'])->name('orders');
-    Route::post('/orders/{order}/status', [KitchenController::class, 'updateStatus'])->name('update-status');
-});
-
-
+    require __DIR__.'/auth.php';
 
 
 

@@ -5,12 +5,17 @@ namespace App\Http\Controllers\Kitchen;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class KitchenController extends Controller
 {
      public function index()
     {
+         if (!Auth::user()->hasRole('kitchen')) {
+            abort(403, 'Access denied');
+        }
+
           $orders = Order::with(['items.menu', 'items.orderAdditionals.additionalItem'])
             ->whereIn('status', ['pending', 'processing'])
             ->orderBy('order_date', 'asc')

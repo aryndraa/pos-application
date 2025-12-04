@@ -1,3 +1,4 @@
+import LogoutButton from '@/components/actions/LogoutButton';
 import KitchenOrderCard from '@/components/kitchen/KitchenOrderCard';
 import { Order } from '@/types/Order';
 import { router } from '@inertiajs/react';
@@ -250,6 +251,7 @@ export default function KitchenDisplay({
                                 </span>
                             </div>
                         </div>
+                        <LogoutButton />
                     </div>
                 </div>
             </div>

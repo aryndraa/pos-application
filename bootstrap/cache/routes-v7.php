@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::9Ti0OejdLzcDKMNY',
+            '_route' => 'generated::16FnTfg7zbn96ssW',
           ),
           1 => NULL,
           2 => 
@@ -53,43 +53,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'menu.index',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'menu.store',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/menu/create' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'menu.create',
+            '_route' => 'menuindex',
           ),
           1 => NULL,
           2 => 
@@ -219,13 +183,104 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/login' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'login',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::hzseIYHqnR07wiLH',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/register' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'register',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::wty7v8YIu4fGBb01',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/logout' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'logout',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/broadcasting/auth' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::hczBL7DkkELKqqQe',
+            '_route' => 'generated::ervV8HfVaQ87rl3R',
           ),
           1 => NULL,
           2 => 
@@ -243,7 +298,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/menu/([^/]++)(?|(*:24)|/(?|edit(*:39)|recipe(*:52))|(*:60))|/pos/bill/([^/]++)(*:86)|/orders/([^/]++)(*:109)|/kitchen/orders/([^/]++)/status(*:148)|/storage/(.*)(*:169))/?$}sDu',
+      0 => '{^(?|/menu/([^/]++)(?|(*:24)|/recipe(*:38))|/pos/bill/([^/]++)(*:64)|/orders/([^/]++)(*:87)|/kitchen/orders/([^/]++)/status(*:125)|/storage/(.*)(*:146))/?$}sDu',
     ),
     3 => 
     array (
@@ -253,7 +308,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'menu.show',
+            '_route' => 'menushow',
           ),
           1 => 
           array (
@@ -270,36 +325,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      39 => 
+      38 => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'menu.edit',
-          ),
-          1 => 
-          array (
-            0 => 'menu',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      52 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::T3qhTsbBVxNZVemu',
+            '_route' => 'menurecipe',
           ),
           1 => 
           array (
@@ -316,49 +348,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      60 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'menu.update',
-          ),
-          1 => 
-          array (
-            0 => 'menu',
-          ),
-          2 => 
-          array (
-            'PUT' => 0,
-            'PATCH' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-        1 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'menu.destroy',
-          ),
-          1 => 
-          array (
-            0 => 'menu',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      86 => 
+      64 => 
       array (
         0 => 
         array (
@@ -381,7 +371,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      109 => 
+      87 => 
       array (
         0 => 
         array (
@@ -404,7 +394,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      148 => 
+      125 => 
       array (
         0 => 
         array (
@@ -426,7 +416,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      169 => 
+      146 => 
       array (
         0 => 
         array (
@@ -464,7 +454,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::9Ti0OejdLzcDKMNY' => 
+    'generated::16FnTfg7zbn96ssW' => 
     array (
       'methods' => 
       array (
@@ -492,8 +482,8 @@ app('router')->setCompiledRoutes(
                     return response(\\Illuminate\\Support\\Facades\\View::file(\'C:\\\\laragon\\\\www\\\\pos-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Configuration\'.\'/../resources/health-up.blade.php\', [
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004ef0000000000000000";}}',
-        'as' => 'generated::9Ti0OejdLzcDKMNY',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"000000000000051f0000000000000000";}}',
+        'as' => 'generated::16FnTfg7zbn96ssW',
       ),
       'fallback' => false,
       'defaults' => 
@@ -522,6 +512,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Dashboard\\DashboardController@index',
         'controller' => 'App\\Http\\Controllers\\Dashboard\\DashboardController@index',
@@ -546,7 +538,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'menu.index' => 
+    'menuindex' => 
     array (
       'methods' => 
       array (
@@ -559,12 +551,14 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
-        'as' => 'menu.index',
         'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@index',
         'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@index',
+        'as' => 'menuindex',
         'namespace' => NULL,
-        'prefix' => '',
+        'prefix' => '/menu',
         'where' => 
         array (
         ),
@@ -583,80 +577,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'menu.create' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'menu/create',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'menu.create',
-        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@create',
-        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@create',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'menu.store' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'menu',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'menu.store',
-        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@store',
-        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@store',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'menu.show' => 
+    'menushow' => 
     array (
       'methods' => 
       array (
@@ -669,12 +590,14 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
-        'as' => 'menu.show',
         'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@show',
         'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@show',
+        'as' => 'menushow',
         'namespace' => NULL,
-        'prefix' => '',
+        'prefix' => '/menu',
         'where' => 
         array (
         ),
@@ -693,117 +616,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'menu.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'menu/{menu}/edit',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'menu.edit',
-        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@edit',
-        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@edit',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'menu.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'PUT',
-        1 => 'PATCH',
-      ),
-      'uri' => 'menu/{menu}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'menu.update',
-        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@update',
-        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'menu.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'DELETE',
-      ),
-      'uri' => 'menu/{menu}',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-        ),
-        'as' => 'menu.destroy',
-        'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@destroy',
-        'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@destroy',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'generated::T3qhTsbBVxNZVemu' => 
+    'menurecipe' => 
     array (
       'methods' => 
       array (
@@ -816,15 +629,17 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Menu\\MenuController@recipe',
         'controller' => 'App\\Http\\Controllers\\Menu\\MenuController@recipe',
+        'as' => 'menurecipe',
         'namespace' => NULL,
-        'prefix' => '',
+        'prefix' => '/menu',
         'where' => 
         array (
         ),
-        'as' => 'generated::T3qhTsbBVxNZVemu',
       ),
       'fallback' => false,
       'defaults' => 
@@ -853,6 +668,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\POS\\POSController@index',
         'controller' => 'App\\Http\\Controllers\\POS\\POSController@index',
@@ -890,6 +707,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\POS\\POSController@bill',
         'controller' => 'App\\Http\\Controllers\\POS\\POSController@bill',
@@ -927,6 +746,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Order\\OrderController@index',
         'controller' => 'App\\Http\\Controllers\\Order\\OrderController@index',
@@ -963,6 +784,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Order\\OrderController@store',
         'controller' => 'App\\Http\\Controllers\\Order\\OrderController@store',
@@ -1000,6 +823,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Order\\OrderController@show',
         'controller' => 'App\\Http\\Controllers\\Order\\OrderController@show',
@@ -1037,6 +862,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:cashier,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Hiistory\\HistoryController@index',
         'controller' => 'App\\Http\\Controllers\\Hiistory\\HistoryController@index',
@@ -1074,6 +901,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:kitchen,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@index',
         'controller' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@index',
@@ -1111,6 +940,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:kitchen,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@getOrders',
         'controller' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@getOrders',
@@ -1147,6 +978,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'auth',
+          2 => 'role:kitchen,admin',
         ),
         'uses' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@updateStatus',
         'controller' => 'App\\Http\\Controllers\\Kitchen\\KitchenController@updateStatus',
@@ -1171,7 +1004,194 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::hczBL7DkkELKqqQe' => 
+    'login' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'login',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Auth\\AuthController@showLogin',
+        'controller' => 'App\\Http\\Controllers\\Auth\\AuthController@showLogin',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'login',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::hzseIYHqnR07wiLH' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'login',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Auth\\AuthController@login',
+        'controller' => 'App\\Http\\Controllers\\Auth\\AuthController@login',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::hzseIYHqnR07wiLH',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'register' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'register',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Auth\\AuthController@showRegister',
+        'controller' => 'App\\Http\\Controllers\\Auth\\AuthController@showRegister',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'register',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::wty7v8YIu4fGBb01' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'register',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Auth\\AuthController@register',
+        'controller' => 'App\\Http\\Controllers\\Auth\\AuthController@register',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::wty7v8YIu4fGBb01',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'logout' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'logout',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Auth\\AuthController@logout',
+        'controller' => 'App\\Http\\Controllers\\Auth\\AuthController@logout',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'logout',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'generated::ervV8HfVaQ87rl3R' => 
     array (
       'methods' => 
       array (
@@ -1197,7 +1217,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 'Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken',
         ),
-        'as' => 'generated::hczBL7DkkELKqqQe',
+        'as' => 'generated::ervV8HfVaQ87rl3R',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1229,7 +1249,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"000000000000061e0000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000004fd0000000000000000";}}',
         'as' => 'storage.local',
       ),
       'fallback' => false,
