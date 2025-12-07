@@ -13,19 +13,35 @@ class CheckRole
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  string  $guard
+     * @param  string  ...$roles
      */
-    public function handle(Request $request, Closure $next, ...$roles): Response
+    public function handle(Request $request, Closure $next, string $guard, ...$roles): Response
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
+        // Check if user is authenticated with the specified guard
+        if (!Auth::guard($guard)->check()) {
+            return redirect()->route("{$guard}.auth.login");
         }
 
+        $user = Auth::guard($guard)->user();
+
+        // If no roles specified, just check authentication
+        if (empty($roles)) {
+            return $next($request);
+        }
+
+        // Check if user has any of the specified roles using the correct guard
         foreach ($roles as $role) {
-            if (Auth::user()->hasRole($role)) {
+            if ($user->hasRole($role, $guard)) {
                 return $next($request);
             }
         }
 
-        abort(403, 'Unauthorized access.');
+        // User doesn't have required role
+        Auth::guard($guard)->logout();
+        
+        return redirect()
+            ->route("{$guard}.auth.login")
+            ->withErrors(['error' => 'Anda tidak memiliki akses yang diperlukan.']);
     }
 }

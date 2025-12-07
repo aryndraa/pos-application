@@ -110,7 +110,7 @@ class OrderController extends Controller
             broadcast(new OrderCreated($order))->toOthers();
 
             return redirect()
-                ->route('pos.bill', $order->id)
+                ->route('cashier.pos.bill', $order->id)
                 ->with('success', 'Order created successfully');
 
         } catch (\Exception $e) {

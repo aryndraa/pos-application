@@ -110,7 +110,7 @@ export default function Show() {
                             </div>
                         </div>
                         <Link
-                            href={`/menu/${id}/recipe`}
+                            href={`/cashier/menu/${id}/recipe`}
                             className="w-full cursor-pointer rounded-lg bg-primary p-2 text-center text-sm font-semibold text-white lg:p-3"
                         >
                             View More

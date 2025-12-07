@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function Header() {
+export default function Header({ username }: { username: string }) {
     const [time, setTime] = useState<Date>(new Date());
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function Header() {
         <div className="flex items-center justify-between rounded-lg border border-zinc-300 bg-white p-4 lg:p-5">
             <div>
                 <h2 className="text-lg font-semibold lg:text-xl">
-                    Welcome Back, User!
+                    Welcome Back, {username}!
                 </h2>
                 <p className="text-sm text-gray-600">
                     Check your customer orders.

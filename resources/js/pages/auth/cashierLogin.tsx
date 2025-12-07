@@ -1,7 +1,7 @@
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 import { FormEventHandler, useState } from 'react';
 
-export default function Login() {
+export default function CashierLogin() {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -21,8 +21,8 @@ export default function Login() {
         <>
             <Head title="Login" />
 
-            <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 px-4 py-12 sm:px-6 lg:px-8">
-                <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-2xl">
+            <div className="flex min-h-screen items-center justify-center bg-zinc-100 px-4 py-12 sm:px-6 lg:px-8">
+                <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8">
                     <div>
                         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             POS System
@@ -51,7 +51,7 @@ export default function Login() {
                                     onChange={(e) =>
                                         setData('email', e.target.value)
                                     }
-                                    className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none sm:text-sm"
+                                    className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-transparent focus:ring-2 focus:ring-primary focus:outline-none sm:text-sm"
                                     placeholder="Enter your email"
                                 />
                                 {errors.email && (
@@ -81,7 +81,7 @@ export default function Login() {
                                         onChange={(e) =>
                                             setData('password', e.target.value)
                                         }
-                                        className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none sm:text-sm"
+                                        className="relative block w-full appearance-none rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-transparent focus:ring-2 focus:ring-primary focus:outline-none sm:text-sm"
                                         placeholder="Enter your password"
                                     />
                                     <button
@@ -146,7 +146,7 @@ export default function Login() {
                                     onChange={(e) =>
                                         setData('remember', e.target.checked)
                                     }
-                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-primary"
                                 />
                                 <label
                                     htmlFor="remember"
@@ -161,7 +161,7 @@ export default function Login() {
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="group relative flex w-full justify-center rounded-lg border border-transparent bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                                className="group relative flex w-full justify-center rounded-lg border border-transparent bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
                             >
                                 {processing ? (
                                     <span className="flex items-center">
@@ -193,18 +193,6 @@ export default function Login() {
                             </button>
                         </div>
 
-                        <div className="text-center">
-                            <p className="text-sm text-gray-600">
-                                Don't have an account?{' '}
-                                <Link
-                                    href={'/register'}
-                                    className="font-medium text-blue-600 hover:text-blue-500"
-                                >
-                                    Register here
-                                </Link>
-                            </p>
-                        </div>
-
                         {/* Demo Credentials */}
                         <div className="mt-4 rounded-lg bg-gray-50 p-3">
                             <p className="mb-2 text-xs font-semibold text-gray-600">
@@ -214,14 +202,6 @@ export default function Login() {
                                 <p>
                                     <strong>Cashier:</strong>{' '}
                                     cashier@example.com / password
-                                </p>
-                                <p>
-                                    <strong>Kitchen:</strong>{' '}
-                                    kitchen@example.com / password
-                                </p>
-                                <p>
-                                    <strong>Admin:</strong> admin@example.com /
-                                    password
                                 </p>
                             </div>
                         </div>

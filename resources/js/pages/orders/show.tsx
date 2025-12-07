@@ -180,13 +180,13 @@ export default function Show() {
 
                                 <div className="grid grid-cols-5 gap-2">
                                     <Link
-                                        href={`/menu/${item.menu.id}/recipe`}
+                                        href={`/cashier/menu/${item.menu.id}/recipe`}
                                         className="col-span-3 mt-4 w-full rounded-lg bg-primary p-2.5 text-center font-medium text-white"
                                     >
                                         View Recipe
                                     </Link>
                                     <Link
-                                        href={`/menu/${item.menu.id}`}
+                                        href={`/cashier/menu/${item.menu.id}`}
                                         className="col-span-2 mt-4 w-full rounded-lg bg-primary/10 p-2.5 text-center font-medium text-primary"
                                     >
                                         View Menu

@@ -31,6 +31,7 @@ interface WeeklyOrderType {
 }
 
 interface HomeProps extends PageProps {
+    username: string;
     totalEarnings: number;
     orderInQueue: number;
     waitingPayments: number;
@@ -51,16 +52,15 @@ export default function Home() {
         inProgressOrders,
         waitingPaymentOrders,
         weeklyOrders,
+        username,
     } = usePage<HomeProps>().props;
-
-    console.log({ unavailableMenu });
 
     return (
         <AppLayout>
             <section className="grid grid-cols-12 gap-4 pb-6 lg:pb-0">
                 <div className="col-span-full lg:col-span-8">
                     <div className="mb-4 space-y-4">
-                        <Header />
+                        <Header username={username} />
                         <WdigetOverview
                             totalEarnings={totalEarnings}
                             orderInQueue={orderInQueue}

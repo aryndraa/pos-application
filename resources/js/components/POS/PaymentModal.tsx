@@ -98,7 +98,7 @@ export default function PaymentModal({
     const handleSubmit = () => {
         setLoading(true);
 
-        router.post('/orders', orderData, {
+        router.post('/cashier/orders', orderData, {
             onSuccess: (page) => {
                 const data = page.props.flash?.success || page.props.response;
                 notify('success', data?.message || 'Order succesfully');

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cashier;
+use App\Models\Kitchen;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,62 +18,31 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+       $cashierRole = Role::firstOrCreate(
+            ['name' => 'cashier', 'guard_name' => 'cashier']
+        );
 
-          $cashierPermissions = [
-            'view-menu',
-            'view-pos',
-            'create-order',
-            'view-order',
-            'view-bill',
-            'view-history',
-        ];
+        $kitchenRole = Role::firstOrCreate(
+            ['name' => 'kitchen', 'guard_name' => 'kitchen']
+        );
 
-         $kitchenPermissions = [
-            'view-kitchen-display',
-            'view-kitchen-orders',
-            'update-order-status',
-        ];
-
-         foreach (array_merge($cashierPermissions, $kitchenPermissions) as $permission) {
-            Permission::create(['name' => $permission]);
-        }
-
-        // Create Cashier Role
-        $cashierRole = Role::create(['name' => 'cashier']);
-        $cashierRole->givePermissionTo($cashierPermissions);
-
-        // Create Kitchen Role
-        $kitchenRole = Role::create(['name' => 'kitchen']);
-        $kitchenRole->givePermissionTo($kitchenPermissions);
-
-        // Create Admin Role (optional - has all permissions)
-        $adminRole = Role::create(['name' => 'admin']);
-        $adminRole->givePermissionTo(Permission::all());
-
-        // Create demo users
-        $cashier = User::create([
-            'name' => 'Cashier User',
+         $cashier = Cashier::create([
+            'name' => 'John Cashier',
             'email' => 'cashier@example.com',
             'password' => Hash::make('password'),
-            'email_verified_at' => now(),
         ]);
-        $cashier->assignRole('cashier');
 
-        $kitchen = User::create([
-            'name' => 'Kitchen User',
+        $cashier->assignRole($cashierRole);
+
+        $kitchen = Kitchen::create([
+            'name' => 'Jane Kitchen',
             'email' => 'kitchen@example.com',
             'password' => Hash::make('password'),
-            'email_verified_at' => now(),
         ]);
-        $kitchen->assignRole('kitchen');
 
-        $admin = User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'email_verified_at' => now(),
-        ]);
-        $admin->assignRole('admin');
+        $kitchen->assignRole($kitchenRole);
+        $this->command->info('Cashier and Kitchen users created successfully!');
+        $this->command->info('Cashier: cashier@example.com / password');
+        $this->command->info('Kitchen: kitchen@example.com / password');
     }
 }

@@ -12,7 +12,8 @@ export default function NavLink({
     const cleanHref = href.split('?')[0];
 
     const isActive =
-        cleanUrl === cleanHref || cleanUrl.startsWith(cleanHref + '/');
+        cleanUrl === cleanHref ||
+        (cleanHref !== '/cashier' && cleanUrl.startsWith(cleanHref + '/'));
 
     return (
         <Link

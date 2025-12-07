@@ -20,17 +20,17 @@ export default function Navbar() {
                     </div>
                     <div className="m-2 mx-4 flex justify-between gap-2 md:m-0 md:my-3 md:w-fit md:flex-col md:gap-4 lg:gap-6">
                         <NavLink
-                            href="/"
+                            href="/cashier"
                             icon={MdOutlineDashboard}
                             label="Dashboard"
                         />
                         <NavLink
-                            href="/menu"
+                            href="/cashier/menu"
                             icon={MdOutlineRestaurantMenu}
                             label="Menu"
                         />
                         <Link
-                            href={'/pos'}
+                            href={'/cashier/pos'}
                             className="text-pri rounded-lg bg-white p-2.5 text-sm font-semibold md:hidden md:px-4"
                         >
                             <span className="text-xl">
@@ -38,21 +38,21 @@ export default function Navbar() {
                             </span>
                         </Link>
                         <NavLink
-                            href="/orders"
+                            href="/cashier/orders"
                             icon={MdOutlineRoomService}
                             label="Orders"
                         />
                         <NavLink
-                            href="/histories"
+                            href="/cashier/histories"
                             icon={MdHistory}
                             label="History"
                         />
                     </div>
                 </div>
                 <div className="hidden w-full flex-col items-center gap-6 md:flex">
-                    <LogoutButton />
+                    <LogoutButton url="/cashier/auth/logout" />
                     <Link
-                        href={'/pos'}
+                        href={'/cashier/pos'}
                         className="w-full flex-col items-center gap-2 rounded-lg bg-white py-3 text-sm font-semibold text-primary md:flex"
                     >
                         <span className="text-lg">

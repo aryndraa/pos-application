@@ -97,12 +97,10 @@ export default function Bill() {
 
                     <div className="my-3 border-b border-dashed border-zinc-400" />
 
-                    <p className="text-center text-xs">
-                        Terima kasih telah berbelanja!
-                    </p>
+                    <p className="text-center text-xs">Thank You For Coming!</p>
 
                     <Link
-                        href="/pos"
+                        href="/cashier/pos"
                         className="mt-3 flex w-full items-center justify-center rounded bg-primary py-2 text-sm text-white"
                     >
                         Back

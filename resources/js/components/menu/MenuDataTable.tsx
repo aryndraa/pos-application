@@ -29,7 +29,7 @@ export default function MenuDataTable({
         else query.delete('search');
 
         router.get(
-            '/menu?' + query.toString(),
+            '/cashier/menu?' + query.toString(),
             {},
             {
                 preserveState: true,
@@ -49,7 +49,7 @@ export default function MenuDataTable({
         }
 
         router.get(
-            '/menu?' + query.toString(),
+            'cashier/menu?' + query.toString(),
             {},
             {
                 preserveState: true,
@@ -126,7 +126,10 @@ export default function MenuDataTable({
                                             />
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
-                                            <Link href={`menu/${item.id}`}>
+                                            <Link
+                                                className="underline"
+                                                href={`/cashier/menu/${item.id}`}
+                                            >
                                                 {item.name}
                                             </Link>
                                         </td>
@@ -141,7 +144,7 @@ export default function MenuDataTable({
                                         </td>
                                         <td className="w-min px-3 py-2 text-nowrap">
                                             <Link
-                                                href={`menu/${item.id}`}
+                                                href={`/cashier/menu/${item.id}`}
                                                 className="flex size-10 items-center justify-center rounded-lg bg-primary text-lg text-white"
                                             >
                                                 <FaRegEye />

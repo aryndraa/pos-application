@@ -12,10 +12,6 @@ class KitchenController extends Controller
 {
      public function index()
     {
-         if (!Auth::user()->hasRole('kitchen')) {
-            abort(403, 'Access denied');
-        }
-
           $orders = Order::with(['items.menu', 'items.orderAdditionals.additionalItem'])
             ->whereIn('status', ['pending', 'processing'])
             ->orderBy('order_date', 'asc')

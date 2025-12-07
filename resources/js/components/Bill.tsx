@@ -37,7 +37,7 @@ export default function Bill({
                 onClick={() => setShowBill(true)}
                 className="flex items-center gap-4 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-white"
             >
-                Print Bill
+                Check Bill
                 <FaPrint />
             </button>
 

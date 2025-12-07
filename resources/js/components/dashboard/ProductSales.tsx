@@ -15,7 +15,7 @@ export default function ProductSales({ productSales }: PopularMenuProps) {
     return (
         <div className="rounded-lg border border-zinc-300 bg-white p-4">
             <div className="mb-4 flex items-center justify-between border-b border-gray-300 pb-4">
-                <h3 className="text-lg font-semibold">Product sales</h3>
+                <h3 className="text-lg font-semibold">Menu sales</h3>
                 <Link className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white">
                     View More
                 </Link>

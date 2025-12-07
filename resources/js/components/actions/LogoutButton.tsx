@@ -2,10 +2,10 @@ import { router } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
 import { CgLogOut } from 'react-icons/cg';
 
-export default function LogoutButton() {
+export default function LogoutButton({ url }: { url: string }) {
     const handleLogout: FormEventHandler = (e) => {
         e.preventDefault();
-        router.post('/logout');
+        router.post(url);
     };
 
     return (

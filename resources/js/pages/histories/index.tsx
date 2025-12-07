@@ -28,7 +28,7 @@ export default function Index() {
         else query.delete('search');
 
         router.get(
-            '//histories?' + query.toString(),
+            '/cashier/histories?' + query.toString(),
             {},
             {
                 preserveState: true,
@@ -48,7 +48,7 @@ export default function Index() {
         else query.delete('direction');
 
         router.get(
-            '//histories?' + query.toString(),
+            '/cashier/histories?' + query.toString(),
             {},
             {
                 preserveState: true,
@@ -146,7 +146,7 @@ export default function Index() {
 
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
-                                                    href={`/orders/${order.id}`}
+                                                    href={`/cashier/orders/${order.id}`}
                                                     className="underline"
                                                 >
                                                     {order.code}
@@ -154,7 +154,7 @@ export default function Index() {
                                             </td>
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
-                                                    href={`/orders/${order.id}`}
+                                                    href={`/cashier/orders/${order.id}`}
                                                     className="underline"
                                                 >
                                                     {order.customer_name}
@@ -176,7 +176,7 @@ export default function Index() {
                                             </td>
                                             <td className="w-min px-3 py-2 text-nowrap">
                                                 <Link
-                                                    href={`/orders/${order.id}`}
+                                                    href={`/cashier/orders/${order.id}`}
                                                     className="flex size-10 items-center justify-center rounded-lg bg-primary text-lg text-white"
                                                 >
                                                     <FaRegEye />

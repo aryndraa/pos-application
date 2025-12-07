@@ -100,7 +100,7 @@ export default function OrderCard({ order, timeAgo }: OrderCardProps) {
                 </div>
 
                 <Link
-                    href={`orders/${order.id}`}
+                    href={`/cashier/orders/${order.id}`}
                     className="flex w-full justify-center rounded-lg bg-primary p-3 text-sm font-semibold text-white"
                 >
                     View Order

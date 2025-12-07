@@ -251,7 +251,7 @@ export default function KitchenDisplay({
                                 </span>
                             </div>
                         </div>
-                        <LogoutButton />
+                        <LogoutButton url="/kitchen/auth/logout" />
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -13,6 +14,8 @@ class DashboardController extends Controller
 {
     public function index(): Response
     {
+        $username = Auth::guard('cashier')->user()->name;
+
         $inProgressOrders = Order::query()
             ->whereIn('status', ['pending', 'processing'])
             ->select(['id', 'customer_name', 'status', 'order_date'])
@@ -56,6 +59,7 @@ class DashboardController extends Controller
             ->get();
 
         return Inertia::render('home', [
+            'username' => $username,
             'totalEarnings' => $totalEarnings,
             'orderInQueue' => $orderInQueue,
             'waitingPayments' => $waitingPayments,
