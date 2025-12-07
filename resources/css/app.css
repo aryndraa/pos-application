@@ -151,18 +151,18 @@
 
 /* Track (background scrollbar) */
 .scroll-y::-webkit-scrollbar-track {
-    background: #e5e7eb;
+    background: #09090b;
     border-radius: 10px;
 }
 
 /* Thumb (bagian yang bisa digeser) */
 .scroll-y::-webkit-scrollbar-thumb {
-    background: #0c6664;
+    background: #09090b;
     transition: ease-in-out 300ms;
     border-radius: 10px;
 }
 
 /* Hover efek (opsional) */
 .scroll-y::-webkit-scrollbar-thumb:hover {
-    background: #0c6664;
+    background: #09090b;
 }

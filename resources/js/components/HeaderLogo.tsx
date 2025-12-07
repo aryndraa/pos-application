@@ -7,12 +7,11 @@ export default function HeaderLogo() {
             href="/"
             className="flex items-center gap-3 rounded-lg transition"
         >
-            <div className="text-3xl text-white">
+            <div className="rounded-lg bg-primary p-2 text-2xl text-white">
                 <SiIfood />
             </div>
             <div className="md:hidden">
-                <h1 className="text-lg font-semibold">D'Katsu</h1>
-                <p className="text-sm text-gray-600">Point Of Sale App</p>
+                <h1 className="text-lg font-semibold">Point Of Sale App</h1>
             </div>
         </Link>
     );

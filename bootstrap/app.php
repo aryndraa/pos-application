@@ -41,6 +41,18 @@ return Application::configure(basePath: dirname(__DIR__))
             'cashier' => CashierMiddleware::class,
             'kitchen' => KitchenMiddleware::class,
         ]);
+
+         $middleware->priority([
+            StartSessionWithGuard::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\Cookie\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
+        ]);
+
+        $middleware->web(prepend: [
+            StartSessionWithGuard::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

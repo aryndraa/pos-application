@@ -16,10 +16,8 @@ class StartSessionWithGuard extends StartSession
      */
     public function handle($request, Closure $next)
     {
-        // Tentukan nama cookie berdasarkan path
         $cookieName = $this->getCookieNameForPath($request->path());
         
-        // Set cookie name secara dinamis
         config(['session.cookie' => $cookieName]);
 
         return parent::handle($request, $next);
@@ -41,6 +39,10 @@ class StartSessionWithGuard extends StartSession
         
         if (str_starts_with($path, 'kitchen')) {
             return $appName . '_kitchen_session';
+        }
+
+        if (str_starts_with($path, 'admin') || str_starts_with($path, 'filament')) {
+            return $appName . '_session';
         }
         
         return $appName . '_session';
