@@ -19,7 +19,6 @@ class Menu extends Model
         'name',
         'sku',
         'price',
-        'stock',
         'is_available',
         'recipe'
     ];
