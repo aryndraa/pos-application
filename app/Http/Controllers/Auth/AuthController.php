@@ -68,7 +68,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Assign cashier role by default
         $user->assignRole('cashier');
 
         Auth::login($user);
