@@ -20,6 +20,9 @@
     'app.filament.resources.orders.pages.list-orders' => 'App\\Filament\\Resources\\Orders\\Pages\\ListOrders',
     'app.filament.resources.orders.pages.view-order' => 'App\\Filament\\Resources\\Orders\\Pages\\ViewOrder',
     'app.filament.resources.orders.relation-managers.items-relation-manager' => 'App\\Filament\\Resources\\Orders\\RelationManagers\\ItemsRelationManager',
+    'app.filament.resources.vouchers.pages.create-voucher' => 'App\\Filament\\Resources\\Vouchers\\Pages\\CreateVoucher',
+    'app.filament.resources.vouchers.pages.edit-voucher' => 'App\\Filament\\Resources\\Vouchers\\Pages\\EditVoucher',
+    'app.filament.resources.vouchers.pages.list-vouchers' => 'App\\Filament\\Resources\\Vouchers\\Pages\\ListVouchers',
     'app.filament.pages.dashboard' => 'App\\Filament\\Pages\\Dashboard',
     'app.filament.widgets.orders-chart' => 'App\\Filament\\Widgets\\OrdersChart',
     'app.filament.widgets.stats-overview' => 'App\\Filament\\Widgets\\StatsOverview',
@@ -64,6 +67,7 @@
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\MenuCategories\\MenuCategoryResource.php' => 'App\\Filament\\Resources\\MenuCategories\\MenuCategoryResource',
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Menus\\MenuResource.php' => 'App\\Filament\\Resources\\Menus\\MenuResource',
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Orders\\OrderResource.php' => 'App\\Filament\\Resources\\Orders\\OrderResource',
+    'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Vouchers\\VoucherResource.php' => 'App\\Filament\\Resources\\Vouchers\\VoucherResource',
   ),
   'resourceDirectories' => 
   array (

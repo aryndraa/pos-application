@@ -21,7 +21,6 @@ class AdditionalItemFactory extends Factory
             'name'             => $this->faker->words(2, true),
             'additional_id'    => Additional::query()->inRandomOrder()->first()->id,
             'additional_price' => $this->faker->numberBetween(5000, 20000),
-            'stock'            => $this->faker->numberBetween(0, 20),
             'is_available'     => $this->faker->boolean(80),
         ];
     }
