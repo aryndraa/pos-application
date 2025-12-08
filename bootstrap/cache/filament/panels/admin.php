@@ -8,6 +8,9 @@
     'app.filament.resources.cashiers.pages.create-cashier' => 'App\\Filament\\Resources\\Cashiers\\Pages\\CreateCashier',
     'app.filament.resources.cashiers.pages.edit-cashier' => 'App\\Filament\\Resources\\Cashiers\\Pages\\EditCashier',
     'app.filament.resources.cashiers.pages.list-cashiers' => 'App\\Filament\\Resources\\Cashiers\\Pages\\ListCashiers',
+    'app.filament.resources.menu-categories.pages.create-menu-category' => 'App\\Filament\\Resources\\MenuCategories\\Pages\\CreateMenuCategory',
+    'app.filament.resources.menu-categories.pages.edit-menu-category' => 'App\\Filament\\Resources\\MenuCategories\\Pages\\EditMenuCategory',
+    'app.filament.resources.menu-categories.pages.list-menu-categories' => 'App\\Filament\\Resources\\MenuCategories\\Pages\\ListMenuCategories',
     'app.filament.resources.menus.pages.create-menu' => 'App\\Filament\\Resources\\Menus\\Pages\\CreateMenu',
     'app.filament.resources.menus.pages.edit-menu' => 'App\\Filament\\Resources\\Menus\\Pages\\EditMenu',
     'app.filament.resources.menus.pages.list-menus' => 'App\\Filament\\Resources\\Menus\\Pages\\ListMenus',
@@ -53,6 +56,7 @@
   array (
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Additionals\\AdditionalResource.php' => 'App\\Filament\\Resources\\Additionals\\AdditionalResource',
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Cashiers\\CashierResource.php' => 'App\\Filament\\Resources\\Cashiers\\CashierResource',
+    'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\MenuCategories\\MenuCategoryResource.php' => 'App\\Filament\\Resources\\MenuCategories\\MenuCategoryResource',
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Menus\\MenuResource.php' => 'App\\Filament\\Resources\\Menus\\MenuResource',
   ),
   'resourceDirectories' => 

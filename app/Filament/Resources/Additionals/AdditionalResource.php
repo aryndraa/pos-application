@@ -20,11 +20,11 @@ class AdditionalResource extends Resource
 {
     protected static ?string $model = Additional::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPuzzlePiece;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $label = 'Menu Additionals';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
     protected static string|UnitEnum|null $navigationGroup = 'Menu';
 
