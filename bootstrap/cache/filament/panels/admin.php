@@ -15,6 +15,11 @@
     'app.filament.resources.menus.pages.edit-menu' => 'App\\Filament\\Resources\\Menus\\Pages\\EditMenu',
     'app.filament.resources.menus.pages.list-menus' => 'App\\Filament\\Resources\\Menus\\Pages\\ListMenus',
     'app.filament.resources.menus.relation-managers.additionals-relation-manager' => 'App\\Filament\\Resources\\Menus\\RelationManagers\\AdditionalsRelationManager',
+    'app.filament.resources.orders.pages.create-order' => 'App\\Filament\\Resources\\Orders\\Pages\\CreateOrder',
+    'app.filament.resources.orders.pages.edit-order' => 'App\\Filament\\Resources\\Orders\\Pages\\EditOrder',
+    'app.filament.resources.orders.pages.list-orders' => 'App\\Filament\\Resources\\Orders\\Pages\\ListOrders',
+    'app.filament.resources.orders.pages.view-order' => 'App\\Filament\\Resources\\Orders\\Pages\\ViewOrder',
+    'app.filament.resources.orders.relation-managers.items-relation-manager' => 'App\\Filament\\Resources\\Orders\\RelationManagers\\ItemsRelationManager',
     'app.filament.pages.dashboard' => 'App\\Filament\\Pages\\Dashboard',
     'app.filament.widgets.orders-chart' => 'App\\Filament\\Widgets\\OrdersChart',
     'app.filament.widgets.stats-overview' => 'App\\Filament\\Widgets\\StatsOverview',
@@ -58,6 +63,7 @@
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Cashiers\\CashierResource.php' => 'App\\Filament\\Resources\\Cashiers\\CashierResource',
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\MenuCategories\\MenuCategoryResource.php' => 'App\\Filament\\Resources\\MenuCategories\\MenuCategoryResource',
     'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Menus\\MenuResource.php' => 'App\\Filament\\Resources\\Menus\\MenuResource',
+    'C:\\laragon\\www\\pos-app\\app\\Filament\\Resources\\Orders\\OrderResource.php' => 'App\\Filament\\Resources\\Orders\\OrderResource',
   ),
   'resourceDirectories' => 
   array (
