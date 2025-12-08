@@ -13,8 +13,6 @@ class CreateMenu extends CreateRecord
 {
     protected static string $resource = MenuResource::class;
 
-    protected ?\Illuminate\Http\UploadedFile $uploadedImage = null;
-
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
