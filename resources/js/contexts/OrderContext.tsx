@@ -16,7 +16,7 @@ interface AdditionalGroup {
 }
 
 interface OrderItem {
-    id: string; // Tambahkan id unik
+    id: string;
     menu_id: number;
     name: string;
     unit_price: number;
@@ -49,8 +49,8 @@ interface OrderContextType {
     ) => void;
     removeOrder: (menu_id: number) => void;
     clearOrders: () => void;
-    incrementOrder: (id: string) => void; // Ubah ke id
-    decrementOrder: (id: string) => void; // Ubah ke id
+    incrementOrder: (id: string) => void;
+    decrementOrder: (id: string) => void;
     completedOrder: CompletedOrder | null;
     setCompletedOrder: (orderData: CompletedOrder) => void;
     total: number;
@@ -68,9 +68,21 @@ const OrderContext = createContext<OrderContextType>({
     setCompletedOrder: () => {},
 });
 
-// Fungsi untuk generate ID unik
-const generateUniqueId = () => {
-    return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+const generateUniqueId = () =>
+    `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+
+const calculateAdditionalTotal = (additionals: Record<string, any>) => {
+    let total = 0;
+
+    Object.values(additionals).forEach((group: any) => {
+        if (!group?.items) return;
+
+        group.items.forEach((item: any) => {
+            total += (item.additional_price ?? 0) * (item.quantity ?? 1);
+        });
+    });
+
+    return total;
 };
 
 export function OrderProvider({ children }: { children: React.ReactNode }) {
@@ -80,29 +92,10 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
         null,
     );
 
-    const calculateAdditionalPrice = (additionals: Record<string, any>) => {
-        if (!additionals) return 0;
-
-        let total = 0;
-
-        Object.values(additionals).forEach((item: any) => {
-            if (!item) return;
-
-            const qty = item.quantity ?? 1;
-            const price = item.additional_price ?? 0;
-
-            total += price * qty;
-        });
-
-        return total;
-    };
-
     const generateOrderKey = (
         menu_id: number,
         additionals: Record<string, any>,
-    ) => {
-        return `${menu_id}-${JSON.stringify(additionals)}`;
-    };
+    ) => `${menu_id}-${JSON.stringify(additionals)}`;
 
     const addOrder = (
         menu: MenuItem,
@@ -110,7 +103,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
         additionals: Record<string, any> = {},
         notes: string = '',
     ) => {
-        const additionalPrice = calculateAdditionalPrice(additionals);
+        const additionalTotal = calculateAdditionalTotal(additionals);
         const orderKey = generateOrderKey(menu.id, additionals);
 
         setOrders((prev) => {
@@ -121,92 +114,89 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
             );
 
             if (existing) {
-                // jika menu + tambahan sama, gabungkan quantity
+                const newQty = existing.quantity + qty;
+                const newSubtotal =
+                    newQty * existing.unit_price + additionalTotal;
+
                 return prev.map((order) =>
-                    generateOrderKey(order.menu_id, order.additionals) ===
-                    orderKey
+                    order.id === existing.id
                         ? {
                               ...order,
-                              quantity: order.quantity + qty,
-                              subtotal:
-                                  (order.quantity + qty) *
-                                  (order.unit_price + order.additional_total),
+                              quantity: newQty,
+                              additional_total: additionalTotal,
+                              subtotal: newSubtotal,
                           }
                         : order,
                 );
             }
 
             const newOrder: OrderItem = {
-                id: generateUniqueId(), // Gunakan fungsi generateUniqueId
+                id: generateUniqueId(),
                 menu_id: menu.id,
                 name: menu.name,
-                unit_price: menu.price ?? 0,
-                additional_total: additionalPrice ?? 0,
-                quantity: Math.min(qty || 1, menu.stock ?? Infinity),
+                unit_price: menu.price,
+                additional_total: additionalTotal,
+                quantity: qty,
                 notes,
                 additionals,
-                subtotal:
-                    Math.min(qty || 1, menu.stock ?? 1) *
-                    (menu.price + additionalPrice),
+                subtotal: qty * menu.price + additionalTotal,
             };
 
             return [...prev, newOrder];
         });
     };
 
-    const removeOrder = (menu_id: number) => {
-        setOrders((prev) => prev.filter((order) => order.menu_id !== menu_id));
-    };
+    const removeOrder = (menu_id: number) =>
+        setOrders((prev) => prev.filter((o) => o.menu_id !== menu_id));
 
     const clearOrders = () => setOrders([]);
-
     const incrementOrder = (id: string) => {
         setOrders((prev) =>
-            prev.map((order) =>
-                order.id === id
-                    ? {
-                          ...order,
-                          quantity: (order.quantity || 0) + 1,
-                          subtotal:
-                              ((order.quantity || 0) + 1) *
-                              ((order.unit_price || 0) +
-                                  (order.additional_total || 0)),
-                      }
-                    : order,
-            ),
+            prev.map((order) => {
+                if (order.id === id) {
+                    const qty = order.quantity + 1;
+                    const addTotal = calculateAdditionalTotal(
+                        order.additionals,
+                    );
+
+                    return {
+                        ...order,
+                        quantity: qty,
+                        subtotal: qty * order.unit_price + addTotal,
+                    };
+                }
+                return order;
+            }),
         );
     };
 
     const decrementOrder = (id: string) => {
-        setOrders((prev) =>
-            prev
-                .map((order) =>
-                    order.id === id
-                        ? {
-                              ...order,
-                              quantity: (order.quantity || 1) - 1,
-                              subtotal:
-                                  ((order.quantity || 1) - 1) *
-                                  ((order.unit_price || 0) +
-                                      (order.additional_total || 0)),
-                          }
-                        : order,
-                )
-                .filter((order) => order.quantity > 0),
+        setOrders(
+            (prev) =>
+                prev
+                    .map((order) => {
+                        if (order.id === id) {
+                            const qty = order.quantity - 1;
+                            if (qty <= 0) return null;
+
+                            const addTotal = calculateAdditionalTotal(
+                                order.additionals,
+                            );
+
+                            return {
+                                ...order,
+                                quantity: qty,
+                                subtotal: qty * order.unit_price + addTotal,
+                            };
+                        }
+                        return order;
+                    })
+                    .filter(Boolean) as OrderItem[],
         );
     };
 
     useEffect(() => {
-        const totalPrice = orders.reduce(
-            (acc, order) => acc + order.subtotal,
-            0,
-        );
-
-        setTotal(totalPrice);
-    }, [orders]);
-
-    useEffect(() => {
-        console.log('ORDERS UPDATED:', orders);
+        setTotal(orders.reduce((acc, o) => acc + o.subtotal, 0));
     }, [orders]);
 
     return (

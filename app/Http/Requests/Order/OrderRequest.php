@@ -21,20 +21,22 @@ class OrderRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'customer_name' => 'required|string|max:255',
-            'payment_method' => 'required|string|max:50',
-            'pay' => 'required|integer|min:0',
-            'items' => 'required|array|min:1',
-            'items.*.menu_id' => 'required|integer|exists:menus,id',
-            'items.*.quantity' => 'required|integer|min:1',
-            'items.*.unit_price' => 'required|integer|min:0',
-            'items.*.subtotal' => 'required|integer|min:0',
-            'items.*.notes' => 'nullable|string',
-            'items.*.additionals' => 'nullable|array',
-            'items.*.additionals.*.additional_item_id' => 'required|integer|exists:additional_items,id',
-            'items.*.additionals.*.quantity' => 'required|integer|min:1',
-            'items.*.additionals.*.unit_price' => 'required|integer|min:0',
-        ];
+       return [
+                'customer_name' => 'required|string|max:255',
+                'voucher_code' => 'nullable|string',
+                'payment_method' => 'required',
+                'pay' => 'nullable|numeric|min:0',
+                'service_type' => 'required',
+                'items' => 'required|array|min:1',
+                'items.*.menu_id' => 'required|exists:menus,id',
+                'items.*.quantity' => 'required|integer|min:1',
+                'items.*.unit_price' => 'required|numeric|min:0',
+                'items.*.subtotal' => 'required|numeric|min:0',
+                'items.*.notes' => 'nullable|string',
+                'items.*.additionals' => 'nullable|array',
+                'items.*.additionals.*.additional_item_id' => 'required|exists:additional_items,id',
+                'items.*.additionals.*.quantity' => 'required|integer|min:1',
+                'items.*.additionals.*.unit_price' => 'required|numeric|min:0',
+            ];
     }
 }

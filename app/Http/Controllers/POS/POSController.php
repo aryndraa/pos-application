@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\MenuCategory;
 use App\Models\Order;
+use App\Models\Voucher;
 use Inertia\Inertia;
 use PhpParser\Builder\Interface_;
 
@@ -59,26 +60,51 @@ class POSController extends Controller
             ])
             ->values(); 
 
+         $vouchers = Voucher::where('is_active', true)
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->where('limit', '>', 0)
+            ->where('is_active', true)
+            ->select('id', 'code', 'name', 'type', 'discount', 'max_discount')
+            ->get();
+
+
         return Inertia::render('pos/index', [
             'categories' => $categories,
-            'menu' => $menu
+            'menu' => $menu,
+            'availableVouchers' => $vouchers,
         ]);
     }
 
     public function bill(Order $order) 
     {
-        $order->load(['items.menu', 'items.orderAdditionals.additionalItem']);
+        $order->load([
+            'items.menu',
+            'items.orderAdditionals.additionalItem',
+            'voucher',
+            'cashier' 
+        ]);
 
         return Inertia::render('pos/bill', [
             'id' => $order->id,
             'code' => $order->code,
             'customer_name' => $order->customer_name,
             'order_date' => $order->order_date,
+            'subtotal_price' => $order->subtotal_price,   // ✅ tambah
+            'voucher' => $order->voucher ? [
+                'id' => $order->voucher->id,
+                'code' => $order->voucher->code,
+                'discount_type' => $order->voucher->discount_type,
+                'discount_value' => $order->voucher->discount_value,
+            ] : null, // ✅ tambah
+            'total_discount' => $order->total_discount,   // ✅ tambah
+            'total_price' => $order->total_price,
             'pay' => $order->pay,
             'change' => $order->change,
             'payment_method' => $order->payment_method,
-            'total_price' => $order->total_price,
             'status' => $order->status,
+            'cashier' => $order->cashier->name ?? 'Unknown', // ✅ tambah
+
             'items' => $order->items->map(function($item) {
                 return [
                     'id' => $item->id,

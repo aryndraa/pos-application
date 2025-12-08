@@ -4,6 +4,7 @@ import Search from '@/components/Search';
 import SelectFilter from '@/components/SelectFilter';
 import AppLayout from '@/layouts/AppLayout';
 import { Category } from '@/types/Menu';
+import { Voucher } from '@/types/Voucher';
 import { usePage } from '@inertiajs/react';
 import { PageProps } from 'node_modules/@inertiajs/core/types/types';
 import { useState } from 'react';
@@ -42,10 +43,11 @@ interface GroupedMenu {
 interface POSProps extends PageProps {
     categories: Category[];
     menu: GroupedMenu[];
+    availableVouchers: Voucher[];
 }
 
 export default function POS() {
-    const { categories, menu } = usePage<POSProps>().props;
+    const { categories, menu, availableVouchers } = usePage<POSProps>().props;
     const [selectCategory, setSelectCategory] = useState<string>('all');
     const [search, setSearch] = useState<string>('');
 
@@ -100,7 +102,7 @@ export default function POS() {
                     </div>
                 </div>
                 <div className="col-span-4">
-                    <CartItems />
+                    <CartItems voucher={availableVouchers} />
                 </div>
             </section>
         </AppLayout>

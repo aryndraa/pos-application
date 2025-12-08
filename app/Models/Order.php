@@ -20,10 +20,12 @@ class Order extends Model
         'subtotal_price',
         'voucher_id',
         'total_discount',
+        'service_type',
         'pay',
         'change',
         'payment_method',
         'status',
+        'cashier_id'
     ];
 
     public function items(): HasMany
@@ -34,5 +36,10 @@ class Order extends Model
     public function voucher(): BelongsTo
     {
         return $this->belongsTo(Voucher::class);
+    }
+
+    public function cashier()
+    {
+        return $this->belongsTo(Cashier::class);
     }
 }

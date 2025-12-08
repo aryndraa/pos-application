@@ -136,9 +136,6 @@ class ItemsRelationManager extends RelationManager
                 TextColumn::make('unit_price')
                     ->money('IDR'),
 
-                TextColumn::make('price')
-                    ->money('IDR'),
-
                 TextColumn::make('subtotal')
                     ->money('IDR')
                     ->getStateUsing(function ($record) {

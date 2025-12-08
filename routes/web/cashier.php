@@ -47,7 +47,7 @@ Route::middleware(['role:cashier,cashier'])
             ->name('orders.')
             ->group(function() {
                 Route::get('/', 'index')->name('index');
-                Route::post('/', 'store')->name('store');
+                Route::post('', 'store')->name('store');
                 Route::get('/{order}', 'show')->name('show');
             });
 
