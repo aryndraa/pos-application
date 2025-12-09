@@ -171,11 +171,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                     >
                                         <div className="mb-4 flex w-full flex-col justify-between gap-4 md:mb-0 md:flex-row">
                                             <div className="flex items-center gap-4">
-                                                <img
-                                                    src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
-                                                    alt=""
-                                                    className="size-10 rounded-full object-cover"
-                                                />
                                                 <div>
                                                     <h4 className="font-medium">
                                                         {order.name}

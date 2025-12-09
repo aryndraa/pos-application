@@ -21,6 +21,7 @@ interface MenuCardProps {
     name: string;
     price: number;
     additionals: additionalType[];
+    file_url: string;
 }
 
 export default function MenuCard({
@@ -28,6 +29,7 @@ export default function MenuCard({
     name,
     price,
     additionals,
+    file_url,
 }: MenuCardProps) {
     const [opeModal, setOpenModal] = useState<boolean>(false);
 
@@ -37,11 +39,20 @@ export default function MenuCard({
                 onClick={() => setOpenModal(true)}
                 className="relative flex cursor-pointer flex-col items-center gap-4 rounded-lg border border-zinc-300 p-4 transition"
             >
-                <img
-                    src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
-                    alt=""
-                    className="aspect-square border object-cover"
-                />
+                {file_url ? (
+                    <img
+                        src={file_url}
+                        alt={name}
+                        className="aspect-square h-full w-full rounded-lg object-cover"
+                    />
+                ) : (
+                    <img
+                        src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                        alt=""
+                        className="aspect-square border object-cover"
+                    />
+                )}
+
                 <div className="flex flex-col items-center">
                     <h3 className="text-sm font-medium capitalize">{name}</h3>
 
@@ -57,6 +68,7 @@ export default function MenuCard({
             {opeModal && (
                 <AddOrderModal
                     id={id}
+                    file_url={file_url}
                     name={name}
                     price={price}
                     additionals={additionals}

@@ -22,6 +22,7 @@ interface AddOrderModalProps {
     name: string;
     price: number;
     additionals: additionalType[];
+    file_url: string;
     closeModal: () => void;
 }
 
@@ -29,6 +30,7 @@ export default function AddOrderModal({
     id,
     name,
     price,
+    file_url,
     additionals,
     closeModal,
 }: AddOrderModalProps) {
@@ -162,10 +164,18 @@ export default function AddOrderModal({
                 </div>
 
                 <div className="flex items-center gap-6 border-b pb-6">
-                    <img
-                        src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
-                        className="aspect-square size-28 rounded-lg border object-cover"
-                    />
+                    {file_url ? (
+                        <img
+                            src={file_url}
+                            alt={name}
+                            className="aspect-square size-28 rounded-lg object-cover"
+                        />
+                    ) : (
+                        <img
+                            src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                            className="aspect-square size-28 rounded-lg border object-cover"
+                        />
+                    )}
 
                     <div className="flex w-full flex-col items-start justify-between md:flex-row">
                         <div>
@@ -216,10 +226,12 @@ export default function AddOrderModal({
                                         <div>
                                             <h3>
                                                 {additional.name}
-                                                {additional.is_required && (
+                                                {additional.is_required ? (
                                                     <span className="ml-1 text-red-500">
                                                         *
                                                     </span>
+                                                ) : (
+                                                    ''
                                                 )}
                                             </h3>
                                             {errors[additional.name] && (
@@ -252,19 +264,10 @@ export default function AddOrderModal({
                                                     className="flex items-center justify-between px-4 py-2 hover:bg-gray-100"
                                                 >
                                                     <div className="flex items-center gap-4">
-                                                        <img
-                                                            src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
-                                                            className="size-10 rounded-lg object-cover"
-                                                        />
-
                                                         <div>
                                                             <h4 className="text-sm font-medium">
                                                                 {item.name}
                                                             </h4>
-                                                            <p className="text-xs text-zinc-500">
-                                                                Stock :{' '}
-                                                                {item.stock}
-                                                            </p>
                                                         </div>
                                                     </div>
 

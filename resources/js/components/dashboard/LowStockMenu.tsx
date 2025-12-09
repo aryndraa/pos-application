@@ -4,6 +4,7 @@ import { MdErrorOutline } from 'react-icons/md';
 
 interface LowStockMenuType {
     name: string;
+    file_url: string;
 }
 
 interface LowStockMenuProps {
@@ -34,11 +35,14 @@ export default function LowStockMenu({
                             {lowStockMenu.map((menu, index: number) => (
                                 <li
                                     key={index}
-                                    className="flex cursor-pointer items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
+                                    className="flex items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
                                 >
                                     <div className="flex items-center gap-4 md:gap-5">
                                         <img
-                                            src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                                            src={
+                                                menu.file_url ??
+                                                'https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg'
+                                            }
                                             alt=""
                                             className="size-10 rounded-full object-cover"
                                         />
@@ -61,11 +65,14 @@ export default function LowStockMenu({
                                 .map((menu, index: number) => (
                                     <li
                                         key={index}
-                                        className="flex cursor-pointer items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
+                                        className="flex items-center justify-between gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
                                     >
                                         <div className="flex items-center gap-4 md:gap-5">
                                             <img
-                                                src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                                                src={
+                                                    menu.file_url ??
+                                                    'https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg'
+                                                }
                                                 alt=""
                                                 className="size-10 rounded-full object-cover"
                                             />
@@ -91,7 +98,7 @@ export default function LowStockMenu({
             {page === 'menu' && lowStockMenu!.length > 8 && (
                 <button
                     onClick={() => setMore(!more)}
-                    className="w-full cursor-pointer rounded-lg bg-primary p-2 text-sm font-semibold text-white lg:p-3"
+                    className="w-full rounded-lg bg-primary p-2 text-sm font-semibold text-white lg:p-3"
                 >
                     {more ? 'Show Less' : 'Show More'}
                 </button>

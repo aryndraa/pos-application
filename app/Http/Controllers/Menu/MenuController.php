@@ -147,7 +147,7 @@ class MenuController extends Controller
             'is_available' => $menu->is_available,
             'recipe' => Str::limit($menu->recipe, 210),
             'category' => $menu->category?->name,
-            'image' => $menu->image?->url,
+            'image' => $menu->image?->file_url,
             'additionals' => $menu->additionals->map(function ($additional) {
                 return [
                     'name' => $additional->name,

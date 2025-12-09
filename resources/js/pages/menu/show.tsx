@@ -4,6 +4,10 @@ import AppLayout from '@/layouts/AppLayout';
 import { formatRupiah } from '@/utils/formatRupiah';
 import { PageProps } from '@inertiajs/core';
 import { Link, usePage } from '@inertiajs/react';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
+import remarkGfm from 'remark-gfm';
 
 interface itemType {
     id: number;
@@ -53,16 +57,25 @@ export default function Show() {
         totalOrders,
     } = usePage<ShowProps>().props;
 
+    console.log(image);
     return (
         <AppLayout>
             <section className="grid grid-cols-12 gap-4 overflow-x-hidden">
                 <div className="col-span-full flex flex-col gap-4 lg:col-span-6">
                     <div className="h-full rounded-lg border border-zinc-300 p-4">
-                        <img
-                            src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
-                            alt=""
-                            className="aspect-square h-full w-full object-cover"
-                        />
+                        {image ? (
+                            <img
+                                src={image}
+                                alt={name}
+                                className="aspect-square h-full w-full rounded-lg object-cover"
+                            />
+                        ) : (
+                            <img
+                                src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                                alt={name}
+                                className="aspect-square h-full w-full rounded-lg object-cover"
+                            />
+                        )}
                     </div>
                 </div>
                 <div className="col-span-full flex flex-col gap-4 lg:col-span-6">
@@ -106,7 +119,12 @@ export default function Show() {
                                 Receipt
                             </h1>
                             <div>
-                                <p className="text-zinc-500">{recipe}....</p>
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkGfm]}
+                                    rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                                >
+                                    {recipe}
+                                </ReactMarkdown>
                             </div>
                         </div>
                         <Link

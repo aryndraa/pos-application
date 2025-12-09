@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/react';
 interface PopularMenuType {
     name: string;
     total_sold: number;
+    file_url: string;
 }
 
 interface PopularMenuProps {
@@ -25,14 +26,17 @@ export default function ProductSales({ productSales }: PopularMenuProps) {
                     productSales.map((menu, index: number) => (
                         <li
                             key={index}
-                            className="flex cursor-pointer items-center gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
+                            className="flex items-center gap-4 rounded-lg px-4 py-2 transition hover:bg-gray-100 md:gap-5"
                         >
                             <span className="text-xl font-semibold">
                                 {numbering++}
                             </span>
                             <div className="flex items-center gap-4 md:gap-5">
                                 <img
-                                    src="https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg"
+                                    src={
+                                        menu.file_url ??
+                                        'https://i.pinimg.com/736x/d8/4e/25/d84e25ff3c9dd2fc129c7de8f7176b34.jpg'
+                                    }
                                     alt=""
                                     className="size-10 rounded-full object-cover"
                                 />

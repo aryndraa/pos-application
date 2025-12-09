@@ -22,7 +22,7 @@ export interface MenuItem {
     stock: number;
     is_available: boolean;
     category: string;
-    file_url: string | null;
+    file_url?: string;
     additionals: additionalType[];
 }
 
@@ -57,6 +57,7 @@ export default function ListMenu({ menu }: ListMenuProps) {
                                             id={menu.id}
                                             name={menu.name}
                                             price={menu.price}
+                                            file_url={menu.file_url}
                                         />
                                     ))}
                                 </div>

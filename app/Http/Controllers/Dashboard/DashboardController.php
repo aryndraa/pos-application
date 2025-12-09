@@ -42,14 +42,32 @@ class DashboardController extends Controller
             })
             ->withSum('orders as total_sold', 'quantity')
             ->orderByDesc('total_sold')
+            ->with(['image'])
             ->take(5)
-            ->get(['id', 'name']);
+            ->get(['id', 'name'])
+            ->map(function ($menu) {
+                return [
+                    'id'         => $menu->id,
+                    'name'       => $menu->name,
+                    'total_sold' => $menu->total_sold ?? 0,
+                    'file_url'  => $menu->image->file_url ?? null, 
+                ];
+            });
 
 
         $unavailableMenu = Menu::query()
             ->where('is_available', false)
             ->take(5)
-            ->get(['id', 'name']);
+            ->with(['image'])   
+            ->get(['id', 'name'])
+            ->map(function ($menu) {
+                return [
+                    'id'         => $menu->id,
+                    'name'       => $menu->name,
+                    'total_sold' => $menu->total_sold ?? 0,
+                    'file_url'  => $menu->image->file_url ?? null, 
+                ];
+            });;
 
         $weeklyOrders = Order::query()
             ->selectRaw('DATE(order_date) as date, COUNT(*) as total')

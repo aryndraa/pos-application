@@ -115,3 +115,12 @@ Kitchen display
 ```bash
    http://127.0.0.1:8000/kitchen
 ```
+
+## Data demo
+
+1. ubah konfigurasi .env menjadi:
+
+```bash
+    DB_CONNECTION=sqlite
+    DB_DATABASE=database/database.sqlite
+```

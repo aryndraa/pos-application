@@ -2,6 +2,10 @@ import AppLayout from '@/layouts/AppLayout';
 import { usePage } from '@inertiajs/react';
 import { PageProps } from 'node_modules/@inertiajs/core/types/types';
 import { FaChevronLeft } from 'react-icons/fa';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
+import remarkGfm from 'remark-gfm';
 
 interface RecipeProps extends PageProps {
     id: number;
@@ -27,7 +31,12 @@ export default function Recipe() {
                             <FaChevronLeft />
                         </button>
                     </div>
-                    <p className="md:text-lg">{recipe}</p>
+                    <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                    >
+                        {recipe}
+                    </ReactMarkdown>
                 </div>
             </section>
         </AppLayout>
