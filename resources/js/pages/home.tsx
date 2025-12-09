@@ -34,11 +34,11 @@ interface HomeProps extends PageProps {
     username: string;
     totalEarnings: number;
     orderInQueue: number;
-    waitingPayments: number;
+    totalTodayOrdersCount: number;
     productSales: PopularMenuType[];
     unavailableMenu: LowStockMenuType[];
     inProgressOrders: OrderItemType[];
-    waitingPaymentOrders: OrderItemType[];
+    totalTodayOrders: OrderItemType[];
     weeklyOrders: WeeklyOrderType[];
 }
 
@@ -46,11 +46,11 @@ export default function Home() {
     const {
         totalEarnings,
         orderInQueue,
-        waitingPayments,
+        totalTodayOrdersCount,
         productSales,
         unavailableMenu,
         inProgressOrders,
-        waitingPaymentOrders,
+        totalTodayOrders,
         weeklyOrders,
         username,
     } = usePage<HomeProps>().props;
@@ -64,7 +64,7 @@ export default function Home() {
                         <WdigetOverview
                             totalEarnings={totalEarnings}
                             orderInQueue={orderInQueue}
-                            waitingPayments={waitingPayments}
+                            todayOrders={totalTodayOrdersCount}
                         />
                     </div>
                     <div className="col-span-full mb-4 grid gap-4 md:grid-cols-2">
@@ -78,7 +78,7 @@ export default function Home() {
                 <div className="col-span-full h-fit lg:sticky lg:top-4 lg:col-span-4">
                     <OrderList
                         inProgressOrders={inProgressOrders}
-                        waitingPaymentOrders={waitingPaymentOrders}
+                        waitingPaymentOrders={totalTodayOrders}
                     />
                 </div>
             </section>

@@ -23,8 +23,8 @@ class DashboardController extends Controller
             ->orderBy('order_date', 'desc')
             ->get();
 
-        $waitingPaymentOrders = Order::query()
-            ->where('status', 'awaiting payment')
+        $totalTodayOrders = Order::query()
+            ->whereDate('order_date', now())
             ->select(['id', 'customer_name', 'status', 'order_date'])
             ->withCount('items')
             ->orderBy('order_date', 'desc')
@@ -32,7 +32,7 @@ class DashboardController extends Controller
 
         $totalEarnings = Order::query()->where('status', 'completed')->sum('total_price');
         $orderInQueue =  $inProgressOrders->count();
-        $waitingPayments =  $waitingPaymentOrders->count();
+        $totalTodayOrdersCount =  $totalTodayOrders->count();
 
         $productSales = Menu::query()
             ->whereHas('orders', function ($query) {
@@ -62,11 +62,11 @@ class DashboardController extends Controller
             'username' => $username,
             'totalEarnings' => $totalEarnings,
             'orderInQueue' => $orderInQueue,
-            'waitingPayments' => $waitingPayments,
+            'totalTodayOrdersCount' => $totalTodayOrdersCount,
             'productSales' => $productSales,
             'unavailableMenu' => $unavailableMenu,
             'inProgressOrders' => $inProgressOrders,
-            'waitingPaymentOrders' => $waitingPaymentOrders,
+            'totalTodayOrders' => $totalTodayOrders,
             'weeklyOrders' => $weeklyOrders
         ]);
     }

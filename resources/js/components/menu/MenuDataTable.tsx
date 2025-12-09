@@ -159,7 +159,9 @@ export default function MenuDataTable({
                                     colSpan={100}
                                     className="rounded-lg py-4 text-center text-sm text-gray-500"
                                 >
-                                    No Menu found.
+                                    <div className="rounded-lg bg-gray-100 py-3 text-center text-sm text-gray-500">
+                                        No menu found.
+                                    </div>
                                 </td>
                             </tr>
                         )}

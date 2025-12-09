@@ -83,7 +83,9 @@ export default function LowStockMenu({
                         </>
                     )
                 ) : (
-                    'no data'
+                    <li className="rounded-lg bg-gray-100 py-3 text-center text-sm text-gray-500">
+                        No menu found.
+                    </li>
                 )}
             </ul>
             {page === 'menu' && lowStockMenu!.length > 8 && (

@@ -28,7 +28,11 @@ export default function CashierLogin() {
                             POS System
                         </h2>
                         <p className="mt-2 text-center text-sm text-gray-600">
-                            Sign in to your cashier account
+                            Sign in to your{' '}
+                            <span className="font-semibold text-primary">
+                                cashier
+                            </span>{' '}
+                            account
                         </p>
                     </div>
 

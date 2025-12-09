@@ -20,7 +20,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
         Object.values(additionals).forEach((group: any) => {
             if (!group) return;
 
-            // Checkbox multiple → array
             if (Array.isArray(group)) {
                 group.forEach((item) => {
                     total +=
@@ -154,7 +153,7 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                         <ul className="flex flex-col gap-4">
                             {orders.length === 0 && (
                                 <li className="pt-4 text-center text-sm text-gray-500">
-                                    Belum ada pesanan
+                                    No orders yet
                                 </li>
                             )}
 
@@ -189,7 +188,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                                 </div>
                                             </div>
 
-                                            {/* QTY */}
                                             <div className="flex h-fit items-center justify-between gap-3 rounded-lg border px-2 py-2">
                                                 <button
                                                     type="button"
@@ -217,7 +215,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                             </div>
                                         </div>
 
-                                        {/* ADDITIONALS */}
                                         <ul className="w-full space-y-2 border-t pt-2">
                                             {Object.keys(order.additionals).map(
                                                 (groupName) => {
@@ -227,7 +224,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                                         ];
                                                     if (!group) return null;
 
-                                                    // Multiple choice
                                                     if (Array.isArray(group)) {
                                                         return group.map(
                                                             (item) => (
@@ -255,7 +251,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                                         );
                                                     }
 
-                                                    // Single or grouped items
                                                     if (
                                                         typeof group ===
                                                         'object'
@@ -312,7 +307,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                             )}
                                         </ul>
 
-                                        {/* NOTES */}
                                         {order.notes && (
                                             <div className="w-full border-t border-zinc-300 pt-2">
                                                 <h3 className="mb-1 text-sm font-medium">
@@ -324,7 +318,6 @@ export default function CartItems({ voucher }: { voucher: Voucher[] }) {
                                             </div>
                                         )}
 
-                                        {/* FINAL TOTAL PER MENU */}
                                         <div className="flex w-full justify-between border-t border-zinc-300 pt-2 font-medium">
                                             <h3>Total :</h3>
                                             <p>{formatRupiah(finalSubtotal)}</p>

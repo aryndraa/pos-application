@@ -7,13 +7,13 @@ import WidgetCard from '../WidgetCard';
 interface WidgetOverviewProps {
     totalEarnings?: number;
     orderInQueue?: number;
-    waitingPayments?: number;
+    todayOrders?: number;
 }
 
 export default function WdigetOverview({
     totalEarnings,
     orderInQueue,
-    waitingPayments,
+    todayOrders,
 }: WidgetOverviewProps) {
     return (
         <div>
@@ -26,14 +26,14 @@ export default function WdigetOverview({
                     />
                 </div>
                 <WidgetCard
+                    icon={<FaListAlt />}
+                    label="Total Orders"
+                    value={todayOrders + ' Orders'}
+                />
+                <WidgetCard
                     icon={<MdRoomService />}
                     label="Orders in Queue"
                     value={orderInQueue + ' Orders'}
-                />
-                <WidgetCard
-                    icon={<FaListAlt />}
-                    label="Waiting Payments"
-                    value={waitingPayments + ' Orders'}
                 />
             </div>
         </div>

@@ -40,7 +40,6 @@ export default function Orders() {
 
                 {orders.length === 0 ? (
                     <div className="py-20 text-center">
-                        <div className="mb-4 text-6xl">😴</div>
                         <h3 className="text-2xl font-bold text-gray-400">
                             No Active Orders
                         </h3>

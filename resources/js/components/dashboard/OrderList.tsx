@@ -79,9 +79,7 @@ export default function OrderList({
                     items_count: data.order.items?.length || 0,
                 };
 
-                // Update or remove from in-progress
                 setInProgressOrders((prev) => {
-                    // If completed or cancelled, remove from list
                     if (
                         updatedOrder.status === 'completed' ||
                         updatedOrder.status === 'cancelled'
@@ -92,7 +90,6 @@ export default function OrderList({
                         return prev.filter((o) => o.id !== updatedOrder.id);
                     }
 
-                    // If pending or processing, update or add
                     if (
                         updatedOrder.status === 'pending' ||
                         updatedOrder.status === 'processing'
@@ -111,15 +108,11 @@ export default function OrderList({
 
                     return prev;
                 });
-
-                // Handle waiting payment orders if needed
-                // You can add similar logic for waitingPaymentOrders based on payment_status
             },
         );
 
         console.log('OrderList: Echo setup complete');
 
-        // No cleanup needed as Kitchen Display already manages the channel
         return () => {
             console.log(
                 'OrderList: Cleaning up listeners (channel still active)',
@@ -169,7 +162,7 @@ export default function OrderList({
                     }`}
                     onClick={() => setActiveTab('waiting-payment')}
                 >
-                    Waiting Payment ({waitingPaymentOrders.length})
+                    Today Orders ({waitingPaymentOrders.length})
                 </button>
             </div>
 
@@ -233,7 +226,7 @@ export default function OrderList({
 
                 {filteredOrders.length === 0 && (
                     <li className="rounded-lg bg-gray-100 py-3 text-center text-sm text-gray-500">
-                        No orders found.
+                        No menu found.
                     </li>
                 )}
             </ul>

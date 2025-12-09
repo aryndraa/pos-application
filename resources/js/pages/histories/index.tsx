@@ -189,9 +189,9 @@ export default function Index() {
                                 <tr className="w-full">
                                     <td
                                         colSpan={100}
-                                        className="rounded-lg py-4 text-center text-sm text-gray-500"
+                                        className="rounded-lg bg-gray-100 py-3 text-center text-sm text-gray-500"
                                     >
-                                        No Orders found.
+                                        No orders found.
                                     </td>
                                 </tr>
                             )}

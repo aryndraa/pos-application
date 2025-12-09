@@ -67,7 +67,9 @@ export default function ListMenu({ menu }: ListMenuProps) {
                     ))}
                 </>
             ) : (
-                ''
+                <li className="rounded-lg bg-gray-100 py-3 text-center text-sm text-gray-500">
+                    No menu found.
+                </li>
             )}
         </ul>
     );
