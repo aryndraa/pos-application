@@ -16,7 +16,6 @@ class AdditionalItem extends Model
         'name',
         'additional_id',
         'additional_price',
-        'stock',    
         'is_available',
     ];
 

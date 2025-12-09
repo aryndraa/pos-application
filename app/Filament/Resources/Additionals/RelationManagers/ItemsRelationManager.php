@@ -46,12 +46,6 @@ class ItemsRelationManager extends RelationManager
                             ->minValue(0)
                             ->default(0),
 
-                        TextInput::make('stock')
-                            ->numeric()
-                            ->minValue(0)
-                            ->default(0)
-                            ->helperText('Set 0 for unlimited'),
-
                         Toggle::make('is_available')
                             ->default(true),
                     ])
@@ -76,8 +70,6 @@ class ItemsRelationManager extends RelationManager
 
                 TextColumn::make('additional_price')
                     ->money('IDR'),
-
-                TextColumn::make('stock'),
 
                 ToggleColumn::make('is_available'),
             ])

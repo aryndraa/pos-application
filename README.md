@@ -27,9 +27,6 @@ Sistem POS Restoran ini menyediakan solusi lengkap untuk mengelola operasional r
 
     ```bash
     git clone https://github.com/aryndraa/pos-application
-    ```
-
-    ```bash
     cd pos-application
     ```
 
@@ -37,9 +34,6 @@ Sistem POS Restoran ini menyediakan solusi lengkap untuk mengelola operasional r
 
     ```bash
     composer install
-    ```
-
-    ```bash
     npm install
     ```
 
@@ -47,21 +41,77 @@ Sistem POS Restoran ini menyediakan solusi lengkap untuk mengelola operasional r
 
     ```bash
     cp .env.example .env
-    ```
-
-    ```bash
     php artisan key:generate
     ```
 
-4. Start the development server
+4. Set up Database:
+
     ```bash
-    npm run dev
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=pos_application
+    DB_USERNAME=root
+    DB_PASSWORD=
     ```
 
-## Brief Project Explanation
+5. Run migrations (lewati jika menggunakan sqlite):
 
-This project was created as part of the SiteFest competition with a mission to help users access trusted and easy-to-understand medical information in one place.
-By using modern technologies like React Js and Tailwind CSS, this project offers a fast and responsive user experience.
-Deployment with Vercel allows easy online access without complicated setup.
+    ```bash
+    php artisan migrate
+    ```
 
-\_Project made by **SharkByteLabs**🦈
+6. Create storage link for file uploads:
+
+    ```bash
+    php artisan storage:link
+    ```
+
+7. Create demo users
+
+    ```bash
+     php artisan db:seed --class=RolePermissionSeeder
+    ```
+
+8. Create filament admin user
+
+    ```bash
+     php artisan make:filament-user
+    ```
+
+9. Create reverb key
+
+    ```bash
+     php artisan reverb:install
+    ```
+
+10. Start the development server:
+
+    ```bash
+     composer run dev
+    ```
+
+11. Start reverb server
+    ```bash
+     php artisan reverb:start
+    ```
+
+## Access Panel
+
+Admin Panel
+
+```bash
+   http://127.0.0.1:8000/admin
+```
+
+Cashier
+
+```bash
+   http://127.0.0.1:8000/cashier
+```
+
+Kitchen display
+
+```bash
+   http://127.0.0.1:8000/kitchen
+```
