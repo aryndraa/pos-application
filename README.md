@@ -1,3 +1,5 @@
+![POS mockup](mockup.jpg)
+
 # POS System
 
 Sistem POS Restoran ini menyediakan solusi lengkap untuk mengelola operasional rumah makan dengan tiga panel utama: Admin, Cashier, dan Kitchen. Mendukung pemesanan realtime, manajemen menu, pengelolaan voucher, serta pencatatan transaksi yang cepat dan akurat. Pesanan dari kasir langsung tampil di Kitchen Display, sementara admin dapat memantau laporan penjualan, mengatur menu, dan mengelola user. Sistem ini dirancang untuk mempercepat proses kerja, meminimalkan kesalahan, dan meningkatkan efisiensi restoran.
