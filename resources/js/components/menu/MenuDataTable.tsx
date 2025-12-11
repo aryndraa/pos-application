@@ -49,7 +49,7 @@ export default function MenuDataTable({
         }
 
         router.get(
-            'cashier/menu?' + query.toString(),
+            '/cashier/menu?' + query.toString(),
             {},
             {
                 preserveState: true,

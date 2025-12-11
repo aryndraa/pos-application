@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Cashier;
 use App\Models\Menu;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,6 +23,8 @@ class OrderFactory extends Factory
             'code'              => strtoupper($this->faker->bothify('ORD-####??')),
             'order_date'        => $this->faker->dateTimeBetween('-1 month', 'now'),
             'total_price'       => $this->faker->numberBetween(50000, 200000),
+            'subtotal_price'       => $this->faker->numberBetween(50000, 200000),
+            'cashier_id'    =>Cashier::inRandomOrder()->first('id'),
             'pay'               => $this->faker->numberBetween(50000, 200000),
             'change'            => 0,
             'payment_method'    => $this->faker->randomElement(['cash', 'transfer', 'qris']),

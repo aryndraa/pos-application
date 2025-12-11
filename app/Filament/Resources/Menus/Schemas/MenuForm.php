@@ -48,8 +48,8 @@ class MenuForm
                                 ->required()
                                 ->maxLength(255)
                                 ->live(onBlur: true)
-                                ->afterStateUpdated(fn (Set $set, ?string $state) =>
-                                    $set('sku', 'SKU-' . strtoupper(Str::slug($state, '')) . '-' . Str::upper(Str::random(6)))
+                                ->afterStateUpdated(fn (Set $set) =>
+                                    $set('sku', 'SKU-' . Str::upper(Str::random(6)))
                                 ),
 
                             TextInput::make('sku')
