@@ -79,7 +79,17 @@ class MenuController extends Controller
 
          $unavailableMenu = Menu::query()
             ->where('is_available', false)
-            ->get(['id', 'name']);
+            ->take(5)
+            ->with(['image'])   
+            ->get(['id', 'name'])
+            ->map(function ($menu) {
+                return [
+                    'id'         => $menu->id,
+                    'name'       => $menu->name,
+                    'total_sold' => $menu->total_sold ?? 0,
+                    'file_url'  => $menu->image->file_url ?? null, 
+                ];
+            });;
     
         return Inertia::render('menu/index', [
             'menu'         => $menu,

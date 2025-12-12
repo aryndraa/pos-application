@@ -17,7 +17,7 @@ export default function Welcome() {
                     <div className="grid gap-6 md:grid-cols-3">
                         <div className="transform rounded-xl bg-white transition-all duration-300 hover:-translate-y-2">
                             <div className="p-8 text-center">
-                                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-purple-600">
+                                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary">
                                     <svg
                                         className="h-10 w-10 text-white"
                                         fill="none"
@@ -46,7 +46,7 @@ export default function Welcome() {
                                 </p>
                                 <Link
                                     href="/admin"
-                                    className="inline-block w-full rounded-lg bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-3 font-semibold text-white transition-all duration-300 hover:from-purple-600 hover:to-purple-700"
+                                    className="inline-block w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary/80 hover:from-purple-600 hover:to-purple-700"
                                 >
                                     Open Admin
                                 </Link>
@@ -55,7 +55,7 @@ export default function Welcome() {
 
                         <div className="transform rounded-xl bg-white transition-all duration-300 hover:-translate-y-2">
                             <div className="p-8 text-center">
-                                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-green-600">
+                                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary">
                                     <svg
                                         className="h-10 w-10 text-white"
                                         fill="none"
@@ -78,7 +78,7 @@ export default function Welcome() {
                                 </p>
                                 <Link
                                     href="/cashier"
-                                    className="inline-block w-full rounded-lg bg-gradient-to-r from-green-500 to-green-600 px-6 py-3 font-semibold text-white transition-all duration-300 hover:from-green-600 hover:to-green-700"
+                                    className="inline-block w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary/80 hover:from-green-600 hover:to-green-700"
                                 >
                                     Open Cashier
                                 </Link>
@@ -87,7 +87,7 @@ export default function Welcome() {
 
                         <div className="transform rounded-xl bg-white transition-all duration-300 hover:-translate-y-2">
                             <div className="p-8 text-center">
-                                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-orange-600">
+                                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary">
                                     <svg
                                         className="h-10 w-10 text-white"
                                         fill="none"
@@ -110,7 +110,7 @@ export default function Welcome() {
                                 </p>
                                 <Link
                                     href="/kitchen"
-                                    className="inline-block w-full rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 font-semibold text-white transition-all duration-300 hover:from-orange-600 hover:to-orange-700"
+                                    className="inline-block w-full rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary/80 hover:from-orange-600 hover:to-orange-700"
                                 >
                                     Open Kitchen
                                 </Link>

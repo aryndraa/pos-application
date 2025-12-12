@@ -203,10 +203,9 @@ export default function OrderList({
                                     {order.items_count ?? 0} Items –{' '}
                                     {new Date(
                                         order.order_date,
-                                    ).toLocaleDateString('id-ID', {
-                                        day: '2-digit',
-                                        month: 'short',
-                                        year: 'numeric',
+                                    ).toLocaleTimeString('id-ID', {
+                                        hour: 'numeric',
+                                        minute: 'numeric',
                                     })}
                                 </p>
                             </div>
