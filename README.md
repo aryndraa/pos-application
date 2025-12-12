@@ -1,4 +1,7 @@
-![POS mockup](mockup.jpg)
+![POS mockup](mockup/mockup1.jpg)
+![POS mockup](mockup/mockup2.jpg)
+![POS mockup](mockup/mockup3.jpg)
+![POS mockup](mockup/mockup4.jpg)
 
 # POS System
 
